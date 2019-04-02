@@ -1,0 +1,57 @@
+﻿<ResourceDictionary x:Class="HylandMedConfig.ResourceDictionaries.MessageDataTemplates.WebUrlChatMessageDataTemplate"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+                    xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+                    xmlns:Windows="clr-namespace:System.Windows;assembly=PresentationFramework"
+                    xmlns:attached="clr-namespace:HylandMedConfig.Attached"
+                    xmlns:Commands="clr-namespace:HylandMedConfig.Commands"
+                    xmlns:xamlControls="clr-namespace:HylandMedConfig.XamlControls"
+                    xmlns:local="clr-namespace:HylandMedConfig"
+                    xmlns:Common="clr-namespace:HylandMedConfig.Common;assembly=HylandMedConfig.Bot">
+
+    <DataTemplate DataType="{x:Type Common:WebUrlChatMessage}">
+        <Controls:MessageBubble Message="{Binding}">
+            <Grid Margin="9 5">
+                <TextBlock Text="{Binding Url, StringFormat='Web Error: failed to load {0}'}"
+                           Foreground="Red"
+                           FontSize="11"
+                           TextTrimming="CharacterEllipsis"
+                           MaxWidth="300"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    
+                    <WebBrowser x:Name="webBrowser"
+                            LoadCompleted="webBrowser_LoadCompleted"
+                            Unloaded="webBrowser_Unloaded"
+                            Visibility="Collapsed"
+                               
+                            ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+                    <xamlControls:HyperlinkTextBlock Grid.Row="1" x:Name="hyperlink" Margin="0 5" Visibility="Collapsed" UriSource="{Binding Url}" Text="{Binding Url}" HorizontalAlignment="Right"  FontSize="10" />
+                </Grid>
+                <Border Background="LightYellow"
+                        x:Name="border">
+                    <StackPanel VerticalAlignment="Center"
+                                ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <Button Click="Button_Click"
+                                HorizontalAlignment="Center"
+                                Padding="9">Load Webpage</Button>
+                        <TextBlock FontSize="9"
+                                   TextWrapping="Wrap"
+                                   MaxHeight="200"
+                                   TextTrimming="CharacterEllipsis"
+                                   Text="{Binding Url, Mode=OneWay}"
+                                   HorizontalAlignment="Center"
+                                   Margin="5" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Controls:MessageBubble>
+    </DataTemplate>
+
+</ResourceDictionary>

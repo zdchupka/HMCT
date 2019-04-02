@@ -1,0 +1,561 @@
+﻿<Window x:Class="HylandMedConfig.Dialogs.UserSettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+        xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+        xmlns:local="clr-namespace:HylandMedConfig"
+        xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:Attached="clr-namespace:HylandMedConfig.Attached"
+        xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+        xmlns:xceed="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:Commands="clr-namespace:HylandMedConfig.Commands"
+        Attached:FrameworkElementBehavior.Theme="{Binding ThemeNum, Source={x:Static Properties:Settings.Default}, Converter={Converters:ThemeNumToUIThemeConverter}}"
+        Loaded="Window_Loaded"
+        Title="User Settings"
+        Style="{DynamicResource WindowStyle}"
+        Closing="Window_Closing"
+        x:Name="root"
+        WindowStartupLocation="Manual"
+        Padding="10"
+        Height="700"
+        Width="450">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static Commands:ApplicationCommands.ExportUserSettings}"
+                        Executed="ExportUserSettings_Executed" />
+        <CommandBinding Command="{x:Static Commands:ApplicationCommands.ImportUserSettings}"
+                        Executed="ImportUserSettings_Executed" />
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="_Settings">
+                <MenuItem Header="Export..."
+                          Command="{x:Static Commands:ApplicationCommands.ExportUserSettings}" />
+                <MenuItem Header="Import..."
+                          Command="{x:Static Commands:ApplicationCommands.ImportUserSettings}" />
+            </MenuItem>
+        </Menu>
+        <ScrollViewer Padding="10"
+                      Grid.Row="1">
+            <StackPanel>
+
+                <GroupBox Header="Theme"
+                          FontWeight="Bold">
+                    <StackPanel TextElement.FontWeight="Normal">
+                        <ComboBox Margin="0 5"
+                                  x:Name="cmbThemes"
+                                  SelectedValue="{Binding ThemeNum, Source={x:Static Properties:Settings.Default}, Converter={Converters:NumberToUiThemeConverter}}"
+                                  ItemsSource="{Binding ElementName=root, Path=AvailableThemesView}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={Converters:EnumToLocalizedStringConverter}}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <CheckBox Content="Enable Animations"
+                                  VerticalAlignment="Center"
+                                  ToolTip="Enable animated gifs and other application animations"
+                                  IsChecked="{Binding Path=EnableAnimations, Source={x:Static Properties:Settings.Default}}" />
+                    </StackPanel>
+                </GroupBox>
+
+                <Grid Margin="0 3 0 0">
+                    <GroupBox FontWeight="Bold"
+                              Header="Background"
+                              Padding="5">
+                        <StackPanel TextElement.FontWeight="Normal">
+                            <TextBlock Text="Image"
+                                       Margin="0 0 0 2" />
+                            <DockPanel Margin="0 0 0 3">
+                                <Button DockPanel.Dock="Right"
+                                        MinHeight="10"
+                                        Click="ChangeBackground_Click">...</Button>
+                                <TextBox x:Name="txtBackgroundUrl"
+                                         Text="{Binding Path=BackgroundImageUrl, UpdateSourceTrigger=PropertyChanged, Source={x:Static Properties:Settings.Default}}" />
+                            </DockPanel>
+
+                            <TextBlock Text="Stretch"
+                                       Margin="0 0 0 2" />
+                            <ComboBox x:Name="cmbBackgroundImageStretch"
+                                      SelectedItem="{Binding Path=BackgroundImageStretch, Source={x:Static Properties:Settings.Default}}"
+                                      Margin="0 0 0 3" />
+
+                            <TextBlock Text="{Binding BackgroundImageScale, Source={x:Static Properties:Settings.Default}, StringFormat='Scale ({0})'}" />
+                            <Slider Minimum="0"
+                                    Maximum="5"
+                                    x:Name="scaleSlider"
+                                    Margin="0 0 0 3"
+                                    SmallChange=".01"
+                                    LargeChange=".01"
+                                    Value="{Binding BackgroundImageScale, Source={x:Static Properties:Settings.Default}}"
+                                    TickFrequency="0.01"
+                                    IsMoveToPointEnabled="True"
+                                    IsSnapToTickEnabled="True">
+                            </Slider>
+
+                            <TextBlock Text="{Binding BackgroundImageOpacity, Source={x:Static Properties:Settings.Default}, StringFormat='Opacity ({0})'}" />
+                            <Slider Minimum="0"
+                                    Maximum="1"
+                                    Margin="0 0 0 3"
+                                    SmallChange=".01"
+                                    LargeChange=".01"
+                                    IsMoveToPointEnabled="True"
+                                    Value="{Binding BackgroundImageOpacity, Source={x:Static Properties:Settings.Default}}"
+                                    TickFrequency="0.01"
+                                    IsSnapToTickEnabled="True" />
+
+                            <TextBlock Text="{Binding BackgroundImageOffsetX, Source={x:Static Properties:Settings.Default}, StringFormat='Offset X ({0})'}" />
+                            <Slider Minimum="-500"
+                                    Maximum="500"
+                                    Margin="0 0 0 3"
+                                    SmallChange="1"
+                                    LargeChange="1"
+                                    IsMoveToPointEnabled="True"
+                                    Value="{Binding BackgroundImageOffsetX, Source={x:Static Properties:Settings.Default}}"
+                                    TickFrequency="1"
+                                    IsSnapToTickEnabled="True" />
+
+                            <TextBlock Text="{Binding BackgroundImageOffsetY, Source={x:Static Properties:Settings.Default}, StringFormat='Offset Y ({0})'}" />
+                            <Slider Minimum="-500"
+                                    Maximum="500"
+                                    SmallChange="1"
+                                    LargeChange="1"
+                                    Margin="0 0 0 3"
+                                    IsMoveToPointEnabled="True"
+                                    Value="{Binding BackgroundImageOffsetY, Source={x:Static Properties:Settings.Default}}"
+                                    TickFrequency="1"
+                                    IsSnapToTickEnabled="True" />
+                        </StackPanel>
+                    </GroupBox>
+
+                    <Button HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Padding="10 0"
+                            Margin="0 0 8 0"
+                            x:Name="btnResetBackground"
+                            Style="{StaticResource HyperlinkButtonStyle}"
+                            Background="{Binding Background, ElementName=root}"
+                            Click="ResetBackground_Click"
+                            Content="Reset" />
+                </Grid>
+
+                <Grid Margin="0 3 0 0">
+
+                    <GroupBox Header="Messages"
+                              FontWeight="Bold"
+                              Padding="5">
+
+                        <DockPanel TextElement.FontWeight="Normal">
+
+                            <TextBlock Text="Font"
+                                       Margin="0,0,0,2"
+                                       DockPanel.Dock="Top" />
+
+
+                            <Slider Minimum="16"
+                                    Maximum="72"
+                                    Margin="0 0 0 3"
+                                    SmallChange="1"
+                                    DockPanel.Dock="Bottom"
+                                    LargeChange="1"
+                                    IsMoveToPointEnabled="True"
+                                    Value="{Binding UserImageHeight, Source={x:Static Properties:Settings.Default}}"
+                                    TickFrequency="1"
+                                    IsSnapToTickEnabled="True" />
+
+                            <TextBlock DockPanel.Dock="Bottom"
+                                       Margin="0 3 0 0"
+                                       Text="{Binding UserImageHeight, Source={x:Static Properties:Settings.Default}, StringFormat='User Image Size ({0})'}" />
+
+                            <CheckBox Content="Message Border"
+                                      VerticalAlignment="Center"
+                                      DockPanel.Dock="Bottom"
+                                      ToolTip="Show border around messages"
+                                      IsChecked="{Binding ShowMessageBorder, Source={x:Static Properties:Settings.Default}}" />
+
+                            <DockPanel DockPanel.Dock="Bottom"
+                                       Visibility="{Binding ElementName=chkDropShadow, Path=IsChecked, Converter={Converters:BooleanToVisibilityConverter}}"
+                                       Margin="20 0 0 3">
+
+                                <TextBlock Text="Color"
+                                           VerticalAlignment="Center"
+                                           DockPanel.Dock="Left" />
+
+                                <Controls:ColorPicker SelectedColor="{Binding DropShadowColor, Source={x:Static Properties:Settings.Default}}" />
+
+                            </DockPanel>
+
+                            <Slider Minimum="0"
+                                    DockPanel.Dock="Bottom"
+                                    Maximum="50"
+                                    SmallChange="1"
+                                    Visibility="{Binding ElementName=chkDropShadow, Path=IsChecked, Converter={Converters:BooleanToVisibilityConverter}}"
+                                    LargeChange="1"
+                                    Margin="20 0 0 3"
+                                    IsMoveToPointEnabled="True"
+                                    Value="{Binding DropShadowBlurRadius, Source={x:Static Properties:Settings.Default}}"
+                                    TickFrequency="1"
+                                    IsSnapToTickEnabled="True" />
+                            <TextBlock Margin="20 0 0 0"
+                                       DockPanel.Dock="Bottom"
+                                       Visibility="{Binding ElementName=chkDropShadow, Path=IsChecked, Converter={Converters:BooleanToVisibilityConverter}}"
+                                       Text="{Binding DropShadowBlurRadius, Source={x:Static Properties:Settings.Default}, StringFormat='Blur Radius ({0})'}" />
+
+                            <Slider Minimum="-180"
+                                    DockPanel.Dock="Bottom"
+                                    Maximum="180"
+                                    SmallChange="1"
+                                    Visibility="{Binding ElementName=chkDropShadow, Path=IsChecked, Converter={Converters:BooleanToVisibilityConverter}}"
+                                    LargeChange="1"
+                                    Margin="20 0 0 3"
+                                    IsMoveToPointEnabled="True"
+                                    Value="{Binding DropShadowDirection, Source={x:Static Properties:Settings.Default}}"
+                                    TickFrequency="1"
+                                    IsSnapToTickEnabled="True" />
+                            <TextBlock Margin="20 0 0 0"
+                                       DockPanel.Dock="Bottom"
+                                       Visibility="{Binding ElementName=chkDropShadow, Path=IsChecked, Converter={Converters:BooleanToVisibilityConverter}}"
+                                       Text="{Binding DropShadowDirection, Source={x:Static Properties:Settings.Default}, StringFormat='Direction ({0}°)'}" />
+
+
+                            <Slider Minimum="0"
+                                    DockPanel.Dock="Bottom"
+                                    Maximum="50"
+                                    SmallChange="1"
+                                    Visibility="{Binding ElementName=chkDropShadow, Path=IsChecked, Converter={Converters:BooleanToVisibilityConverter}}"
+                                    LargeChange="1"
+                                    Margin="20 0 0 3"
+                                    IsMoveToPointEnabled="True"
+                                    Value="{Binding DropShadowShadowDepth, Source={x:Static Properties:Settings.Default}}"
+                                    TickFrequency="1"
+                                    IsSnapToTickEnabled="True" />
+                            <TextBlock Margin="20 0 0 0"
+                                       DockPanel.Dock="Bottom"
+                                       Visibility="{Binding ElementName=chkDropShadow, Path=IsChecked, Converter={Converters:BooleanToVisibilityConverter}}"
+                                       Text="{Binding DropShadowShadowDepth, Source={x:Static Properties:Settings.Default}, StringFormat='Shadow Depth ({0})'}" />
+
+                            <CheckBox Content="Message Drop Shadow"
+                                      VerticalAlignment="Center"
+                                      x:Name="chkDropShadow"
+                                      DockPanel.Dock="Bottom"
+                                      ToolTip="Show drop shadow for messages"
+                                      IsChecked="{Binding ShowMessageDropShadow, Source={x:Static Properties:Settings.Default}}" />
+
+                            <DockPanel DockPanel.Dock="Bottom"
+                                       Margin="0 3 0 0">
+
+                                <TextBlock Text="Group Foreground"
+                                           VerticalAlignment="Center"
+                                           DockPanel.Dock="Left" />
+
+                                <Controls:ColorPicker SelectedColor="{Binding GroupMessageForegroundColor, Source={x:Static Properties:Settings.Default}}" />
+
+                            </DockPanel>
+
+                            <DockPanel DockPanel.Dock="Bottom"
+                                       Margin="0 3 0 0">
+
+                                <TextBlock Text="Group Background"
+                                           VerticalAlignment="Center"
+                                           DockPanel.Dock="Left" />
+
+                                <Controls:ColorPicker SelectedColor="{Binding GroupMessageBackgroundColor, Source={x:Static Properties:Settings.Default}}" />
+
+                            </DockPanel>
+
+                            <DockPanel DockPanel.Dock="Bottom"
+                                       Margin="0 3 0 0">
+
+                                <TextBlock Text="Whisper Foreground"
+                                           VerticalAlignment="Center"
+                                           DockPanel.Dock="Left" />
+
+                                <Controls:ColorPicker SelectedColor="{Binding WhisperMessageForegroundColor, Source={x:Static Properties:Settings.Default}}" />
+
+                            </DockPanel>
+
+                            <DockPanel DockPanel.Dock="Bottom"
+                                       Margin="0 3 0 0">
+
+                                <TextBlock Text="Whisper Background"
+                                           VerticalAlignment="Center"
+                                           DockPanel.Dock="Left" />
+
+                                <Controls:ColorPicker SelectedColor="{Binding WhisperMessageBackgroundColor, Source={x:Static Properties:Settings.Default}}" />
+
+                            </DockPanel>
+
+                            <DockPanel DockPanel.Dock="Bottom"
+                                       Margin="0 3 0 0">
+
+                                <TextBlock Text="Border"
+                                           VerticalAlignment="Center"
+                                           DockPanel.Dock="Left" />
+
+                                <Controls:ColorPicker SelectedColor="{Binding MessageBorderColor, Source={x:Static Properties:Settings.Default}}" />
+
+                            </DockPanel>
+
+                            <DockPanel DockPanel.Dock="Bottom"
+                                       Margin="0 3 0 0">
+
+                                <TextBlock Text="Foreground"
+                                           VerticalAlignment="Center"
+                                           DockPanel.Dock="Left" />
+
+                                <Controls:ColorPicker SelectedColor="{Binding MessageForegroundColor, Source={x:Static Properties:Settings.Default}}" />
+
+                            </DockPanel>
+
+                            <DockPanel DockPanel.Dock="Bottom"
+                                       Margin="0 3 0 0">
+
+                                <TextBlock Text="Background"
+                                           VerticalAlignment="Center"
+                                           DockPanel.Dock="Left" />
+
+                                <Controls:ColorPicker SelectedColor="{Binding MessageBackgroundColor, Source={x:Static Properties:Settings.Default}}" />
+
+                            </DockPanel>
+
+                            <Button DockPanel.Dock="Right"
+                                    Click="ChangeFont_Click"
+                                    Margin="5,0,0,0">...</Button>
+                            <Controls:ChatMessageCallout>
+
+                                <Controls:ChatMessageCallout.Style>
+                                    <Style BasedOn="{StaticResource {x:Type Controls:ChatMessageCallout}}"
+                                           TargetType="{x:Type Controls:ChatMessageCallout}">
+                                        <Setter Property="BorderThickness"
+                                                Value="1" />
+                                        <Setter Property="BorderBrush"
+                                                Value="{DynamicResource ChatMessageCalloutBorderBrush}" />
+                                        <Setter Property="Background"
+                                                Value="{Binding MessageBackgroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                                        <Setter Property="BorderBrush"
+                                                Value="{Binding MessageBorderResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowMessageBorder, Source={x:Static Properties:Settings.Default}}"
+                                                         Value="False">
+                                                <Setter Property="BorderThickness"
+                                                        Value="0" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ShowMessageDropShadow, Source={x:Static Properties:Settings.Default}}"
+                                                         Value="True">
+                                                <Setter Property="Effect">
+                                                    <Setter.Value>
+                                                        <DropShadowEffect BlurRadius="{Binding DropShadowBlurRadius, Source={x:Static Properties:Settings.Default}}"
+                                                                          ShadowDepth="{Binding DropShadowShadowDepth, Source={x:Static Properties:Settings.Default}}"
+                                                                          Color="{Binding DropShadowColor, Source={x:Static Properties:Settings.Default}}"
+                                                                          Direction="{Binding DropShadowDirection, Source={x:Static Properties:Settings.Default}}" />
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Controls:ChatMessageCallout.Style>
+
+                                <TextBlock Text="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           TextWrapping="NoWrap"
+                                           TextTrimming="CharacterEllipsis"
+                                           FontFamily="{Binding FontFamily, Source={x:Static Properties:Settings.Default}}"
+                                           FontSize="{Binding FontSize, Source={x:Static Properties:Settings.Default}}"
+                                           FontStyle="{Binding FontStyle, Source={x:Static Properties:Settings.Default}}"
+                                           FontWeight="{Binding FontWeight, Source={x:Static Properties:Settings.Default}}"
+                                           Foreground="{Binding MessageForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+
+                            </Controls:ChatMessageCallout>
+                        </DockPanel>
+
+                    </GroupBox>
+
+                    <Button HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Padding="10 0"
+                            Margin="0 0 8 0"
+                            x:Name="btnResetFont"
+                            Background="{Binding Background, ElementName=root}"
+                            Style="{StaticResource HyperlinkButtonStyle}"
+                            Click="ResetFont_Click"
+                            Content="Reset" />
+
+                </Grid>
+
+                <Grid Margin="0 3 0 0">
+
+                    <GroupBox Padding="5"
+                              Header="System Font"
+                              FontWeight="Bold">
+                        <StackPanel TextElement.FontWeight="Normal">
+                            <DockPanel>
+                                <Button Click="Button_Click_1"
+                                        DockPanel.Dock="Right">...</Button>
+                                <TextBlock TextElement.FontFamily="{Binding SystemFontFamily, Source={x:Static Properties:Settings.Default}}"
+                                           TextElement.FontSize="{Binding SystemFontSize, Source={x:Static Properties:Settings.Default}}"
+                                           TextElement.FontWeight="{Binding SystemFontWeight, Source={x:Static Properties:Settings.Default}}"
+                                           TextElement.FontStyle="{Binding SystemFontStyle, Source={x:Static Properties:Settings.Default}}"
+                                           TextElement.Foreground="{Binding SystemForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Text="System Font Preview" />
+                            </DockPanel>
+
+                            <DockPanel DockPanel.Dock="Bottom"
+                                       Margin="0 3 0 0">
+
+                                <TextBlock Text="Foreground"
+                                           DockPanel.Dock="Left"
+                                           VerticalAlignment="Center" />
+
+                                <Controls:ColorPicker SelectedColor="{Binding SystemForegroundColor, Source={x:Static Properties:Settings.Default}}" />
+                            </DockPanel>
+
+                        </StackPanel>
+                    </GroupBox>
+
+                    <Button HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Padding="10 0"
+                            Margin="0 0 8 0"
+                            x:Name="btnResetSystemFont"
+                            Background="{Binding Background, ElementName=root}"
+                            Style="{StaticResource HyperlinkButtonStyle}"
+                            Click="ResetSystemFont_Click"
+                            Content="Reset" />
+
+                </Grid>
+
+                <GroupBox Margin="0 3 0 0"
+                          Padding="5">
+                    <GroupBox.Header>
+                        <CheckBox Content="Notifications"
+                                  FontWeight="Bold"
+                                  Margin="0"
+                                  ToolTip="Enable / Disable all notifications"
+                                  IsChecked="{Binding Path=EnableNotifications, Source={x:Static Properties:Settings.Default}}" />
+                    </GroupBox.Header>
+                    <StackPanel IsEnabled="{Binding Path=EnableNotifications, Source={x:Static Properties:Settings.Default}}">
+                        <CheckBox Content="Show Popup Notifications"
+                                  VerticalAlignment="Center"
+                                  IsChecked="{Binding Path=ShowNotifications, Source={x:Static Properties:Settings.Default}}" />
+                        <CheckBox Content="Play Text-to-Speech"
+                                  VerticalAlignment="Center"
+                                  ToolTip="When checked, notifications and messages will be played through the default autio device"
+                                  IsChecked="{Binding Path=TextToSpeechEnabled, Source={x:Static Properties:Settings.Default}}" />
+
+                        <CheckBox VerticalAlignment="Center"
+                                  IsChecked="{Binding Path=UseRingtone, Source={x:Static Properties:Settings.Default}}">
+                            <TextBlock>
+                                <TextBlock.Inlines>
+                                    <Run Text="Play" />
+                                    <Run Text="Ringtone"
+                                         Cursor="Hand"
+                                         Foreground="{DynamicResource HyperlinkForegroundBrush}"
+                                         MouseLeftButtonDown="Run_MouseLeftButtonDown"
+                                         TextDecorations="Underline" />
+                                </TextBlock.Inlines>
+                            </TextBlock>
+                        </CheckBox>
+
+                        <CheckBox Content="Thumbs-Up Ringtone"
+                                  IsChecked="{Binding Path=UseThumbsUpRingtone, Source={x:Static Properties:Settings.Default}}"/>
+
+                        <DockPanel Margin="25 3 0 5">
+                            <Button DockPanel.Dock="Right"
+                                    Click="Button_Click_2"
+                                        MinHeight="10"
+                                    Margin="3 0 0 0"
+                                        >...</Button>
+                            <TextBox Text="{Binding Path=ThumbsUpUrl, UpdateSourceTrigger=PropertyChanged, Source={x:Static Properties:Settings.Default}}"
+                                     IsEnabled="{Binding Path=UseThumbsUpRingtone, Source={x:Static Properties:Settings.Default}}"/>
+                        </DockPanel>
+
+                        <CheckBox Content="Thumbs-Down Ringtone"
+                                  IsChecked="{Binding Path=UseThumbsDownRingtone, Source={x:Static Properties:Settings.Default}}"/>
+
+                        <DockPanel Margin="25 3 0 3">
+                            <Button DockPanel.Dock="Right"
+                                    Click="Button_Click_3"
+                                        MinHeight="10"
+                                    Margin="3 0 0 0"
+                                        >...</Button>
+                            <TextBox Text="{Binding Path=ThumbsDownUrl, UpdateSourceTrigger=PropertyChanged, Source={x:Static Properties:Settings.Default}}"
+                                     IsEnabled="{Binding Path=UseThumbsDownRingtone, Source={x:Static Properties:Settings.Default}}"/>
+                        </DockPanel>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Margin="0 3 0 0"
+                          Header="Miscellaneous"
+                          Padding="5"
+                          FontWeight="Bold">
+
+                    <StackPanel TextElement.FontWeight="Normal">
+
+                        <CheckBox Content="Obscure Window"
+                                  ToolTip="Hide window contents with a DOS command prompt when window is not active and the mouse isn't over it"
+                                  VerticalAlignment="Center"
+                                  IsChecked="{Binding Path=ObscureWindow, Source={x:Static Properties:Settings.Default}}" />
+
+                        <CheckBox Content="Text-to-Speech for all messages"
+                                  VerticalAlignment="Center"
+                                  x:Name="chkPlayAll"
+                                  ToolTip="Play all notifications using Text-to-Speech regardless of whether the window is active or not.  Not recommended to combine this with the Speech-to-text notification setting."
+                                  IsChecked="{Binding PlayAllMessages, Source={x:Static Properties:Settings.Default}}" />
+
+                        <CheckBox Content="Mute Xaml Messages"
+                                  VerticalAlignment="Center"
+                                  DockPanel.Dock="Bottom"
+                                  ToolTip="Mute xaml messages"
+                                  IsChecked="{Binding MuteXaml, Source={x:Static Properties:Settings.Default}}" />
+
+                        <CheckBox Content="Text Highlighting"
+                                  VerticalAlignment="Center"
+                                  DockPanel.Dock="Bottom"
+                                  ToolTip="Highlight background of text elements to make text more readable"
+                                  IsChecked="{Binding ShowTextHighlighting, Source={x:Static Properties:Settings.Default}}" />
+
+                        <TextBlock Text="# messages to keep when cleaning"
+                                       ToolTip="The number of messages that will be kept when cleaning messages"
+                                       Margin="0,8,0,2"
+                                       DockPanel.Dock="Top" />
+
+                        <TextBox Margin="0 0 0 3" Width="100" 
+                                     HorizontalAlignment="Left" Text="{Binding KeepLastMessages, Source={x:Static Properties:Settings.Default}, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top"/>
+
+
+                        <CheckBox Content="Clean Automatically"
+                                      IsChecked="{Binding AutomaticallyClean, Source={x:Static Properties:Settings.Default}}"
+                                      DockPanel.Dock="Top">
+                            <CheckBox.ToolTip>
+                                <ToolTip>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding KeepLastMessages, Source={x:Static Properties:Settings.Default}, StringFormat='When checked, only the last {0} message(s) will be kept at all times'}" />
+                                </ToolTip>
+                            </CheckBox.ToolTip>
+                        </CheckBox>
+
+                    </StackPanel>
+
+                </GroupBox>
+                <GroupBox Margin="0 3 0 0"
+                          Header="Tags"
+                          FontWeight="Bold"
+                          Padding="5">
+                    <StackPanel TextElement.FontWeight="Normal">
+                        <Button Click="Button_Click">Configure Ignore Tags...
+                        </Button>
+                    </StackPanel>
+                </GroupBox>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+
+</Window>

@@ -1,0 +1,313 @@
+﻿<Window x:Class="HylandMedConfig.Windows.TagConversationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Deployment="clr-namespace:System.Deployment.Application;assembly=System.Deployment"
+        xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+        xmlns:Commands="clr-namespace:HylandMedConfig.Commands"
+        xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+        xmlns:Attached="clr-namespace:HylandMedConfig.Attached"
+        xmlns:local="clr-namespace:HylandMedConfig"
+        xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+        xmlns:const="clr-namespace:HylandMedConfig.Properties"
+        xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        Style="{DynamicResource WindowStyle}"
+        Loaded="root_Loaded"
+        Attached:FrameworkElementBehavior.Theme="{Binding ThemeNum, Source={x:Static Properties:Settings.Default}, Converter={Converters:ThemeNumToUIThemeConverter}}"
+        WindowStartupLocation="CenterOwner"
+        x:Name="root"
+        Height="500"
+        Width="750">
+
+    <Grid>
+
+        <DockPanel x:Name="mainDockPanel"
+                   Visibility="{Binding ElementName=obscureScreen, Path=IsVisible, Converter={Converters:BooleanToVisibilityConverter}, ConverterParameter=NOT}">
+
+            <Border BorderBrush="{DynamicResource NormalBorderBrush}"
+                    Visibility="{Binding ShowWhiteboardControls, Source={x:Static Properties:Settings.Default}, Converter={Converters:BooleanToVisibilityConverter}}"
+                    DockPanel.Dock="Top"
+                    Padding="2"
+                    BorderThickness="0 1 0 0">
+                <DockPanel>
+
+
+                    <ComboBox ItemsSource="{Binding ThicknessesView}"
+                              DockPanel.Dock="Right"
+                              VerticalAlignment="Center"
+                              IsSynchronizedWithCurrentItem="True" />
+
+                    <TextBlock Margin="6 0 4 0"
+                               Text="Thickness:"
+                               DockPanel.Dock="Right"
+                               VerticalAlignment="Center" />
+
+                    <ListBox ItemsSource="{Binding BrushesView}"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             IsSynchronizedWithCurrentItem="True"
+                             BorderThickness="0">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Padding"
+                                        Value="2" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Margin="1" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource NormalBorderBrush}"
+                                        BorderThickness="1">
+                                    <Border Background="{Binding}"
+                                            Margin="1"
+                                            Height="16"
+                                            Width="16" />
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </Border>
+
+            <Border DockPanel.Dock="Top"
+                    Background="Red">
+
+                <TextBlock Margin="0 5"
+                           Foreground="White"
+                           FontSize="14"
+                           HorizontalAlignment="Center"
+                           Text="{x:Static const:Resources.STR_RECONNECTING}"
+                           Visibility="{Binding IsConnected, Converter={Converters:BooleanToVisibilityConverter}, ConverterParameter=NOT}"
+                           ToolTip="{x:Static const:Resources.STR_RECONNECTING_TOOLTIP}" />
+
+            </Border>
+
+            <Border BorderBrush="{DynamicResource NormalBorderBrush}"
+                    DockPanel.Dock="Top"
+                    BorderThickness="0,1,0,0" />
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="60"
+                                   MinHeight="60"
+                                   MaxHeight="300" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid ClipToBounds="True"
+                      Grid.RowSpan="3">
+                    <!--The background of the message list-->
+                    <Image Stretch="{Binding Path=BackgroundImageStretch, Source={x:Static Properties:Settings.Default}}"
+                           gif:ImageBehavior.AnimatedSource="{Binding Path=BackgroundImageUrl, Source={x:Static Properties:Settings.Default}}"
+                           Opacity="{Binding Path=BackgroundImageOpacity, Source={x:Static Properties:Settings.Default}}">
+                        <Image.Margin>
+                            <MultiBinding Converter="{Converters:BackgroundImageMarginConverter}">
+                                <Binding Source="{x:Static Properties:Settings.Default}"
+                                         Path="BackgroundImageOffsetX" />
+                                <Binding Source="{x:Static Properties:Settings.Default}"
+                                         Path="BackgroundImageOffsetY" />
+                            </MultiBinding>
+                        </Image.Margin>
+                        <Image.LayoutTransform>
+                            <ScaleTransform ScaleX="{Binding Path=BackgroundImageScale, Source={x:Static Properties:Settings.Default}}"
+                                            ScaleY="{Binding Path=BackgroundImageScale, Source={x:Static Properties:Settings.Default}}" />
+                        </Image.LayoutTransform>
+                    </Image>
+                </Grid>
+
+                <Grid ClipToBounds="True">
+
+                    <DockPanel x:Name="dockPanel">
+
+                        <!--The typing users section-->
+                        <Controls:ContentHighlighter DockPanel.Dock="Bottom"
+                                                     CornerRadius="0">
+                            <Grid>
+                                <Controls:TypingUsersControl VerticalAlignment="Center"
+                                                             Margin="5 0" />
+
+                                <StackPanel Orientation="Horizontal"
+                                            TextElement.FontFamily="{Binding SystemFontFamily, Source={x:Static Properties:Settings.Default}}"
+                                            TextElement.FontSize="{Binding SystemFontSize, Source={x:Static Properties:Settings.Default}}"
+                                            TextElement.FontWeight="{Binding SystemFontWeight, Source={x:Static Properties:Settings.Default}}"
+                                            TextElement.FontStyle="{Binding SystemFontStyle, Source={x:Static Properties:Settings.Default}}"
+                                            TextElement.Foreground="{Binding SystemForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}"
+                                            HorizontalAlignment="Right">
+
+                                    <Button Style="{StaticResource HyperlinkButtonStyle}"
+                                            Content="{x:Static const:Resources.STR_CLEAR_MESSAGES}"
+                                            Margin="5 0"
+                                            FontFamily="{Binding SystemFontFamily, Source={x:Static Properties:Settings.Default}}"
+                                            FontSize="{Binding SystemFontSize, Source={x:Static Properties:Settings.Default}}"
+                                            FontWeight="{Binding SystemFontWeight, Source={x:Static Properties:Settings.Default}}"
+                                            FontStyle="{Binding SystemFontStyle, Source={x:Static Properties:Settings.Default}}"
+                                            Foreground="{Binding SystemForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Click="Button_Click"
+                                            ToolTip="Clear all messages for this tag" />
+
+
+                                </StackPanel>
+
+
+                            </Grid>
+                        </Controls:ContentHighlighter>
+
+                        <Grid>
+                            <!--The main message list-->
+                            <Controls:ChatMessageList x:Name="chatList"
+                                                      ItemsSource="{Binding FilteredMessagesView, ElementName=root}"
+                                                      Visibility="{Binding IsAnimating, ElementName=userListExpander, Converter={Converters:BooleanToVisibilityConverter}, ConverterParameter=NOT}" />
+
+                            <Image x:Name="messageListPreview"
+                                   Stretch="None"
+                                   HorizontalAlignment="Left"
+                                   Visibility="{Binding IsAnimating, ElementName=userListExpander, Converter={Converters:BooleanToVisibilityConverter}}" />
+                        </Grid>
+                    </DockPanel>
+
+                </Grid>
+
+                <GridSplitter Grid.Row="1"
+                              Height="10"
+                              ShowsPreview="{Binding EnableAnimations, Source={x:Static Properties:Settings.Default}, Converter={Converters:ReverseBooleanConverter}}"
+                              BorderThickness="0 1"
+                              HorizontalAlignment="Stretch"
+                              ResizeBehavior="PreviousAndNext" />
+
+                <Controls:FilteredMessageTextBox x:Name="txtMessage"
+                                                 FixedToUsers="{Binding FixedToUsers, ElementName=root}"
+                                         FixedFilterTag="{Binding FilterTag, ElementName=root}"
+                                         Grid.Row="2" />
+
+                <Border Grid.RowSpan="3"
+                        BorderBrush="{DynamicResource NormalBorderBrush}"
+                        BorderThickness="0,0,1,0" />
+
+                <!--The user list--><!--
+                <Controls:ChatExpander Grid.Column="1"
+                                       ExpandChanged="userListExpander_ExpandChanged"
+                                       x:Name="userListExpander"
+                                       EnableAnimation="{Binding EnableAnimations, Source={x:Static Properties:Settings.Default}}"
+                                       BorderThickness="0"
+                                       Padding="0"
+                                       Grid.RowSpan="4"
+                                       IsExpanded="{Binding ShowUserList, Source={x:Static Properties:Settings.Default}}">
+                    <Controls:ChatExpander.Header>
+                        <DockPanel TextOptions.TextFormattingMode="Display">
+                            <DockPanel.LayoutTransform>
+                                <RotateTransform Angle="-90" />
+                            </DockPanel.LayoutTransform>
+
+                            <CheckBox Content="+1"
+                                      Margin="1"
+                                      TextElement.FontFamily="{Binding SystemFontFamily, Source={x:Static Properties:Settings.Default}}"
+                                      TextElement.FontSize="18"
+                                      TextElement.FontWeight="Bold"
+                                      TextElement.FontStyle="{Binding SystemFontStyle, Source={x:Static Properties:Settings.Default}}"
+                                      TextElement.Foreground="{Binding SystemForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}"
+                                      DockPanel.Dock="Left"
+                                      VerticalContentAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Command="{Binding ToggleFoozReadyCommand}"
+                                      IsChecked="{Binding ChatProxy.CurrentUser.IsFoozReady, Mode=OneWay, Delay=500}" />
+
+                            <TextBlock Text="{Binding FoozUsersView.Count, Converter={Converters:FoozStatusMessageConverter}}"
+                                       TextElement.FontFamily="{Binding SystemFontFamily, Source={x:Static Properties:Settings.Default}}"
+                                       TextElement.FontSize="18"
+                                       TextElement.FontWeight="Bold"
+                                       TextElement.FontStyle="{Binding SystemFontStyle, Source={x:Static Properties:Settings.Default}}"
+                                       TextElement.Foreground="{Binding SystemForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Margin="8 0">
+
+                            </TextBlock>
+                        </DockPanel>
+                    </Controls:ChatExpander.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Controls:ChatUserList BorderThickness="1,0,0,0"
+                                               Margin="0"
+                                               BorderBrush="{DynamicResource NormalBorderBrush}" />
+                        <Expander Grid.Row="1"
+                                  BorderThickness="1,1,0,0"
+                                  BorderBrush="{DynamicResource NormalBorderBrush}">
+                            <Expander.Header>
+                                <DockPanel>
+                                    <TextBlock DockPanel.Dock="Left"
+                                               Text="Tags"
+                                               TextElement.FontFamily="{Binding SystemFontFamily, Source={x:Static Properties:Settings.Default}}"
+                                               TextElement.FontSize="18"
+                                               TextElement.FontWeight="{Binding SystemFontWeight, Source={x:Static Properties:Settings.Default}}"
+                                               TextElement.FontStyle="{Binding SystemFontStyle, Source={x:Static Properties:Settings.Default}}"
+                                               TextElement.Foreground="{Binding SystemForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}"
+                                               VerticalAlignment="Center"
+                                               Margin="5 0" />
+
+                                    <Grid Width="150"
+                                          HorizontalAlignment="Right">
+                                        <TextBox x:Name="txtTagFilter"
+                                                 BorderThickness="0"
+                                                 VerticalContentAlignment="Center"
+                                                 Text="{Binding TagFilterText, Delay=250, UpdateSourceTrigger=PropertyChanged}" />
+
+                                        <TextBlock Text="Search..."
+                                                   TextElement.FontFamily="{Binding SystemFontFamily, Source={x:Static Properties:Settings.Default}}"
+                                                   TextElement.FontSize="18"
+                                                   TextElement.FontWeight="{Binding SystemFontWeight, Source={x:Static Properties:Settings.Default}}"
+                                                   TextElement.FontStyle="{Binding SystemFontStyle, Source={x:Static Properties:Settings.Default}}"
+                                                   TextElement.Foreground="{Binding SystemForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}"
+                                                   Opacity="0.4"
+                                                   IsHitTestVisible="False"
+                                                   Margin="6 0"
+                                                   VerticalAlignment="Center"
+                                                   Padding="0">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Visibility"
+                                                            Value="Collapsed" />
+                                                    <Style.Triggers>
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding IsFocused,ElementName=txtTagFilter}"
+                                                                           Value="False" />
+                                                                <Condition Binding="{Binding Text.IsEmpty,ElementName=txtTagFilter}"
+                                                                           Value="True" />
+                                                            </MultiDataTrigger.Conditions>
+                                                            <Setter Property="Visibility"
+                                                                    Value="Visible" />
+                                                        </MultiDataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </DockPanel>
+                            </Expander.Header>
+                            <Controls:MessageTagList Height="200" />
+                        </Expander>
+                    </Grid>
+                </Controls:ChatExpander>-->
+            </Grid>
+
+        </DockPanel>
+
+
+    </Grid>
+
+
+</Window>

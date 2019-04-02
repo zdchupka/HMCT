@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:Common="clr-namespace:HylandMedConfig.Common;assembly=HylandMedConfig.Bot"
+                    xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+                    xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+                    xmlns:local="clr-namespace:HylandMedConfig"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate DataType="{x:Type local:SystemChatMessage}">
+        
+        <Controls:ContentHighlighter HorizontalAlignment="Center"
+                                     Margin="5">
+            <TextBlock Text="{Binding Text, Mode=OneWay}"
+                       TextElement.FontFamily="{Binding SystemFontFamily, Source={x:Static Properties:Settings.Default}}"
+                       TextElement.FontSize="{Binding SystemFontSize, Source={x:Static Properties:Settings.Default}}"
+                       TextElement.FontWeight="{Binding SystemFontWeight, Source={x:Static Properties:Settings.Default}}"
+                       TextElement.FontStyle="{Binding SystemFontStyle, Source={x:Static Properties:Settings.Default}}"
+                       TextElement.Foreground="{Binding SystemForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}"
+                       TextWrapping="Wrap" />
+        </Controls:ContentHighlighter>
+
+    </DataTemplate>
+
+</ResourceDictionary>

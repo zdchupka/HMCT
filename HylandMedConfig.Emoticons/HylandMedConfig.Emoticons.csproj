@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{789C91C9-4D4A-408D-A1D7-9AA169B1F7A7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HylandMedConfig.Emoticons</RootNamespace>
+    <AssemblyName>HylandMedConfig.Emoticons</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\airplane.gif" />
+    <Resource Include="Images\airplane.png" />
+    <Resource Include="Images\Angry.png" />
+    <Resource Include="Images\angry2.gif" />
+    <Resource Include="Images\apple.gif" />
+    <Resource Include="Images\Balloon.png" />
+    <Resource Include="Images\banana.gif" />
+    <Resource Include="Images\banana2.gif" />
+    <Resource Include="Images\banana3.gif" />
+    <Resource Include="Images\bat.gif" />
+    <Resource Include="Images\bat2.gif" />
+    <Resource Include="Images\bear.gif" />
+    <Resource Include="Images\beer.png" />
+    <Resource Include="Images\Big-Grin.png" />
+    <Resource Include="Images\Bomb.png" />
+    <Resource Include="Images\booger.gif" />
+    <Resource Include="Images\bored.gif" />
+    <Resource Include="Images\bounce.gif" />
+    <Resource Include="Images\bow.gif" />
+    <Resource Include="Images\brb.png" />
+    <Resource Include="Images\brian.gif" />
+    <Resource Include="Images\Broken-Heart.png" />
+    <Resource Include="Images\Cake.png" />
+    <Resource Include="Images\candycane.gif" />
+    <Resource Include="Images\cartman.gif" />
+    <Resource Include="Images\cash.gif" />
+    <Resource Include="Images\Cat.png" />
+    <Resource Include="Images\clap.gif" />
+    <Resource Include="Images\clap.png" />
+    <Resource Include="Images\clap2.png" />
+    <Resource Include="Images\Clock.png" />
+    <Resource Include="Images\Clown.png" />
+    <Resource Include="Images\coffee.png" />
+    <Resource Include="Images\coin.png" />
+    <Resource Include="Images\Cold.png" />
+    <Resource Include="Images\computer.png" />
+    <Resource Include="Images\Confused.png" />
+    <Resource Include="Images\Cool.png" />
+    <Resource Include="Images\crying.gif" />
+    <Resource Include="Images\Crying.png" />
+    <Resource Include="Images\Crying2.png" />
+    <Resource Include="Images\crying3.gif" />
+    <Resource Include="Images\curse.gif" />
+    <Resource Include="Images\dance.gif" />
+    <Resource Include="Images\dance2.gif" />
+    <Resource Include="Images\dance3.gif" />
+    <Resource Include="Images\dance4.gif" />
+    <Resource Include="Images\dance5.gif" />
+    <Resource Include="Images\dance6.gif" />
+    <Resource Include="Images\dance7.gif" />
+    <Resource Include="Images\Dead.png" />
+    <Resource Include="Images\dead2.gif" />
+    <Resource Include="Images\dead3.gif" />
+    <Resource Include="Images\detective.png" />
+    <Resource Include="Images\Devil.png" />
+    <Resource Include="Images\devil2.gif" />
+    <Resource Include="Images\devil3.gif" />
+    <Resource Include="Images\devil4.gif" />
+    <Resource Include="Images\devil5.gif" />
+    <Resource Include="Images\devil6.gif" />
+    <Resource Include="Images\devil7.gif" />
+    <Resource Include="Images\Dizzy.png" />
+    <Resource Include="Images\Dog.png" />
+    <Resource Include="Images\Don%27t-tell-Anyone.png" />
+    <Resource Include="Images\dracula.gif" />
+    <Resource Include="Images\dracula2.gif" />
+    <Resource Include="Images\dracula3.gif" />
+    <Resource Include="Images\drink.png" />
+    <Resource Include="Images\Drinks.png" />
+    <Resource Include="Images\Drooling.png" />
+    <Resource Include="Images\drunk.gif" />
+    <Resource Include="Images\drunk2.gif" />
+    <Resource Include="Images\drunkdance.gif" />
+    <Resource Include="Images\emoticon-games-011.gif" />
+    <Resource Include="Images\explode.gif" />
+    <Resource Include="Images\facepalm.gif" />
+    <Resource Include="Images\facepalm2.gif" />
+    <Resource Include="Images\facepalm3.gif" />
+    <Resource Include="Images\faceplant.gif" />
+    <Resource Include="Images\fart.gif" />
+    <Resource Include="Images\FerrinCoin %282%29.png" />
+    <Resource Include="Images\FerrinCoin.png" />
+    <Resource Include="Images\FerrinCoinLarge %282%29.png" />
+    <Resource Include="Images\FerrinCoinLarge.png" />
+    <Resource Include="Images\flex1.gif" />
+    <Resource Include="Images\flex2.gif" />
+    <Resource Include="Images\flipoff.gif" />
+    <Resource Include="Images\flipoff.png" />
+    <Resource Include="Images\Flower.png" />
+    <Resource Include="Images\fml.gif" />
+    <Resource Include="Images\fml2.gif" />
+    <Resource Include="Images\fool.gif" />
+    <Resource Include="Images\fu2.gif" />
+    <Resource Include="Images\fu3.gif" />
+    <Resource Include="Images\furious.gif" />
+    <Resource Include="Images\gastly.gif" />
+    <Resource Include="Images\gastly2.gif" />
+    <Resource Include="Images\gastly3.gif" />
+    <Resource Include="Images\Ghost.png" />
+    <Resource Include="Images\ghost2.gif" />
+    <Resource Include="Images\Gift.png" />
+    <Resource Include="Images\gingerbreadhouse.gif" />
+    <Resource Include="Images\Girl.png" />
+    <Resource Include="Images\Goodbye.png" />
+    <Resource Include="Images\Happy.png" />
+    <Resource Include="Images\haunter.gif" />
+    <Resource Include="Images\haunter2.gif" />
+    <Resource Include="Images\haunter3.gif" />
+    <Resource Include="Images\Heart.png" />
+    <Resource Include="Images\hi.gif" />
+    <Resource Include="Images\hi2.gif" />
+    <Resource Include="Images\hi3.gif" />
+    <Resource Include="Images\highfive.gif" />
+    <Resource Include="Images\Hug.png" />
+    <Resource Include="Images\hungover.gif" />
+    <Resource Include="Images\idk.gif" />
+    <Resource Include="Images\idk2.gif" />
+    <Resource Include="Images\jon.png" />
+    <Resource Include="Images\kirby.gif" />
+    <Resource Include="Images\Kiss.png" />
+    <Resource Include="Images\koopa.gif" />
+    <Resource Include="Images\Laughing.png" />
+    <Resource Include="Images\leaf.png" />
+    <Resource Include="Images\leaf2.png" />
+    <Resource Include="Images\Ligthbulb.png" />
+    <Resource Include="Images\Loser.png" />
+    <Resource Include="Images\Love.png" />
+    <Resource Include="Images\mad.gif" />
+    <Resource Include="Images\Mail.png" />
+    <Resource Include="Images\mario.gif" />
+    <Resource Include="Images\mario2.gif" />
+    <Resource Include="Images\massage.png" />
+    <Resource Include="Images\moon.gif" />
+    <Resource Include="Images\mouth.jpg" />
+    <Resource Include="Images\mouth.png" />
+    <Resource Include="Images\Music.png" />
+    <Resource Include="Images\Nerd.png" />
+    <Resource Include="Images\newton.gif" />
+    <Resource Include="Images\Night.png" />
+    <Resource Include="Images\Ninja.png" />
+    <Resource Include="Images\no2.gif" />
+    <Resource Include="Images\Not-Talking.png" />
+    <Resource Include="Images\nyancat.gif" />
+    <Resource Include="Images\nyancat2.gif" />
+    <Resource Include="Images\nyanhank.gif" />
+    <Resource Include="Images\on-the-Phone.png" />
+    <Resource Include="Images\Party.png" />
+    <Resource Include="Images\party2.gif" />
+    <Resource Include="Images\pbj.gif" />
+    <Resource Include="Images\peep.png" />
+    <Resource Include="Images\Pig.png" />
+    <Resource Include="Images\pizza.png" />
+    <Resource Include="Images\pkmn.gif" />
+    <Resource Include="Images\Poo.png" />
+    <Resource Include="Images\princess.gif" />
+    <Resource Include="Images\puke.gif" />
+    <Resource Include="Images\puke2.gif" />
+    <Resource Include="Images\pumpkin.gif" />
+    <Resource Include="Images\pumpkin2.gif" />
+    <Resource Include="Images\pumpkin3.gif" />
+    <Resource Include="Images\pumpkin4.gif" />
+    <Resource Include="Images\pumpkin5.gif" />
+    <Resource Include="Images\punch.gif" />
+    <Resource Include="Images\rain.png" />
+    <Resource Include="Images\Rainbow.png" />
+    <Resource Include="Images\Rainning.png" />
+    <Resource Include="Images\rip.gif" />
+    <Resource Include="Images\rip2.gif" />
+    <Resource Include="Images\rofl.gif" />
+    <Resource Include="Images\rtfm.gif" />
+    <Resource Include="Images\Sacred.png" />
+    <Resource Include="Images\Sad.png" />
+    <Resource Include="Images\santa.gif" />
+    <Resource Include="Images\santa2.gif" />
+    <Resource Include="Images\Scared.png" />
+    <Resource Include="Images\secret.gif" />
+    <Resource Include="Images\shake.gif" />
+    <Resource Include="Images\shrug.gif" />
+    <Resource Include="Images\shtf.gif" />
+    <Resource Include="Images\sick.gif" />
+    <Resource Include="Images\Sick.png" />
+    <Resource Include="Images\Sick2.png" />
+    <Resource Include="Images\Silly.png" />
+    <Resource Include="Images\skeleton.gif" />
+    <Resource Include="Images\sleep.gif" />
+    <Resource Include="Images\Sleeping.png" />
+    <Resource Include="Images\Sleeping2.png" />
+    <Resource Include="Images\Sleepy.png" />
+    <Resource Include="Images\Sleepy2.png" />
+    <Resource Include="Images\smh.gif" />
+    <Resource Include="Images\smh2.gif" />
+    <Resource Include="Images\smh3.gif" />
+    <Resource Include="Images\smh4.gif" />
+    <Resource Include="Images\smh5.gif" />
+    <Resource Include="Images\smile.png" />
+    <Resource Include="Images\smoke.gif" />
+    <Resource Include="Images\smoke2.gif" />
+    <Resource Include="Images\smoke3.gif" />
+    <Resource Include="Images\smoke4.gif" />
+    <Resource Include="Images\Smoking.png" />
+    <Resource Include="Images\Smug.png" />
+    <Resource Include="Images\Snow.gif" />
+    <Resource Include="Images\snowman.gif" />
+    <Resource Include="Images\sonic.gif" />
+    <Resource Include="Images\spam.gif" />
+    <Resource Include="Images\speech.png" />
+    <Resource Include="Images\Stars.png" />
+    <Resource Include="Images\starwars.gif" />
+    <Resource Include="Images\starwars2.gif" />
+    <Resource Include="Images\stocker.jpg" />
+    <Resource Include="Images\stocking.gif" />
+    <Resource Include="Images\Straight-Face.png" />
+    <Resource Include="Images\stupid.gif" />
+    <Resource Include="Images\Sun.png" />
+    <Resource Include="Images\surprised.gif" />
+    <Resource Include="Images\surprised2.gif" />
+    <Resource Include="Images\surprised3.gif" />
+    <Resource Include="Images\Sweating.png" />
+    <Resource Include="Images\swoon.gif" />
+    <Resource Include="Images\tank.png" />
+    <Resource Include="Images\tank2.gif" />
+    <Resource Include="Images\tank3.gif" />
+    <Resource Include="Images\test.png" />
+    <Resource Include="Images\test2.png" />
+    <Resource Include="Images\Tetons.png" />
+    <Resource Include="Images\Thinking.png" />
+    <Resource Include="Images\thomas.gif" />
+    <Resource Include="Images\thumbsdown.gif" />
+    <Resource Include="Images\thumbsdown2.gif" />
+    <Resource Include="Images\thumbsdown3.gif" />
+    <Resource Include="Images\thumbsdown3.png" />
+    <Resource Include="Images\thumbsup.gif" />
+    <Resource Include="Images\thumbsup.png" />
+    <Resource Include="Images\thumbsup2.gif" />
+    <Resource Include="Images\Tongue.png" />
+    <Resource Include="Images\tongue2.gif" />
+    <Resource Include="Images\tree.gif" />
+    <Resource Include="Images\trophy.gif" />
+    <Resource Include="Images\trophy2.gif" />
+    <Resource Include="Images\tumbleweed.gif" />
+    <Resource Include="Images\turd.gif" />
+    <Resource Include="Images\Vomit.png" />
+    <Resource Include="Images\wait.gif" />
+    <Resource Include="Images\Wave.png" />
+    <Resource Include="Images\wfh.gif" />
+    <Resource Include="Images\wfh.png" />
+    <Resource Include="Images\Whew.png" />
+    <Resource Include="Images\will.png" />
+    <Resource Include="Images\win.gif" />
+    <Resource Include="Images\Win.png" />
+    <Resource Include="Images\Winking.png" />
+    <Resource Include="Images\witch.gif" />
+    <Resource Include="Images\witch2.gif" />
+    <Resource Include="Images\work.gif" />
+    <Resource Include="Images\wtf.gif" />
+    <Resource Include="Images\Yawn.png" />
+    <Resource Include="Images\Yawn2.png" />
+    <Resource Include="Images\yes2.gif" />
+    <Resource Include="Images\yikes.gif" />
+    <Resource Include="Images\zombie.gif" />
+    <Resource Include="Images\Zombie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ResourceLibrary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HylandMedConfig.Bot\HylandMedConfig.Bot.csproj">
+      <Project>{307a8b69-d7e6-4632-b796-8c7a0127054a}</Project>
+      <Name>HylandMedConfig.Bot</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\run.gif" />
+    <Resource Include="Images\run2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\popcorn.gif" />
+    <Resource Include="Images\popcorn2.gif" />
+    <Resource Include="Images\popcorn3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\run3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\trollface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1up.png" />
+    <Resource Include="Images\aliensguy.jpg" />
+    <Resource Include="Images\all_the_things.jpg" />
+    <Resource Include="Images\aw_yeah.gif" />
+    <Resource Include="Images\balloonface.gif" />
+    <Resource Include="Images\bdavid.png" />
+    <Resource Include="Images\bulbasaur.png" />
+    <Resource Include="Images\celtics.png" />
+    <Resource Include="Images\charmander_dancing.gif" />
+    <Resource Include="Images\coin.gif" />
+    <Resource Include="Images\dancing_pickle.gif" />
+    <Resource Include="Images\dancing_pizza.gif" />
+    <Resource Include="Images\database.png" />
+    <Resource Include="Images\deal_with_it.png" />
+    <Resource Include="Images\digdug.gif" />
+    <Resource Include="Images\doge.png" />
+    <Resource Include="Images\doge2.png" />
+    <Resource Include="Images\doom_acid_barrel.gif" />
+    <Resource Include="Images\doom_flame_barrel.gif" />
+    <Resource Include="Images\doom_gib.gif" />
+    <Resource Include="Images\doom_look.gif" />
+    <Resource Include="Images\doom_lost_soul.gif" />
+    <Resource Include="Images\doom_mad.gif" />
+    <Resource Include="Images\facepalm.png" />
+    <Resource Include="Images\fidget_spinner.gif" />
+    <Resource Include="Images\fry.png" />
+    <Resource Include="Images\git.png" />
+    <Resource Include="Images\github.png" />
+    <Resource Include="Images\goomba.gif" />
+    <Resource Include="Images\grumpycat.png" />
+    <Resource Include="Images\gun.png" />
+    <Resource Include="Images\hadouken.jpeg" />
+    <Resource Include="Images\instinct.gif" />
+    <Resource Include="Images\i_see_what_you_did_there.png" />
+    <Resource Include="Images\knuckles.gif" />
+    <Resource Include="Images\knuckles_waiting.gif" />
+    <Resource Include="Images\koopakart.gif" />
+    <Resource Include="Images\link-run.gif" />
+    <Resource Include="Images\link-spin.gif" />
+    <Resource Include="Images\link-triforce.png" />
+    <Resource Include="Images\lol.gif" />
+    <Resource Include="Images\mario_luigi_dance.gif" />
+    <Resource Include="Images\mega.gif" />
+    <Resource Include="Images\metroid.gif" />
+    <Resource Include="Images\mystic.gif" />
+    <Resource Include="Images\no.jpg" />
+    <Resource Include="Images\patriots.jpg" />
+    <Resource Include="Images\powerup.gif" />
+    <Resource Include="Images\psy.gif" />
+    <Resource Include="Images\rainbow_puke.jpg" />
+    <Resource Include="Images\red_sox.jpg" />
+    <Resource Include="Images\seriously.png" />
+    <Resource Include="Images\sonic-dance.gif" />
+    <Resource Include="Images\sonic-wait.gif" />
+    <Resource Include="Images\sonic_sleeping.gif" />
+    <Resource Include="Images\sonic_waiting.gif" />
+    <Resource Include="Images\squirtle.png" />
+    <Resource Include="Images\tails.gif" />
+    <Resource Include="Images\take_my_money.png" />
+    <Resource Include="Images\thonk.png" />
+    <Resource Include="Images\troll.png" />
+    <Resource Include="Images\upsidedown.png" />
+    <Resource Include="Images\valor.gif" />
+    <Resource Include="Images\whoa_guys.png" />
+    <Resource Include="Images\yeti.jpg" />
+    <Resource Include="Images\yoshi.gif" />
+    <Resource Include="Images\yuno.png" />
+    <Resource Include="Images\zoidberg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ok_hand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\jeb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\shrug2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\devil8.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\weatherman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\italian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hyland.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hyland2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cavamanu.png" />
+    <Resource Include="Images\chilis.png" />
+    <Resource Include="Images\dayman.png" />
+    <Resource Include="Images\gwegcrab.png" />
+    <Resource Include="Images\ocombe.png" />
+    <Resource Include="Images\picard.png" />
+    <Resource Include="Images\relieved.png" />
+    <Resource Include="Images\tea.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\android.png" />
+    <Resource Include="Images\angular.png" />
+    <Resource Include="Images\AngularTypescript.png" />
+    <Resource Include="Images\bitbucket.png" />
+    <Resource Include="Images\CSharp.png" />
+    <Resource Include="Images\css.png" />
+    <Resource Include="Images\docker.png" />
+    <Resource Include="Images\docker2.png" />
+    <Resource Include="Images\docker3.png" />
+    <Resource Include="Images\dockerswarm.png" />
+    <Resource Include="Images\Firebase.png" />
+    <Resource Include="Images\HTML.png" />
+    <Resource Include="Images\iOS.png" />
+    <Resource Include="Images\javascript.png" />
+    <Resource Include="Images\jenkins.png" />
+    <Resource Include="Images\jira.png" />
+    <Resource Include="Images\mattermost.png" />
+    <Resource Include="Images\npm.png" />
+    <Resource Include="Images\nuget.png" />
+    <Resource Include="Images\putty.png" />
+    <Resource Include="Images\rimshot.gif" />
+    <Resource Include="Images\typescript.png" />
+    <Resource Include="Images\visualstudio.png" />
+    <Resource Include="Images\visualstudiocode.png" />
+    <Resource Include="Images\Zephyr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\nodejs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\doubt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\crying4.gif" />
+    <Resource Include="Images\FerrinSalt.png" />
+    <Resource Include="Images\god.png" />
+    <Resource Include="Images\god2.png" />
+    <Resource Include="Images\no.gif" />
+    <Resource Include="Images\Sam.png" />
+    <Resource Include="Images\sam1.png" />
+    <Resource Include="Images\Sam2.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

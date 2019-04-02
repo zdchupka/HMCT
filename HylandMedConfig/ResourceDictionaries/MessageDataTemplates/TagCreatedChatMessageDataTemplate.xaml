@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:Common="clr-namespace:HylandMedConfig.Common;assembly=HylandMedConfig.Bot"
+                    xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+                    xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+                    xmlns:attached="clr-namespace:HylandMedConfig.Attached"
+                    xmlns:local="clr-namespace:HylandMedConfig"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate DataType="{x:Type local:TagCreatedChatMessage}">
+
+        <Controls:ContentHighlighter HorizontalAlignment="Center"
+                                     Margin="5">
+            <StackPanel Orientation="Horizontal" TextElement.FontSize="11">
+                <TextBlock Text="{Binding NewTag, StringFormat='#{0} ', Mode=OneWay}"
+                           FontWeight="Bold">
+                    <i:Interaction.Behaviors>
+                        <attached:FrameworkElementSendTaggedMessage Tag="{Binding NewTag}" />
+                    </i:Interaction.Behaviors>
+                </TextBlock>
+                <TextBlock Text="Tag Added" />
+            </StackPanel>
+        </Controls:ContentHighlighter>
+
+    </DataTemplate>
+
+</ResourceDictionary>

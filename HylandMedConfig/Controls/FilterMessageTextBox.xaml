@@ -1,0 +1,490 @@
+﻿<UserControl x:Class="HylandMedConfig.Controls.FilteredMessageTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+             xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+             xmlns:local="clr-namespace:HylandMedConfig"
+             xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             xmlns:attached="clr-namespace:HylandMedConfig.Attached"
+             mc:Ignorable="d"
+             x:Name="root"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <UserControl.InputBindings>
+        <KeyBinding Key="E"
+                    Modifiers="Control"
+                    Command="{Binding ToggleSmileyCommand, ElementName=root}" />
+    </UserControl.InputBindings>
+    <Grid>
+        <Controls:ChatMessageCallout HorizontalAlignment="Stretch"
+                                     Margin="5"
+                                     MinHeight="40"
+                                     Padding="20,5,8,5"
+                                     HorizontalContentAlignment="Stretch"
+                                     VerticalContentAlignment="Stretch"
+                                     x:Name="messageCallout"
+                                     Grid.Column="1">
+            <Controls:ChatMessageCallout.Style>
+                <Style TargetType="Controls:ChatMessageCallout"
+                       BasedOn="{StaticResource {x:Type Controls:ChatMessageCallout}}">
+                    <Setter Property="BorderThickness"
+                            Value="1" />
+                    <Setter Property="Background"
+                            Value="{Binding MessageBackgroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                    <Setter Property="BorderBrush"
+                            Value="{Binding MessageBorderResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                    <Setter Property="Foreground"
+                            Value="{Binding MessageForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                    <Setter Property="VerticalAlignment"
+                            Value="Stretch" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ShowMessageBorder, Source={x:Static Properties:Settings.Default}}"
+                                     Value="False">
+                            <Setter Property="BorderThickness"
+                                    Value="0" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ShowMessageDropShadow, Source={x:Static Properties:Settings.Default}}"
+                                     Value="True">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="{Binding DropShadowBlurRadius, Source={x:Static Properties:Settings.Default}}"
+                                                      ShadowDepth="{Binding DropShadowShadowDepth, Source={x:Static Properties:Settings.Default}}"
+                                                      Color="{Binding DropShadowColor, Source={x:Static Properties:Settings.Default}}"
+                                                      Direction="{Binding DropShadowDirection, Source={x:Static Properties:Settings.Default}}" />
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ComputedMessage.ToUsers.Count, ElementName=root}"
+                                     Value="1">
+                            <Setter Property="Background"
+                                    Value="{Binding WhisperMessageBackgroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                            <Setter Property="Foreground"
+                                    Value="{Binding WhisperMessageForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ComputedMessage.ToUsers.Count, ElementName=root, Converter={Converters:IsGreaterThanConverter}, ConverterParameter=1}"
+                                     Value="True">
+                            <Setter Property="Background"
+                                    Value="{Binding GroupMessageBackgroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                            <Setter Property="Foreground"
+                                    Value="{Binding GroupMessageForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding FixedFilterTag, ElementName=root, Converter={Converters:IsNullOrWhitespaceConverter}}"
+                                Value="False">
+                            <Setter Property="Background"
+                                    Value="{Binding FixedFilterTag, ElementName=root, Converter={Converters:TagBackgroundBrushConverter}}" />
+                            <Setter Property="Foreground"
+                                    Value="{Binding FixedFilterTag, ElementName=root, Converter={Converters:TagForegroundBrushConverter}}" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding FixedToUsers.Count, ElementName=root}"
+                                     Value="1">
+                            <Setter Property="Background"
+                                    Value="{Binding WhisperMessageBackgroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                            <Setter Property="Foreground"
+                                    Value="{Binding WhisperMessageForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding FixedToUsers.Count, ElementName=root, Converter={Converters:IsGreaterThanConverter}, ConverterParameter=1}"
+                                     Value="True">
+                            <Setter Property="Background"
+                                    Value="{Binding GroupMessageBackgroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                            <Setter Property="Foreground"
+                                    Value="{Binding GroupMessageForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                        </DataTrigger>
+                        
+                    </Style.Triggers>
+                </Style>
+            </Controls:ChatMessageCallout.Style>
+            <Grid>
+                <Grid.Resources>
+                    <SolidColorBrush x:Key="VScrollbarThumbBackgroundBrush"
+                                     Color="{Binding Foreground.Color, ElementName=messageCallout}" />
+                    <SolidColorBrush x:Key="VScrollbarThumbHoverBackgroundBrush"
+                                     Color="{Binding Foreground.Color, ElementName=messageCallout}" />
+                    <SolidColorBrush x:Key="VScrollbarThumbPressedBackgroundBrush"
+                                     Color="{Binding Foreground.Color, ElementName=messageCallout}" />
+                    <SolidColorBrush x:Key="VScrollbarThumbDisabledBackgroundBrush"
+                                     Color="{Binding Foreground.Color, ElementName=messageCallout}" />
+                    <SolidColorBrush x:Key="ScrollbarPageButtonArrowBackgroundBrush"
+                                     Color="{Binding Foreground.Color, ElementName=messageCallout}" />
+                    <SolidColorBrush x:Key="ScrollbarPageButtonArrowPressedBackgroundBrush"
+                                     Color="{Binding Foreground.Color, ElementName=messageCallout}" />
+                    <SolidColorBrush x:Key="ScrollbarPageButtonArrowHoverBackgroundBrush"
+                                     Color="{Binding Foreground.Color, ElementName=messageCallout}" />
+                    <SolidColorBrush x:Key="ScrollbarPageButtonArrowDisabledBackgroundBrush"
+                                     Color="{Binding Foreground.Color, ElementName=messageCallout}" />
+                </Grid.Resources>
+
+                <TextBox Text="{Binding Message, ElementName=root, UpdateSourceTrigger=PropertyChanged, Delay=250}"
+                         PreviewKeyDown="txtMessage_PreviewKeyDown"
+                         x:Name="txtMessage"
+                         Style="{x:Null}"
+                         Padding="0"
+                         Margin="0,0,59,0"
+                         FontFamily="{Binding Message, ElementName=root, Converter={Converters:TextBoxFontConverter}}"
+                         FontSize="{Binding FontSize, Source={x:Static Properties:Settings.Default}}"
+                         FontStyle="{Binding FontStyle, Source={x:Static Properties:Settings.Default}}"
+                         FontWeight="{Binding FontWeight, Source={x:Static Properties:Settings.Default}}"
+                         Foreground="{Binding Foreground, ElementName=messageCallout}"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         SpellCheck.IsEnabled="True"
+                         AcceptsReturn="True"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         TextWrapping="Wrap"
+                         CaretBrush="{Binding Foreground, ElementName=messageCallout}" />
+
+                <TextBlock Text="Send a message"
+                           FontFamily="{Binding SystemFontFamily, Source={x:Static Properties:Settings.Default}}"
+                           FontSize="{Binding SystemFontSize, Source={x:Static Properties:Settings.Default}}"
+                           FontWeight="{Binding SystemFontWeight, Source={x:Static Properties:Settings.Default}}"
+                           FontStyle="{Binding SystemFontStyle, Source={x:Static Properties:Settings.Default}}"
+                           Foreground="{Binding SystemForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}"
+                           Opacity="0.4"
+                           IsHitTestVisible="False"
+                           Margin="2,0,0,0"
+                           VerticalAlignment="Top"
+                           Padding="0">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility"
+                                    Value="Collapsed" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsFocused, ElementName=txtMessage}"
+                                                   Value="False" />
+                                        <Condition Binding="{Binding Message.Length, ElementName=root}"
+                                                   Value="0" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Visibility"
+                                            Value="Visible" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <ToggleButton Width="20"
+                              Height="20"
+                              MinHeight="12"
+                              MinWidth="12"
+                              VerticalAlignment="Top"
+                              HorizontalAlignment="Right"
+                              Foreground="{DynamicResource ForegroundBrush}"
+                              Margin="0,0,-12,0"
+                              x:Name="smileyButton">
+                    <ToggleButton.Template>
+                        <ControlTemplate>
+                            <Canvas Height="20"
+                                    x:Name="canvas"
+                                    ToolTip="Open Emoticons (Ctrl+E)"
+                                    Opacity="0.7"
+                                    Width="20">
+                                <Ellipse Canvas.Top="0"
+                                         Canvas.Left="0"
+                                         Width="20"
+                                         x:Name="mainSmiley"
+                                         Height="20"
+                                         Fill="{Binding Foreground, ElementName=messageCallout}" />
+                                <Ellipse Canvas.Top="6.667"
+                                         Canvas.Left="4.667"
+                                         Width="3"
+                                         Height="3"
+                                         x:Name="leftEye"
+                                         Fill="{Binding Background, ElementName=messageCallout}" />
+                                <Ellipse Canvas.Top="6.667"
+                                         Canvas.Left="12"
+                                         Width="3"
+                                         Height="3"
+                                         x:Name="rightEye"
+                                         Fill="{Binding Background, ElementName=messageCallout}" />
+                                <Path Stroke="{Binding Background, ElementName=messageCallout}"
+                                      StrokeThickness="1.333333"
+                                      x:Name="mouth"
+                                      Data="M 4.33333,12.66667 S 10,18.33333 15.666667,12.66667" />
+
+                            </Canvas>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Opacity"
+                                            TargetName="canvas"
+                                            Value="1" />
+                                </Trigger>
+                                <Trigger Property="ToggleButton.IsPressed"
+                                         Value="True">
+                                    <Setter Property="Opacity"
+                                            TargetName="canvas"
+                                            Value="0.4" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+
+                <ToggleButton Width="20"
+                              Height="20"
+                              MinHeight="12"
+                              MinWidth="12"
+                              VerticalAlignment="Top"
+                              Click="memeButton_Click"
+                              HorizontalAlignment="Right"
+                              Foreground="{DynamicResource ForegroundBrush}"
+                              Margin="0,0,12,0"
+                              x:Name="memeButton">
+                    <ToggleButton.Template>
+                        <ControlTemplate>
+                            <Canvas Height="20"
+                                    x:Name="canvas"
+                                    ToolTip="Create Meme"
+                                    Opacity="0.7"
+                                    Width="20">
+
+                                <Rectangle Height="20"
+                                           Fill="{Binding Foreground, ElementName=messageCallout}"
+                                           Width="20" />
+
+                                <Path Stroke="{Binding Background, ElementName=messageCallout}"
+                                      StrokeThickness="1.333333333"
+                                      Data="M 3,3 17,3" />
+
+                                <Path Stroke="{Binding Background, ElementName=messageCallout}"
+                                      StrokeThickness="1.3333333333"
+                                      Data="M 3,6 17,6" />
+
+                                <Path Stroke="{Binding Background, ElementName=messageCallout}"
+                                      StrokeThickness="1.333333333"
+                                      Data="M 3,14 17,14" />
+
+                                <Path Stroke="{Binding Background, ElementName=messageCallout}"
+                                      StrokeThickness="1.3333333333"
+                                      Data="M 3,17 17,17" />
+
+                            </Canvas>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Opacity"
+                                            TargetName="canvas"
+                                            Value="1" />
+                                </Trigger>
+                                <Trigger Property="ToggleButton.IsPressed"
+                                         Value="True">
+                                    <Setter Property="Opacity"
+                                            TargetName="canvas"
+                                            Value="0.4" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+
+                <ToggleButton Width="20"
+                              Height="20"
+                              MinHeight="12"
+                              MinWidth="12"
+                              VerticalAlignment="Top"
+                              Click="gifButton_Click"
+                              HorizontalAlignment="Right"
+                              Foreground="{DynamicResource ForegroundBrush}"
+                              Margin="0,0,36,0"
+                              x:Name="gifButton">
+                    <ToggleButton.Template>
+                        <ControlTemplate>
+                            <Border x:Name="canvas"
+                                    ToolTip="Search Giphy for image to send"
+                                    Opacity="0.7"
+                                    Background="{Binding Foreground, ElementName=messageCallout}">
+
+                                <Grid>
+                                    <Path Width="20"
+                                          Height="20"
+                                          Canvas.Left="17"
+                                          Canvas.Top="20"
+                                          Stretch="Fill"
+                                          Fill="{Binding Background, ElementName=messageCallout}"
+                                          Data="F1 M 17,20L 59,20L 59,56L 17,56L 17,20 Z M 20,23L 20,53L 56,53L 56,23L 20,23 Z M 24,51L 30.0833,44.3333L 33.25,47.5L 45.9167,34.8333L 50.6667,39.5833L 54,36L 54,51L 24,51 Z M 30.0833,26.9167C 30.0833,30.4145 27.2478,33.25 23.75,33.25C 23.2033,33.25 22.5061,33.1302 22,33L 22,25L 29.6666,25C 29.7968,25.5061 30.0833,26.3699 30.0833,26.9167 Z " />
+                                    <Border BorderBrush="{Binding Foreground, ElementName=messageCallout}"
+                                            BorderThickness="2" />
+                                </Grid>
+
+
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Opacity"
+                                            TargetName="canvas"
+                                            Value="1" />
+                                </Trigger>
+                                <Trigger Property="ToggleButton.IsPressed"
+                                         Value="True">
+                                    <Setter Property="Opacity"
+                                            TargetName="canvas"
+                                            Value="0.4" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+            </Grid>
+        </Controls:ChatMessageCallout>
+
+        <Popup PlacementTarget="{Binding ElementName=smileyButton}"
+               Placement="Top"
+               Opened="Popup_Opened"
+               Closed="Popup_Closed"
+               KeyDown="ListBox_KeyDown"
+               IsOpen="{Binding IsChecked, ElementName=smileyButton}"
+               StaysOpen="False"
+               PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
+               AllowsTransparency="True">
+
+            <Border Background="{DynamicResource PopupBackgroundBrush}"
+                    BorderBrush="{DynamicResource PopupBorderBrush}"
+                    BorderThickness="1"
+                    Margin="10"
+                    Padding="1">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="250" />
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Image gif:ImageBehavior.AnimatedSource="{Binding SmiliesView/ImageSource, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+                               Height="{Binding Source.PixelHeight, RelativeSource={RelativeSource Self}}"
+                               Width="{Binding Source.PixelWidth, RelativeSource={RelativeSource Self}}"
+                               Stretch="Fill" />
+                        <TextBlock Text="{Binding SmiliesView/Keys, Converter={Converters:StringArrayToCommaSeparatedList}}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Top"
+                                   Margin="5" />
+                        <TextBox HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Bottom"
+                                 BorderThickness="0"
+                                 VerticalContentAlignment="Center"
+                                 x:Name="txtSmileyFilter"
+                                 Text="{Binding SmileyFilterText, UpdateSourceTrigger=PropertyChanged, Delay=250}" />
+
+                        <Grid Height="{Binding ActualHeight, ElementName=txtSmileyFilter}"
+                              VerticalAlignment="Bottom">
+                            <TextBlock Text="Search..."
+                                       Foreground="{DynamicResource ForegroundBrush}"
+                                       Opacity="0.6"
+                                       IsHitTestVisible="False"
+                                       Margin="6 0"
+                                       VerticalAlignment="Center"
+                                       Padding="0">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility"
+                                                Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsFocused,ElementName=txtSmileyFilter}"
+                                                               Value="False" />
+                                                    <Condition Binding="{Binding Text.IsEmpty,ElementName=txtSmileyFilter}"
+                                                               Value="True" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Visibility"
+                                                        Value="Visible" />
+                                            </MultiDataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <Border BorderBrush="{DynamicResource PopupBorderBrush}"
+                            BorderThickness="0,0,0,1"
+                            VerticalAlignment="Bottom" />
+
+                    <ListBox Grid.Row="1"
+                             BorderThickness="0"
+                             IsSynchronizedWithCurrentItem="True"
+                             ItemsSource="{Binding SmiliesView}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="374"
+                                           ItemHeight="34"
+                                           ItemWidth="34" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver"
+                                             Value="True">
+                                        <Setter Property="IsSelected"
+                                                Value="True" />
+                                    </Trigger>
+
+                                </Style.Triggers>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                            <Border x:Name="border"
+                                                    Background="{DynamicResource ListBoxItemBackgroundBrush}"
+                                                    MouseLeftButtonDown="EmoticonImage_MouseLeftButtonDown"
+                                                    BorderThickness="1"
+                                                    BorderBrush="Transparent">
+                                                <ContentPresenter />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsSelected"
+                                                         Value="True">
+                                                    <Setter TargetName="border"
+                                                            Property="BorderBrush"
+                                                            Value="{DynamicResource ListBoxItemHoverBorderBrush}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image MaxHeight="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}"
+                                           MaxWidth="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}"
+                                           Source="{Binding ImageSource}" />
+                                    <Ellipse Height="8"
+                                             Width="8"
+                                             Visibility="Collapsed"
+                                             HorizontalAlignment="Right"
+                                             VerticalAlignment="Top">
+                                        <Ellipse.Fill>
+                                            <RadialGradientBrush>
+                                                <RadialGradientBrush.GradientStops>
+                                                    <GradientStop Color="Orange"
+                                                                  Offset="0" />
+                                                    <GradientStop Color="DarkOrange"
+                                                                  Offset="0.3333" />
+                                                    <GradientStop Color="DarkOrange"
+                                                                  Offset="0.6666" />
+                                                    <GradientStop Color="Transparent"
+                                                                  Offset="1" />
+                                                </RadialGradientBrush.GradientStops>
+                                            </RadialGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+
+            </Border>
+        </Popup>
+
+    </Grid>
+</UserControl>

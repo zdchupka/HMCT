@@ -1,0 +1,1625 @@
+﻿4.2.1.80
+	- Added (ok) emoticon
+
+4.2.1.79
+	- Fixed crash when including a link and emoticon in a message
+
+4.2.1.77
+	- Emoticons will now be capped at 24px when combined with other text
+
+4.2.1.76
+	- Fixed issue where thumbs up / down were able to be spammed by the enter key
+	- Performance fixes for the user list
+	- Active users now shown above inactive users
+	- Ignored users now just have a 0.3 opacity instead of changing user name and mood text color to gray
+	- Added the ability to do /info for users not in andover.
+
+4.2.1.74
+	- Fixed bug where inactive user moods would use the system foreground color instead of inactive color
+
+4.2.1.73
+	- User list now respects the configured System Font for display names and moods.  Font size is fixed.
+	- Added new user options for playing a ringtone when a message is thumbed up or down
+	- Fixed bug with being able to rate messages down and up at the same time
+
+4.2.1.72
+	- 'Copy Message' will now no longer include the tag in the text copied to the clipboard
+
+4.2.1.71
+	- Fixed issue where user stats message would always contain the current user's display name
+
+4.2.1.70
+	- Fixed memory leak with nicknames causing objects to stay in memory
+	- Changed +1 checkbox to a button to fix the issue when a 5th player tries to +1 (the checkbox would still check even though they were not in the game)
+
+4.2.1.70
+	- Removed logic that added markup characters if your configured font was bold / italic / etc.
+	- Fixed bug with combining messages that sometimes resulted in incorrect message ordering
+	- Fixed performance issue with accessing nicknames.  Users are now sorted by display name / nicknames are no longer involved in sort logic
+
+4.2.1.69
+	- Fixed issue where clients would crash when a user logged on in some cases
+
+4.2.1.68
+	- Added the ability to rename users via right-click menu in the user list.  Nicknames are stored as a user option
+
+4.2.1.67
+	- /ascii font changed from Courier New to Consolas
+	- Fixed bug where /ascii message preview did not show properly in tagged conversations
+
+4.2.1.66
+	- Performance fixes when cleaning
+	- Added the ability to use /info command for all onbase users
+	- Added Start and End dates for when employees are not IN OFFICE
+
+4.2.1.65
+	- Fixed bug where /clear would crash when messages were empty
+
+4.2.1.64
+	- Fixed the Clean feature to only only look at visible messages when determining which messages to delete.  
+		Let's say you have '10' as the number of messages to keep and you have just received 5 messages from a tag that you ignore.  When 'Clean'ing, those 5 messages will not be
+		counted as part of the '10' messages to keep.  Only visible messages count.
+
+4.2.1.60
+	- Added new right-click menu option for messages to 'Remove Messages Before This' that will remove all messages prior to the selected message
+
+4.2.1.59
+	- Spelling / tooltip wrap fix
+
+4.2.1.58
+	- Fixed bug where empty messages could be sent to tags
+	- Added new user setting in 'Miscellaneous' that allows users to customize how many messages to keep when 'Clean' is clicked (Defaults to 40)
+	- Added new user setting in 'Miscellaneous' - 'Automatically Clear' to automatically clear x amount of messages (Defaults to False)
+	- The '/clear' command will do exactly what it did before (clear ALL messages regardless of this new setting)
+	- Added New '/clean' command that does the same thing as clicking the 'Clean' button
+
+4.2.1.57
+	- Removed animaged 'z's when users go idle to help with performance when keeping user list open
+	- Fixed some emoticons to have transparent background
+
+4.2.1.53
+	- No longer signing assemblies (to simplify build) and now finally build with vs2017, so basically just a test to make sure i can still deploy properly with vs2017
+
+4.2.1.53
+	- Replaced expired certificate
+
+4.2.1.52
+	- Added new emoticons
+	- Fixed moods being cropped
+
+4.2.1.51
+	- Increased mood length from 140 to 280
+
+4.2.1.50
+	- Added Opacity for whiteboard brushes
+	- Search Giphy dialog now non-modal
+
+4.2.1.49
+	- Added more error handling for gifs
+
+4.2.1.48
+	- Search giphy results now have a tooltip showing the full size version of the gif
+	- # Results now defaults to 5
+	- # Results will now be remembered for the life of the application
+
+4.2.1.47
+	- Markup removed
+
+4.2.1.46
+	- Markup changed:
+	/italic/
+	_underline_
+	-strikethrough-
+	*bold*
+	- Fixed bug with copying text that contained markups (markup will now be preserved)
+
+4.2.1.45
+	- Added markup support for "_" (italics) and "*" (bold)
+
+4.2.1.44
+	- Fixed issue where an exception was thrown when app restarted
+
+4.2.1.43
+	- Added vote count for poll messages
+
+4.2.1.42
+	- Fixed issues with disconnect / reconnect logic
+
+4.2.1.41
+	- Added Out of Office status to /info stats
+
+4.2.1.40
+	- New icon for remote connections
+	- +1 checkbox now hidden when remote
+
+4.2.1.39
+	- Added new icon for when users are remote next to user name
+
+4.2.0.38
+	- Fixed issue where obscured screens didn't unobscure when double-clicking
+
+4.2.0.37
+	- Added the ability to open a whiteboard message into a separate window for editing
+
+4.2.0.36
+	- Added the ability to open a tag in a separate window (1 per tag)
+
+4.2.0.35
+	- Removed auto scrolling logic related to drawing on whiteboards
+
+4.2.0.34
+	- Changed color palette to match mspaint
+
+4.2.0.33
+	- Fixed issue where an invalid imageurl on a /whiteboard message would crash the client
+
+4.2.0.32
+	- Tags are now no longer automatically lower cased
+	- Stats now better or something
+
+4.2.0.31
+	- Fixed bug where the whiteboard would not reset properly if you were at 1x zoom and had panned around
+	- Enhancements for text to speech
+
+4.2.0.30
+	- Removed zoom animation for whiteboards
+
+4.2.0.29
+	- Fixed bug where whiteboard cursor was always a pencil even when whiteboard was locked
+	- Changed mouse wheel scrolling for whiteboards to not be so jerky
+	- Added keyboard shortcut to reset the zoom (Ctrl+Mouse Wheel)
+
+4.2.0.28
+	- Added the ability to save whiteboards to file (via right-click menu)
+	- Added 0.25 and 2 to available thicknesses for whiteboard drawings
+	- Removed 'px' suffix for thickness since it's not really a pixel thickness
+	- Fixed bug where whiteboard dimensions might not reflect the image's ratio when that image is seen for the first time
+	- Added a custom pencil cursor used when hovering over whiteboards
+
+4.2.0.27
+	- Fixed the (work) emoticon to have a white background for the message bubble
+
+4.2.0.26
+	- Added the ability to save / revert to last saved for your own whiteboards
+
+4.2.0.25
+	- Zoom control can now be moved 
+
+4.2.0.24
+	- Added the ability to zoom in on whiteboards (Ctrl + MouseWheel)
+
+4.2.0.23
+	- Added the ability to clear your own whiteboard.  
+	- Changed lock indication to include text in the bottom right (using system font)
+
+4.2.0.22
+	- Clicking on a single point will now just put a dot there
+	- Added ability to lock / unlock your own whiteboards
+
+4.2.0.21
+	- Fixed issue with lines randomly extending themselves beyond where user was drawing
+	- Fixed issue with users being able to draw outside the board
+
+4.2.0.20
+	- Added new 'View' -> 'Whiteboard Controls' menu to show or hide the new whiteboard controls
+	- Removed user settings related to whiteboard color / thickness (no longer saved as user setting)
+
+4.2.0.19
+	- Fixed issue with crash when a user sent whiteboard data with default brush
+
+4.2.0.18
+	- Fixed issue with moods being cut off
+	- Fixed issue with Metro Dark theme where text was sometimes black
+
+4.2.0.17
+	- Added the ability to change your whiteboard color and thickness
+
+4.2.0.16
+	- Fixed sizing of whiteboards that have images as backgrounds.  Max size is 800x800.
+
+4.2.0.15
+	- Message list will now no longer scroll automatically when receiving a new message if the left mouse button is down (drawing on stupid whiteboard)
+
+4.2.0.14
+	- Added the ability to past images to whiteboards
+
+4.2.0.13
+	- Fixed crash when releasing mouse over different whiteboard than you started with
+
+4.2.0.12
+	- Fixed issue with whisper whiteboards
+	- Tags no longer stripped form whisper messages
+	- The text '/whiteboard' can now be used to send a whiteboard (no space after required)
+
+4.2.0.11
+	- Ignored users drawings will now not show on your whiteboards (yours will still be seen by them if you are not ignored by them)
+
+4.2.0.10
+	- Added new /videourl message type to be used for videos (mp4s)
+	- Added new /whiteboard message type
+	- Added 'Whiteboard' to messages that can be filtered
+
+4.2.0.9
+	- Fixed bug with counting messages that are ignored / filtered.  Combined messages now count as a single message (not multiple)
+	- System font configured text now applied to the "+1" checkbox, game indicator text, and tag section heading
+
+4.2.0.8
+	- Typing users text now uses system font styling
+	- 'Clear' and 'Filter' link buttons now respect system font styling
+
+4.2.0.7
+	- Added the ability to customize the system font
+
+4.2.0.6
+	- Added the ability to customize user image size
+
+4.2.0.5
+	- Fix for message text / images being cut off in some scenarios
+
+4.2.0.4
+	- Users that are using Remote Desktop sessions may no longer +1
+
+4.2.0.3
+	- Fixed foreground color for parsed hyperlinks in normal messages to match the foreground color of the message
+	- Added the ability to put emoticons in poll questions and title text
+
+4.2.0.2
+	- Added the ability to export and import all user settings
+
+4.2.0.1
+	- Fixed bug with settings not upgrading correctly
+
+4.1.0.49
+	- Fixed an issue with the +1 checkbox becoming out of sync when the server has reset
+
+4.1.0.47
+	- Added the ability to clear all messages from a specific tag
+
+4.1.0.46
+	- Fixed bug where tags would not show sometimes
+
+4.1.0.45
+	- Tags are now hidden when no messages exist for that tag
+
+4.1.0.43
+ - Added the ability to ignore tags
+
+4.1.0.42
+	- Fixed bug where you could send an empty message to a tag
+	- Fixed bug with tag emoji sizes.  If emoji size's height is smaller than 20px, native size will now be used
+	- Removed special logic for diverson for public messages
+	- Images that are re-sized won to be emoji tags will now use anti-aliasing
+
+4.1.0.42
+	- Fixed bug with tag preview including messages from other tags / public messages
+
+4.1.0.41
+	- Fixed bug with tag emoji widths
+
+4.2.0.2
+	- Fixed tag message count to not be limited to 10
+	- Added the ability to use emojis in tags
+
+4.1.0.39
+	- Tag tooltip message preview now only shows the last 10 messages
+
+4.1.0.38
+	- No more corner radius's on messages (modernized)
+
+4.1.0.36
+	- Fixed foreground color for poll messages
+
+4.1.0.35
+	- Tooltip for tags in the tag list will now contain a preview of what messages are in the tag
+	- Count of messages in a tag will now reflect what is in the client
+
+4.1.0.34
+	- tag now has right-click menu to allow you to ignore the tag
+	- Tag list now colorized
+
+4.1.0.33
+	- Fixed foreground colors for hyperlink posts
+
+4.1.0.32
+	- Automatic colors now have opacity of 0.6 to not be so bright
+
+4.1.0.32
+	- Automatic background and foreground colors for tags now chosen based on the tag name
+
+4.1.0.31
+	- Fixed 'Infragistics' theme bug where the client would crash when searching Giphy
+
+4.1.0.30
+	- New user option added to enable opting into tags.  By default you will receive all tagged messages
+	- When not auto-subscribing to tags, when you receive a message with a tag that you do not have, you will now receive a notification (if notifications are enabled) and your unread message count will increase
+
+4.1.0.29
+	- When sending message to unsubscribed tag, you will now automatically subscribe
+
+4.1.0.28
+	- Tags are now opt-in.  You will be notified when you receive a new message with a tag that is not in your list
+
+4.1.0.27
+	- If a tag is entered, whispering to a user now switches to a whisper (instead of doing nothing)
+	- Creating memes or images (giphy search) now no longer remove the tag
+
+4.1.0.26
+	- Users no longer appear as typing when they have entered a tag and no text
+	- Pasted images now correctly to go the tag that is entered
+	- Improved performance when checking or unchecking filter
+
+4.1.0.25
+	- Increased height of tags list
+	- Showing count of messages in a tag
+	- Added search textbox to search through tags
+
+4.1.0.24
+	- Fixed bug where client would crash when attempting to combine messages
+
+4.1.0.23
+	- Added support for tags (use #)
+
+4.1.0.22
+	- Modified image search to include max search result limit (default to 3). 
+	- Image results will now always animate / don't need the mouse to hover over
+	- Added new emoticons
+
+4.1.0.21
+	- Added (run) and (run2) emoticons
+
+4.1.0.20
+	- Added the ability to search Giphy for images to send
+
+4.1.0.19
+	- Added the ability to ignore / send whisper from context menu of username in the main message list
+
+4.4.0.18
+	- Fixed issue where filtered messages would still contribute towards unread message count
+
+4.4.0.17
+	- Fixed issue where vertical scrolling over a poll caused scrolling to stop
+	- Fixed issue where images smaller than 500x500 would appear stretched
+
+4.4.0.16
+	- User status messages can now be rated
+	- Users can now vote for their own posts
+
+4.4.0.15
+	- Added the ability to rate other users posts.  You cannot rate your own posts currently.  Bots cannot rate posts either
+
+4.4.0.14
+	- Fixed issue where when a user went idle, the number of users needed for fooz didn't update 
+
+4.4.0.13
+	- /imageurl images now have a max height of 500 and a max width of 500 pixels (click to open full size)
+
+4.4.0.12
+	- Added the ability to click on images to open them in the default viewer
+	- Fixed bug with pasting images
+
+4.4.0.11
+	- Re-fixed the fucking issue where you couldn't vote on your own polls
+
+4.3.0.9
+	- /clear now clears the messages
+
+4.2.0.8
+	- Fixed issue where 'Copy Message' didn't copy the url for /link messages
+	- Added new /clear command feature
+
+4.2.0.7
+	- Fixed an issue where users could not vote on their own polls
+	- Fixed an issue where messages that started with /help would be interpreted as a help message
+
+4.2.0.5
+	- Fixed re-connect bug
+	- Added back the :) emoticon
+
+4.1.0.4
+	- Use new tcp connection without async methods
+	- Bug fix for login errors
+
+4.1.0.2
+	- Fixed user list ordering
+	- Fixed bug with the 'Set Mood' window where new moods were not always sent correctly to server
+	- Fixed bug with voting (hopefully)
+
+4.1.0.1
+	- TaskBar count notifier now goes up to 999 instead of 99
+	- Messages are now validated on the server
+	- Emoticons are now bundled with the client to improve loading performance
+	- Added new /link message which will force a link
+	- Added server validation for changing moods
+	- Multiple client / server interface changes, there'll probs be issues i haven't found
+	- Added rules on the server for messages per minute (10)
+	- Removed 'Handicapped User' concept
+
+4.0.0.17
+	- Users can now only vote once
+
+4.0.0.16
+	- Obscure Window will now only go away when clicking on the window
+	- Added new message type /poll (see help for details)
+	- Fixed bug with emoticon sizing
+
+4.0.0.14
+	- Enhancements to 'Obscure Window' feature.  Window title and icon now change
+
+4.0.0.13
+	- Fixed /imageurl posts
+	- Tons of bug fixes for user images / tooltips
+
+4.0.0.10
+	- Fixed emoticon preview
+	- Emoticons are now downloaded locally to an 'Emoticons' directory on login to speed up performance
+
+4.0.0.9
+	- Fixed bug where users were unable to select a url as the meme source
+
+4.0.0.8
+	- Fixed character casing for meme posts (forced upper case)
+
+4.0.0.7
+	- Updated help message
+	- Fixed hyperlink messages to center the thumbnail image in the preview
+
+4.0.0.6
+	- Fixed tooltip on meme icon
+	- Forced upper case in the Create Meme dialog
+
+4.0.0.5
+	- Added /meme message type
+
+4.0.0.4
+	- Update Test
+
+4.0.0.3
+	- Fix restart issue
+
+4.0.0.2
+	- Updated user images and a bunch of network paths to point to the new server
+
+4.0.0.1
+	- Update version to 4.x to reflect new installation method (upgrading from previous versions is not supported)
+	- Moving to the new server: 10.52.1.117 (used to be 10.52.1.92)
+
+3.0.0.57
+	- Fix for emoticon sizes
+
+3.0.0.56
+	- Fix bug where setting your own mood still gave message in chat for yourself
+
+3.0.0.55
+	- Mood updates are now no longer shown as messages in the chat list
+	- Fixed bug where ignored users (or bots) would still increase the message count if it was anything but a normal message (i.e. xaml or image message)
+
+3.0.0.54
+	- Mood updates are now messages that can be removed and respect ignore settings
+
+3.0.0.52
+	- Ascii messages are now read-only
+
+3.0.0.51
+	- Fixed Url parsing
+	- Fixed bug with copying text from a message
+	- Notifications now respect the enable animations setting
+
+3.0.0.50
+	- Fixed bug where hovering over ascii messages would sometimes cause background to change colors
+	- Added new /mood command
+
+3.0.0.49
+	- Switched back to original texbox for sending messages till copy/paste bugs / slowness worked out
+
+3.0.0.48
+	- Fixed potential memory leak issue with animated gifs: https://github.com/XamlAnimatedGif/WpfAnimatedGif/issues/22
+	- Removed animation for ascii messages
+	- Replaced the message textbox with a proprietary super secret emoji / link friendly thingy.
+
+3.0.0.47
+	- Added delay of 250ms when updating the mood preview to not delay typing
+
+3.0.0.46
+	- /ascii messages now respect the 'Enable Animations' user option
+	- User moods now support emoticons
+	- Added 'Preview' to Set Mood dialog to be able to tell what the mood will look like when set
+
+3.0.0.45
+	- Added validation to the mood dialog.  Moods now cannot be more than 500 characters
+
+3.0.0.44
+	- Added tooltips for users
+
+3.0.0.43
+	- Improved performance with the chat user list sliding out / back when there are a lot of messages
+
+3.0.0.42
+	- Fixed bug where hiding and showing the application while the Set Mood window was shown would cause the dialog to break when clicking 'OK'
+	- Added shortcut to set mood (Ctrl+M)
+	- ComboBox's now respect the 'Enable Animations' user option
+	- User list now slides open / closed if 'Enable Animations' is true
+	- Removed the animation for the User Settings window, will now immediately move if part of it is off the screen
+	- Removed confirmation prompt after upgrading, application will now just restart after upgrading
+
+3.0.0.41
+	- Added global keyboard shortcut to show / hide the entire application (Ctrl+Shift+F12)
+
+3.0.0.40
+	- Filter, emoticon picker, context menus, and main application menu now respect the 'Enable Animations' user option
+
+3.0.0.39
+	- Fixed user image tooltips
+	- The down arrow next to 'Filter' is now clickable
+
+3.0.0.38
+	- Changed 'Enable Animated gifs' to be a more generic 'Enable Animations' which, when unchecked will disable all animations for the application (useful for remote desktop) 
+	- Animations that will be disabled:
+
+		- The z's shown when users are Inactive
+		- The +1 animation
+		- The typing users "..." animation
+		- The cursor blink when the screen is obscured
+		- Emoticons
+		- /imageurl posts
+	- Fixed multiple memory leaks associated with animations
+
+3.0.0.37
+	- Upgrade test
+
+3.0.0.36
+	- Removed the automatic checking for updates in the background
+	- Added 'Check For Update' menu item to the 'Help' menu
+
+3.0.0.35
+	- Added new Throttled Bot Creator concept to server (interface change / upgrade required)
+	- Increased images per minute to 5
+
+3.0.0.34
+	- Fix bug with /me messages
+
+3.0.0.33
+	- Tooltips will now show forever, instead of going away after 5 seconds
+	- Animated images will now stop animating when they are scrolled out of view, should help with CPU usasge
+
+3.0.0.31
+	- Added new Arty Signature font
+	- To use the new font in xaml, use FontFamily="/HylandMedConfig;component/#Arty Signature"
+
+3.0.0.30
+	- Fixed bug where the site name in link summaries was not decoded
+
+3.0.0.29
+	- Small theme bug fixes to improve space management / consistency accross themes
+	- Failed images no longer count towards your limit
+	- Fixed Filtered messages count to not include ignored users
+
+3.0.0.27
+	- Added filtered messages count to the top of the message window to show how many messages are filtered out
+
+3.0.0.26
+	- When pasting images, your previous message will now be restored
+	- Added down arrow to 'Filter' text to indicate it's a dropdown
+
+3.0.0.25
+	- Added the ability to paste images from the clipboard
+
+3.0.0.23
+	- Added more filter options
+
+3.0.0.22
+	- Added 'Filter' to filter private or public messages out
+
+3.0.0.21
+	- Remove auto-reply feature
+
+3.0.0.22
+	- When receiving a whisper (group or single) and you have not entered any message text, you will now automatically be replying to the whisper message
+	- Fixed issue where notification popups would show when setting mood
+
+3.0.0.21
+	- Fixed memory leak with emoticons
+
+3.0.0.20
+	- Fixed issue with textbox not expanding vertically
+
+3.0.0.19
+	- Fix padding for ascii messages
+
+3.0.0.18
+	- More message padding fixes
+
+3.0.0.17
+	- Decreased padding in message bubbles to allow more messages to be shown at once
+
+3.0.0.16
+	- Added user new user option 'Mute Xaml Messages'
+	- Fixed re-connect logic to preserve moods
+
+3.0.0.15
+	- Mood text now clips / doesn't expant into user list vertically
+
+3.0.0.14
+	- Fixed crash issue when setting mood for the first time using the 'enter' key
+
+3.0.0.13
+	- Made max width for user list smaller
+	- Added theming to the Set Mood window
+
+3.0.0.12
+	- Added 'Mood' to user list
+	- Need new bot dll (v31) to use new API
+
+3.0.0.11
+	- Configurable drop shadows
+	- Fixed settings window height
+
+3.0.0.10
+	- Bots logging in and out no longer show notifications or an entry in the chat list
+
+3.0.0.2
+	- Usernames now lowercased
+
+3.0.0.1
+	- User logins / logouts no longer count towards unread message count
+
+2.1.0.143
+	- Expose HylandMediaElement via 'custom' xaml namespace (used by memebot)
+
+	<custom:HylandMediaElement Source="[Path to image / gif]" Stretch="Uniform" />
+
+2.1.0.142
+	- Fixed bug where thread would sleep for 5 seconds before checking for application updates
+
+2.1.0.141
+	- Reverted to old WpfAnimatedGif instead of XamlAnimatedGif since some users could not see animations.  This is now only used for emoticons and not for imageurl posts
+
+	<Image giftoolkit:ImageBehavior.AnimatedSource="[path to gif]" Stretch="None" />
+
+2.1.0.140
+	- Emoticons now respect user setting for animating or not
+	- Fixed potential crash when exiting application
+	- Fixed user list tooltips
+	- Removed tooltips from user image on message list
+
+2.1.0.139
+	- Change to use MediaElement for /imageurl images and background
+
+2.1.0.138
+	- No more error images for imageurl posts
+
+2.1.0.137
+	- Fixed issue with whispered images not loading correctly
+
+2.1.0.136
+	- Added loading animation for imageurl posts
+
+2.1.0.135
+	- Emoticons in chat message list now respect 'Enabled animated gifs' setting
+
+2.1.0.134
+	- Move to XamlAnimatedGif to fix memory issues with large gifs
+	- To use in xaml posts:
+
+<Image giftoolkit:AnimationBehavior.SourceUri="[Path to gif]" />
+
+2.1.0.133
+	- Change to use pen with rounded edges when rendering outlined text
+
+2.1.0.132
+	- Added new 'custom' xaml namespace that contains a 'OutlinedText' control (used by memebot)
+
+Use the new control in xaml messages like:
+
+<custom:OutlinedText Text="My Text" FontSize="72" Stroke="Black" Fill="White" StrokeThickness="2" />
+
+2.1.0.131
+	- Fix issue with non-user notifications crashing app
+
+2.1.0.130
+	- Ignored users now saved as a user setting
+
+2.1.0.129
+	- Fixed bug where unread message count would still include ignored user's actions
+
+2.1.0.128
+	- Fixed bug where validating xaml messages did not include the giftoolkit namespace
+
+2.1.0.127	
+	- Added 'giftoolkit' namespace for use in xaml posts.  Use it to animage gifs using an 'Image' control:
+
+	<Image giftoolkit:ImageBehavior.AnimatedSource="[path to gif]" Stretch="None" />
+
+2.1.0.126
+	- Fix issue with message ordering
+	- Notification windows now are showing in taskbar to avoid notification count issue
+
+2.1.0.125
+	- Added new user option to 'Hide Xaml Messages'
+
+2.1.0.124
+	- Fixed issue with html encoding in hyperlink posts
+
+2.1.0.123
+	- Better handling of hyperlinks.  If your entire post is just a hyperlink we will try and retrieve meta-data about the url
+
+2.1.0.122
+	- /xaml messages will validate before sending
+
+2.1.0.121
+	- Added 'x' to the default namesapce for xaml messages
+	- Increased error font size
+	- Error message for xaml posts no longer show the xaml
+
+2.1.0.120
+	- Fixed bug where 'Copy Message' for /xaml messages would use an incorrect /web command
+
+2.1.0.119
+	- Added new '/xaml' message type which will interpret string as xaml and show resulting content
+
+2.1.0.118
+	- Added ignored messages count
+	- Improved ignore user / ignore bot functionality to not re-draw every message when changed
+
+2.1.0.117
+	- User adorners no longer flicker when +1's or users log out
+
+2.1.0.116
+	- Obscure Window no longer applies when the settings are open
+
+2.1.0.115
+	- Added 'Feedback' Help menu item to launch subreddit page
+
+2.1.0.114
+	- Notifications no longer cause an extra window to show in taskbar
+
+2.1.0.113
+	- Fixed issue where spamming the +1 would cause tons of notification messages.  It now takes 2.5 seconds to register / unregister for fooz game
+
+2.1.0.112
+	- Fixed user image tooltips in main message list to not stretch
+
+2.1.0.111
+	- Fixed issue where help was not showing
+
+2.1.0.110
+	- Added the ability to ignore users (right-click on username in user list)
+
+2.1.0.109
+	- Usernames are now vertically centered for user status messages
+
+2.1.0.108
+	- Fixed user status messages to not include the user's display name in the message footer
+
+2.1.0.107
+	- Fixed issue where clients would crash sometimes when the emoticon file was updated
+
+2.1.0.106
+	- Fixed issue where clicking on Ascii message no longer caused the animation to skip to end
+	- Fixed issue with user images on tooltips
+
+2.1.0.105
+	- Ascii messages no longer parse for hyperlinks / emojis
+
+2.1.0.104
+	- Fix copying urls
+
+2.1.0.103
+	- Fix hyperlink navigation
+
+2.1.0.102
+	- Fixed copying of Urls using text selection method
+	- Fixed issue with size of message textbox cutting off text if it got too large
+
+2.1.0.100
+	- Fixed bug where text to speech notifications for messages would be played twice
+
+2.1.0.99
+	- Fixed issue with highlighting emojis and hyperlinks
+
+2.1.0.98
+	- Most message text is now selectable for copy/paste
+	- Added 'Copy Url' context menu item to hyperlinks
+	- Note although emojis and hyperlinks are not included in the highlighted portion, they will be copied to the clipboard if a text element on either side are included in the selection
+
+2.1.0.97
+	- Added remove button and date to user status messages
+	- Image gifs now play forever
+
+2.1.0.94
+	- Fix for user status messages '/me' 
+
+2.1.0.93
+	- Memory leak fix
+	- Fixed 'Play Gif' context menu item on image messages
+
+2.1.0.92
+	- 'Clear' message button no longer prompts
+	- Ctrl+E now opens the smiley selector
+
+2.1.0.89
+	- /imageurl animations now only repeat 5x.  
+	- New context menu item on images that allow them to replayed
+
+2.1.0.88
+	- Notifications now respect message coloring settings
+	- Minor bug fixes
+
+2.1.0.86
+	- Changed message textbox to resemble chat bubble
+
+2.1.0.85
+	- Added options to show / hide dropshadow and border for messages
+
+2.1.0.84
+	- Ascii messages now support the correct foreground color
+	- Fixed images to resize better (user image tooltips)
+
+2.1.0.83
+	- Temporarily removed support for html
+
+2.1.0.82
+	- Added mlechner back to handicapped users
+
+2.1.0.81
+	- System messages no longer respect configured message font styling
+	- User status messages now respect font coloring
+	- Indicator in Color picker settings dialog to indicate if a color is set to the default (instead of showing black)
+
+2.1.0.80
+	- Cursor coloring fix
+
+2.1.0.79
+	- Fix for combined messages displaying incorrect font
+
+2.1.0.78
+	- Fix preview colors / system messages to have default coloring
+
+2.1.0.77
+	- More colors for whisper / group messaging!
+
+2.1.0.76
+	- Background/Foreground colors now also apply to message textbox
+
+2.1.0.75
+	- Added new configuration user options for normal message background / foreground colors
+
+2.1.0.74
+	- Better handling for up/down arrowing through messages after sending whispers
+	- Fixed bug where empty message could be sent as a whisper / cause spamming by holding down enter key
+
+2.1.0.73
+	- System messages now use configured font
+
+2.1.0.72
+	- Fixed issue where client would sometimes crash when copying messages to clipbaord
+	- 'Copy Message' now will copy the entire text of the message (including the command)
+	- Modifyied the 'MessageInARow' rule to account for different threads of conversations
+
+2.1.0.71
+	- Fixed bug where /ascii messages had the wrong foreground color when whispered
+
+2.1.0.68
+	- User images can now be animated gifs
+
+2.1.0.67
+	- Focused search textbox when popup opened
+	- Emoticons can now also be selected by using Enter or Return
+
+2.1.0.66
+	- Added Ctrl+click capabilities to emoticon selector to select more than one at a time
+
+2.1.0.65
+	- New emoticon selector that now includes search textbox
+
+2.1.0.61
+	- Moved Emoticon configuration to server side
+
+2.1.0.60
+	- Fix for file IO exception when accessing emoticons.xml file
+
+2.1.0.59
+	- Emoticons will now automatically be reloaded when the Emoticons.xml file changes.  
+
+2.1.0.57
+	- Fixed /info, /help and fooz game ready messages to be themed correctly and use the configured font
+	- Message textbox focused by default when loaded
+
+2.1.0.56
+	- Fixed issue where 'Copy Message' didn't include all messages in a combined message grouping
+	- 'Copy  Message' will now only copy the 'Text' part of the message
+	- Temporary fix for SCR urls
+
+2.1.0.55
+	- Fixed issue where clicks would go through emoji selector and possibly start whisper to user
+
+2.1.0.54
+	- Fixed issue where user settings dialog would animate to center when main window was the full height of the window
+
+2.1.0.52
+	- Fixed issue where group messages where not colored correctly if more than 2 users were in the group message
+	- Fixed tooltip sizing for user images in the message list
+
+2.1.0.51
+	- Fixed issue with blurry images that had different dpi
+
+2.1.0.50
+	- New user option to enable/disable animated gifs
+
+2.1.0.49
+	- Emoji's will now replay 3,000 times before stopping.  imageurl's will still only loop 10 times
+
+2.1.0.48
+	- Fixed restart button
+
+2.1.0.47
+	- Fix for animated gif memory not being cleared when removed from message list
+
+2.1.0.46
+	- Moved emoticon configuration to network share (can be changed by anyone) - \\one-017031\Share\HylandMedConfig\Emoticons
+	- Added new File -> Restart option
+
+2.1.0.45
+	- Replaced gif animation framework with nuget WpfAnimatedGif control
+	- ImageUrl and emoticons will now only replay 10 times before stopping
+	- Emoticons in selector now animate
+	- Animated backgrounds now properly support all stretch values (they will repeat forever)
+
+2.1.0.44
+	- Removed default background image
+	- Fixed bug where invalid Url's would cause client to crash
+
+2.1.0.43
+	- Added support for animated backgrounds (requires restart of app to see animation)
+
+2.1.0.39
+	- Enhanced imageurl tag to support animated images
+	- Removed /emoji tag
+
+2.1.0.38
+	- Sorted emojis by name instead of size
+	- Added new /emoji tag
+
+2.1.0.37
+	- Added seasonal emojis
+
+2.1.0.36
+	- Added more shortcuts for emojis
+
+2.1.0.35
+	- Fixed user image tooltips
+	- Added 'Remove' item to message context menu to remove the message
+
+2.1.0.34
+	- Help message can now be removed from message list
+	- Minor UI fixes
+	- Fixed another re-connect bug
+	- Settings menu option can now always be clicked, if already open, the settings will just focus
+	- Removed mlechner from handicapped list
+	- Added tooltips to all user images (including messages)
+
+2.1.0.33
+	- Fix to play multi-line messages correctly
+	- Can now individually reset Background settings as well as font
+	- Settings dialog no longer shows on the right when that would cause the window to be off screen
+	- Removed 'Reset' and 'Close' buttons from settings
+	- New emoticons
+
+2.1.0.32
+	- Text to speech is now async
+
+2.1.0.31
+	- Fixed typo in user settings dialog
+	- Added new 'Play Message' context menu for messages
+
+2.1.0.29
+	- Added speech to text user option
+
+2.1.0.28
+	- Added customized message fonts
+
+2.1.0.27
+	- Settings dialog will now show up at the right side of the main window
+	- Confirm dialog added for the 'Reset' settings button
+	- Settings sliders now respond better to keyboard input (left/right buttons)
+	- Ascii message animations can now be skipped by clicking in the chat bubble
+
+2.1.0.26
+	- New styling for context menu items
+	- Fixed file menu shortcuts
+	- Changing themes no longer scrolls messages to the bottom
+	- Added X/Y offset to background image
+
+2.1.0.24
+	- Added new 'Text Highlighting' user option
+
+2.1.0.23
+	- Fix alignment of timestamp
+
+2.1.0.22
+	- Added back 'Copy Message' context menu
+	- Added shading to text so that it is visible even with a bad background
+
+2.1.0.21
+	- Options moved to a 'Options' -> 'Settings' menu option
+	- Improvements to reconnect mechanism
+	- Moved 'Release Notes' and 'Bot Assemblies' links to 'Help' menu
+	- Minor UI fixes
+
+2.1.0.19
+	- Fixed whisper chat coloring
+
+2.1.0.18
+	- Fix to remember window height / width
+
+2.1.0.17
+	- Theme fixes / chat bubbles no longer have drop shadow / text font size changes
+	- Clear messages button moved to bottom right
+
+2.1.0.16
+	- Fixed bug where whispering HTML to yourself would cause you to not be able to send normal messages
+
+2.1.0.15
+	- Custom background images
+
+2.1.0.13
+	- Changes to Metro Dark whisper message colors
+
+2.1.0.12
+	- Fixed issue with ImageUrl messages crashing
+
+2.1.0.11
+	- Fixed issue where fooz ready messages caused client to crash
+
+2.1.0.10
+	- Fixed issue where user status messages crashed the client
+	- Fixed airplane emoji
+
+2.1.0.9
+	- Vertical scrolling now supports using mouse to drag
+	- Smiley thing size changed
+
+2.1.0.8
+	- Hide Bot Messages will now only hide public messages from bots
+
+2.1.0.7
+	- More minor theme fixes
+
+2.1.0.6
+2.1.0.5
+	- Theme coloring enhancements
+
+2.1.0.4
+	- Fixed bug where only user messages where showing
+
+2.1.0.3
+	- Added new themes (user option)
+	- Added new option to hide bot messages
+
+2.1.0.1
+	- Fixed close button to be normal size
+	- Centered messages in chat bubble
+
+2.1.0.0
+	- Popup notifications for server down / up
+	- Fixed the 'messages in a row' rule (10 for normal users)
+	- New Metro theme
+
+2.0.0.108
+	- Added fooz status message to user expander bar / removed 'User / Options' header text
+
+2.0.0.107
+	- Moved the +1 checkbox to the 'User / Options' expander header
+
+2.0.0.106
+	- Added collapsible 'Options' panel
+	- User List and Options panel collapsed state will now be remembered / restored when logging out / in
+	- +1 checkbox moved out of options panel and into user list
+
+2.0.0.105
+	- Added 'Bot Release' link to open the bot release directory
+
+2.0.0.104
+	- Updated certificate
+
+2.0.0.103
+	- Users will now no longer be logged out when the server goes down.  Clients will atempt to reconnect and log the user back in when the server is back up
+
+2.0.0.102
+	- Users now ordered by the following (Is Current User, Fooz Ready, In Online, Is Bot, Display Name)
+
+2.0.0.101
+	- Back to fall update 2.0, orange borders were annoying
+
+2.0.0.100
+	- Fall update 2.2
+
+2.0.0.99
+	- Status updates no longer have solid background / obscure background image
+	- Fall update 2.1
+
+2.0.0.98
+	- Fall update 2.0
+
+2.0.0.97
+	- Fall update
+
+2.0.0.95
+	- Users will now be notified if you are typing a whisper to them
+	- New (facepalm) emoji
+
+2.0.0.94
+	- Whispers to more than 1 user now have a yellow background instead of green
+
+2.0.0.93
+	- Added group messaging (Ctrl+Click to add user to message)
+
+2.0.0.92
+	- Fixed 'Logged in' message to be 'Logged on'
+
+2.0.0.91
+	- Fixed appending emoticons
+
+2.0.0.90
+	- Disabled emoticons for now
+
+2.0.0.89
+	- Fixed HTML messages
+
+2.0.0.88
+	- Emoticon messages no longer throw exceptions but will show error message box when an error is encountered
+
+2.0.0.87
+	- When receiving error from the /info command (when username doesn't exist), the message box is now modal
+	- Fixed bug where every keystroke was notifying every user that you are active
+
+2.0.0.86
+	- Added Nickname to user info stats
+
+2.0.0.85
+	- New property 'Nickname' for users and bots.  Will default to DisplayName if not specified
+	- Message no longer cleared when requesting info and the username is not found
+	- Large tooltips for user images
+
+2.0.0.84
+	- Fixed scrolling on user list
+
+2.0.0.83
+	- Fix to whisper logic, when sending whisper, will keep whisper username in textbox
+
+2.0.0.80 - 2.0.0.82
+	- Added new /info command to get stats for a user
+	- There is no longer a /botinfo command
+	- Fix for appending messages
+	- Message list now uses virtualization
+	- /ascii messages will now be shown in Courier New in the message box
+	- Updated help text
+	- Notification windows now cascade vertically when multiple at the same time
+
+2.0.0.79
+	- API updates for server / client / bot assembly
+
+2.0.0.78
+	- Message append fix
+
+2.0.0.77
+	- Fixed user images to be cropped to a 48x48 circle and not horizontally stretched
+
+2.0.0.76
+	- Fixed issue where users would always be typing once started
+
+2.0.0.70
+	- Fixed issue with using the keyboard to navigate through past messages
+	- Fixed bug with Help message
+	- Fixed issue with combining messages working improperly in some scenarios
+	- Fixed issue with status updates not updating fooz status
+	- Fixed issue with HTML messages not displaying properly
+
+2.0.0.67
+	- Made crystal a handicapped user
+
+2.0.0.66
+	- Added crystal user.  Whispers sent to crystal will be broadcast to entire group as crystal.  crystal is always online.
+	- There is a 50% chance that messages sent to crystal will not be broadcast and will instead be replaced by a random crystal quote
+
+2.0.0.65
+	- Fixed issue with sizing of youtube video links
+
+2.0.0.64
+	- Handicapped users no longer can post html messages
+
+2.0.0.63
+	- Fixed an issue where client would crash when IIS was reset on server.  
+
+2.0.0.62
+	- /html messages now suppress window.confirm and window.prompt methods
+
+2.0.0.61
+	- /html messages containing scripts containing alert() methods now no longer show alerts
+
+2.0.0.60
+	- Fixed height of web and html messages
+	- Restricted html messages to 1 per 5 minutes or 1 per 30 minutes for handi
+
+2.0.0.59
+	- Added /html tag
+
+2.0.0.58
+	- Messages that contain markup text no longer contribute to character count limit
+	- Auto-scrolling with new messages now always auto-scrolls (whether or not the window is active)
+	- Fixed bug where notifications would not always play correctly or would be cut off
+
+2.0.0.57
+	- Web pages are now no longer automatically loaded.  Message will appear with button on top to load the page
+
+2.0.0.56
+	- Fixed issue where foozball games would not be cleared when clearing all messages.
+	- Fixed issue where users not able to send after clearing all messages
+
+2.0.0.55
+	- Characters per minute limitation changed to 1000 per minute for regular users
+
+2.0.0.53
+	- Newer typing text animations / designated space at bottom
+
+2.0.0.52
+	- New typing animations / typing animations are now part of the chat, and not docked to the bottom
+
+2.0.0.51
+	- Added mlechner back
+	- Added new rule of messages in a row (Handicapped - 1, Regular - 10)
+
+2.0.0.50
+	- Removed vertical scrollbar from /web control
+	- Fixed bug where notifications would not show under certain circumstances
+
+2.0.0.48
+	- Clicking on usernames in the message list (next to chat bubbles) will now start whisper to that user
+	- When whispering to a user, the whisper part of the message will remain after sending message
+
+2.0.0.47
+	- Messages list no longer auto-vertical scrolls if the main window is not active
+	- Added new 'Obscure Window' option to transform into DOS prompt when main window is not active and the mouse is not over it
+
+2.0.0.46
+	- Web messages will now completely unload when they are closed
+
+2.0.0.45
+	- Removed flashing window feature
+	- Message count will now go up on every type of event (login / logout / foosball ready / message / game ready)
+
+2.0.0.44
+	- Testing taskbar pinning after upgrade
+
+2.0.0.43
+	- Fixed installation to create desktop shortcut (to be used for pinning to taskbar)
+
+2.0.0.42
+	- Show Notifications option moved to user option / remembered
+
+2.0.0.41
+	- Fixed error message behind video seen even when success
+
+2.0.0.40
+	- Added /web command to show web pages in fixed width window (useful for youtube links)
+	- If a message contains 1 url and it is an image, it will be converted into an /imageurl message automatically (if the rules allow)
+
+2.0.0.39:
+	- Added unread message count to taskbar
+
+2.0.0.38
+	- Fixed bug where foosball game would be removed when a 5th person attempted to +1
+	- Added delay when notifying users that someone is typing to avoid UI flickering
+
+2.0.0.37
+	- New status for messages that are whispers
+	- Whispers to yourself now appear as 2 seperate messages
+	- Idle usernames now appear orange
+
+2.0.0.35
+	- Added whispering
+
+2.0.0.23-2.0.0.34
+	- Deployment testing.  Required updates will now automatically install when app is running (will be restarted).  Optional updates will still give option to update
+
+2.0.0.22
+	- Fixed crash related to checking for new updates / applying required updates automatically
+
+2.0.0.21
+	- Fixed issue where 'x' would not be clickable in some situations
+
+2.0.0.20
+	- Fix loophole around emoticons per minute when deleting messages
+
+2.0.0.19
+	- Fixed 'x' button to not be so tempermental
+	- Added back mlechner
+
+2.0.0.18
+	- Added 'x' button to each message to remove individually
+	- Changed confirm prompt to be a confirm prompt
+
+2.0.0.17
+	- Added 'Clear' button to get rid of past messages
+
+2.0.0.16
+	- Put idle time back to 10 minutes
+
+2.0.0.15
+	- Added 'zzz's when users are idle
+	- Animated +1
+	- Ascii messages are now animated using string animations
+
+2.0.0.14
+	- Changed yellow color to more closely match actual yellow from tornado
+	- Back to curved triangles for chat bubbles
+	- Changed commands to use '/' instead of '#'
+
+2.0.0.13
+	- Renamed teams to be 'Black Team' and 'Yellow Team'
+	- Changed foosball ready message to include coloring for teams / user pics
+
+2.0.0.12
+	- Added the ability to up/down through past messages in order to copy previous messages
+
+2.0.0.11
+	- New option to disable notifications
+	- Notifications will now be shown for all messages if the main window is not active
+	- Foosball games now create randomized teams
+
+2.0.0.10
+	- New emojis punch, highfive, rofl, dance, drunkdance, surprised, puke
+
+2.0.0.9
+	- Changed idle timeout to 10 minutes 
+	- Notifications will now always show if you are idle
+
+2.0.0.8
+	- hi3 had incorrect emoji
+
+2.0.0.7
+	- Added new 'hi' emojis
+	- Changed the emoji selector to better use available space and sort emoji's by height
+
+2.0.0.6
+	- Fixed issue with crash when sending more than 1 emoticon in self message
+	- Self message emojis now count towards rules
+
+2.0.0.5
+	- Emoticons now work with self messages
+
+2.0.0.4
+	- Added /me -1 command
+	- /me +1 / -1 sends message now
+	- Pressing up on keyboard now only copies the last message sent, not the entire combined message
+
+2.0.0.3
+	- Fixed issue where duplicate emojis would be shown when they are mapped to more than 1 key
+	- Added new command /me to send messages as status
+	- Typing '/me +1' now automatically checks the +1 box
+
+2.0.0.2
+	- Fixed issue where messages could be combined from the same user even if a system message was added between messages
+	- Yes / No emotes can now be sent with (y) and (n) as well
+	- New thumbs up / down emojis
+	- Removed label and button from right panel
+
+2.0.0.1
+	- Notification improvements, main window should now flash more reliably
+	- Various 2.0 theme upgrades
+	- Moved hyperlink parsing before emoticon parsing
+
+2.0.0.0
+	- Added curved triangles to chat bubbles for more wiz banginess
+
+1.1.1.54
+	- Added hyperlink parsing, still buggy but usable
+
+1.1.1.53
+	- Updated theme
+
+1.1.1.52
+	- New rule system for handicapped users:
+		2 Emoticons every 30 minutes
+		100 Characters every 10 minutes
+		1 Image every 10 minutes
+	- New rule system for regular users:
+		6 Emoticons every 1 minute
+		500 Characters every 10 minutes
+		1 Image every 1 minute
+
+1.1.1.51
+	- Inactive users now have gray text for their names
+	- Remove wwen from system
+	- Training Wheel image for users on training wheels
+	- Fix to count emoticons correctly
+
+1.1.1.50
+	- Training wheel users now can post 2 emoticons every 30 minutes, fixed spelling on error message
+	- Fixed bug where messages could append forever if posted withint 25 seconds of each other
+
+1.1.1.49
+	- Introduced concept of training wheels (emoticons per message / minute and characters per message / minute severely reduced)
+
+1.1.1.48
+	- Changed max emoticons per message to 3 and max emoticons per minute to 6
+
+1.1.1.47
+	- Disabled emoticon selector animations (enabled by accident)
+
+1.1.1.46
+	- Regardless of whether user has unread messages, the window will now always flash when message is received and window is not active.
+
+1.1.1.45
+	- Changed commands to require space
+	- Disabled gif animations in emoticon selector to avoid high CPU usage
+	- Users no longer appear typing when they are idle (15 minute timeout)
+
+1.1.1.44
+	- Fixed notifications for users logging off and update available to not show if window is active (was stealing focus and annoying)
+	- Added more emoticons
+
+1.1.1.43
+	- Fixed issue where foosball games could be created with only 3 players
+	- Changed (mariokart) emoticon to be mario and added (dkkart) emoticon 
+
+1.1.1.42
+	- Added Will Wen to user list
+
+1.1.1.41
+	- Initial work to 'TJ proof' this stupid thing
+	- Added a maximum text length (1024 characters) and emoticon count (10) per message restriction
+	- Added a characters per minute (2056) and emoticon per minute (20) restriction
+
+1.1.1.40
+	- Increased idle timer to 15 minutes and fixed bug where users may appear idle when not
+	- /ascii and /imageurl commands now not case sensitive, but MUST appear at the beginning of the message (no whitespace at the beginning allowed)
+
+1.1.1.38:
+	- Users now notified if window is not active and a user is ready for foosball
+
+1.1.1.37
+	- Added tstocker and tkielbasa back
+	- Added current user back to list of users
+	- Fixed bug where foozball game could be created with 3 users
+
+1.1.1.34
+	- Changed foosball ready behavior.  Only a maximum of 4 players will be allowed. Everyone will be notified when a game is ready
+	- You will lose your foosball ready status if you are go inactive (5 minute timer)
+	- User names now appear orange when idle
+
+1.1.1.32
+	- Added delay to checkmark to prevent idiots from crashing shit
+
+1.1.1.31
+	- Added basic foosball +1 capability
+
+1.1.1.28
+	- Added max message length of 1024
+
+1.1.1.25
+	- Watermark now shown when hiding images (with tooltip of image)
+	- Enhanced message UI, added drop shadow / rounded user profile pics
+	- User pictures in user list now circles to match gmail hangout user list
+
+1.1.1.24
+	- Emoticons can now be combined into messages like normal
+	- Users who are typing are now no longer visible unless chat message list is visible
+
+1.1.1.23
+	- Fixed issue with message combining and emoticons (messages that contain emoticons will no longer be combined into previous messages)
+
+1.1.1.22
+	- Fixed auto-scroll crap
+
+1.1.1.21
+	- Fixed diverson's photo to not be ridiculous
+	- Pressing up on the keyboard when no message is present will copy your last message
+	- Added right-click menu to messages to copy message text to clipboard
+	- Made images for typing notifications smaller
+	- Login no longer contains image of current user
+
+1.1.1.20
+	- Added timestamps to login / logout messages
+	- Messages by the same user sent close together will now be combined into the last message
+	- Fixed an issue where users were incorrectly reported as idle when logging in
+
+1.1.1.18
+	- Fixed issue with posting images (images now scale correctly)
+	- Restyled scrollbars 
+
+1.1.1.16
+	- Added Mike to user list
+
+1.1.1.15
+	- Fixed collapsible panel style to not be ugly
+	- Changed user list background to light gray
+	- Login will be automatic when app is loaded
+
+1.1.1.14
+	- Removed window chrome to improve client side performance
+	- Added collapsible panel to the right to enable hiding the user list
+
+1.1.1.12
+	- Fixed user image issue where images where not scaling correctly
+	- Moved notification window over so it would not be cut off by second monitor
+	- Fixed spelling in notification window
+
+1.1.1.8
+	- Added emoticons
+
+1.1.1.2
+	- Fixed login bug related to server IP address being static
+
+1.1.1.1
+	- Theme changed
+
+1.0.0.91
+	- Removed dummy conversation (replaced with blank chat window when mouse is not over application)
+
+1.0.0.90
+	- Changed font to Verdana to be easier to read
+	- Minor bug fixes
+
+1.0.0.89
+	- Fixed bug where images would not load correctly the first time in some scenarios
+
+1.0.0.88
+	- Message style changed to match google hangouts
+	- Removed censoring feature to improve performance when there are a large amount of chat messages
+
+1.0.0.87
+	- Added inactive timeout (username will turn orange if user has not been active for 5 minutes or more)
+	- Added fake conversation that will show up when mouse is not over window
+
+1.0.0.83
+	- Added IM received ringtone option (will play sound when message is received and window is not active)
+	- Fixed bug where clicking an image would cause the application to crash
+
+1.0.0.82
+	- Turned off virtualization of messsages so scrolling is smoother
+
+1.0.0.80
+	- Images smaller than 500px now do not stretch to fill the 500 pixels
+
+1.0.0.79
+	- Change to make notifications not take focus away and position themselves before being visible
+	- Updated bad word definitions
+
+1.0.0.78
+	- Minor bug fixes
+
+1.0.0.77
+	- Login window now starts up in the center of the screen. 
+	- Added option to hide images (all or none) 
+
+1.0.0.76
+	- Minor bug fixes
+
+1.0.0.75
+	- Virtualized messages to decrease memory usage
+	- Color Scheme change
+	- Changed the name of the tool to be the Hyland Meditech Config Tool (update your shortcuts)
+
+1.0.0.74
+	- Fixed splitter resize bug
+	- Images can now be clicked to view the full-size image
+	- Updated bad word definitions
+
+1.0.0.73
+	- Added the option to censor the conversation
+
+1.0.0.72
+	- Updated bad word definitions
+
+1.0.0.71
+	- Added a filter to censor bad words
+
+1.0.0.70
+	- Typing animation updated
+
+1.0.0.69
+	- Release notes updated
+
+1.0.0.68
+	- Spell check added
+	- Release Notes link added

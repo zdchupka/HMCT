@@ -1,0 +1,165 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="HylandMedConfig.ResourceDictionaries.MessageDataTemplates.PollMessageDataTemplate"
+                    xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+                    xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+                    xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+                    xmlns:Windows="clr-namespace:System.Windows;assembly=PresentationFramework"
+                    xmlns:attached="clr-namespace:HylandMedConfig.Attached"
+                    xmlns:gif="http://wpfanimatedgif.codeplex.com"
+                    xmlns:Commands="clr-namespace:HylandMedConfig.Commands"
+                    xmlns:vsm="clr-namespace:System.Windows;assembly=WPFToolkit"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:local="clr-namespace:HylandMedConfig"
+                    xmlns:Common="clr-namespace:HylandMedConfig.Common;assembly=HylandMedConfig.Bot">
+
+    <DataTemplate DataType="{x:Type Common:PollMessage}">
+        <Controls:MessageBubble Message="{Binding}">
+            <DockPanel Margin="9"
+                       x:Name="parentDockPanel"
+                       MinWidth="300">
+                <DockPanel.Resources>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DockPanel.Resources>
+
+                <TextBlock Foreground="Red"
+                           FontWeight="Bold"
+                           DockPanel.Dock="Top"
+                           HorizontalAlignment="Center"
+                           Visibility="{Binding IsOpen, Converter={Converters:BooleanToVisibilityConverter},ConverterParameter=NOT}"
+                           Text="** Closed **" />
+
+                <Controls:EmoticonRichTextBox  TextWrapping="Wrap"
+                                               FontWeight="Bold"
+                                               Margin="0 0 0 10"
+                                               DockPanel.Dock="Top"
+                                               HorizontalAlignment="Center"
+                                               RawText="{Binding Text}"
+                                               Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Controls:ChatMessageCallout}}" />
+                
+
+
+                <StackPanel Orientation="Horizontal"
+                            DockPanel.Dock="Bottom"
+                            HorizontalAlignment="Center">
+                    <Button Command="{Binding VoteCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                            Margin="5"
+                            x:Name="voteButton"
+                            Click="PollMessageDataTemplate_Click"
+                            Content="Vote"
+                            CommandParameter="{Binding SelectedItem, ElementName=lbChoices}">
+                    </Button>
+
+                    <Button Command="{Binding ClosePollCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                            Margin="5"
+                            Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={Converters:BooleanToVisibilityConverter}}"
+                            HorizontalAlignment="Center"
+                            Content="Close"
+                            CommandParameter="{Binding}">
+                    </Button>
+                </StackPanel>
+
+                <ListBox ItemsSource="{Binding Choices}"
+                         SelectionMode="Single"
+                         BorderThickness="0"
+                         Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Controls:ChatMessageCallout}}"
+                         Background="{Binding Background, RelativeSource={RelativeSource AncestorType=Controls:MessageBubble}}"
+                         x:Name="lbChoices"
+                         HorizontalAlignment="Stretch">
+                    <ListBox.Template>
+                        <ControlTemplate>
+                            <ItemsPresenter />
+                        </ControlTemplate>
+                    </ListBox.Template>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Focusable"
+                                    Value="False" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <RadioButton IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     HorizontalContentAlignment="Stretch"
+                                                     Margin="0 3">
+                                            <i:Interaction.Behaviors>
+                                                <attached:RadioButtonBehavior IsReadOnly="{Binding Path=(attached:PollAttachedProperties.IsLocked), RelativeSource={RelativeSource TemplatedParent}}" />
+                                                <attached:RadioButtonBehavior IsReadOnly="{Binding DataContext.IsOpen, ElementName=lbChoices, Converter={Converters:ReverseBooleanConverter}}" />
+                                            </i:Interaction.Behaviors>
+                                            <ContentPresenter />
+                                        </RadioButton>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ToolTip>
+                                    <ItemsControl ItemsSource="{Binding Votes}"
+                                                  DisplayMemberPath="DisplayName">
+
+                                    </ItemsControl>
+                                </Grid.ToolTip>
+                                <ProgressBar Minimum="0"
+                                             x:Name="progressBar"
+                                             Maximum="100"
+                                             Opacity="0.5">
+                                    <attached:ProgressBarBehavior.AnimatedPercentage>
+                                        <MultiBinding Converter="{Converters:PollPercentageConverter}">
+                                            <Binding Path="Votes.Count" />
+                                            <Binding Path="DataContext.TotalVotes"
+                                                     RelativeSource="{RelativeSource AncestorType=Controls:MessageBubble}" />
+                                        </MultiBinding>
+                                    </attached:ProgressBarBehavior.AnimatedPercentage>
+                                </ProgressBar>
+                                <DockPanel>
+                                    <TextBlock DockPanel.Dock="Right"
+                                               VerticalAlignment="Center"
+                                               Margin="5 0 5 0">
+                                        <TextBlock.Text>
+                                            <MultiBinding Converter="{Converters:PollChoiceTextConverter}">
+                                                <Binding Path="Votes.Count" />
+                                                <Binding Path="DataContext.TotalVotes"
+                                                         RelativeSource="{RelativeSource AncestorType=Controls:MessageBubble}" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <Controls:EmoticonRichTextBox  TextWrapping="Wrap"
+                                                                   RawText="{Binding Text}"
+                                                                   Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Controls:ChatMessageCallout}}"
+                                                                   Margin="5" />
+                                </DockPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </Controls:MessageBubble>
+
+        <DataTemplate.Triggers>
+            <Trigger Property="attached:PollAttachedProperties.IsLocked"
+                     Value="True">
+                <Setter TargetName="voteButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+
+            <DataTrigger Binding="{Binding IsOpen}"
+                         Value="False">
+                <Setter TargetName="voteButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+</ResourceDictionary>

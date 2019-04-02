@@ -1,0 +1,141 @@
+﻿<Window
+    x:Class="HylandMedConfig.Windows.NotificationWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Notification Popup"
+    xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+    xmlns:Attached="clr-namespace:HylandMedConfig.Attached"
+    xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+    xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+    SizeToContent="WidthAndHeight"
+    WindowStyle="None"
+    Attached:FrameworkElementBehavior.Theme="{Binding ThemeNum, Source={x:Static Properties:Settings.Default}, Converter={Converters:ThemeNumToUIThemeConverter}}"
+    WindowState="Normal"
+    ShowInTaskbar="True"
+    x:Name="root"
+    Closing="NotificationWindow_Closing"
+    MouseDown="Window_MouseDown"
+    AllowsTransparency="True"
+    Style="{DynamicResource WindowStyle}"
+    Focusable="False"
+    Topmost="True"
+    Background="Transparent">
+
+    <Grid
+        x:Name="grid"
+        Margin="5">
+
+        <!-- Notification area -->
+        <DockPanel>
+            <Controls:ChatUserImage
+                User="{Binding User, ElementName=root}">
+                <Controls:ChatUserImage.Style>
+                    <Style
+                        TargetType="{x:Type Controls:ChatUserImage}">
+                        <Style.Triggers>
+                            <DataTrigger
+                                Binding="{Binding User, ElementName=root}"
+                                Value="{x:Null}">
+                                <Setter
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Controls:ChatUserImage.Style>
+            </Controls:ChatUserImage>
+
+            <Grid>
+                <Border
+                    Margin="{Binding ElementName=textBorder, Path=Margin, Mode=OneWay}"
+                    x:Name="fakeBorder"
+                    BorderThickness="1"
+                    Loaded="fakeBorder_Loaded"
+                    HorizontalAlignment="Left"
+                    Visibility="Hidden"
+                    Padding="{Binding ElementName=textBorder, Path=Padding, Mode=OneWay}">
+                    <TextBlock
+                        TextWrapping="NoWrap"
+                        Text="{Binding Message, ElementName=root}" />
+                </Border>
+
+                <Border
+                    Width="20"
+                    Margin="5,0,0,0"
+                    HorizontalAlignment="Left"
+                    x:Name="textBorder"
+                    CornerRadius="3"
+                    MinHeight="40"
+                    Padding="10 0">
+                    <Border.Style>
+                        <Style
+                            TargetType="Border">
+                            <Setter
+                                Property="BorderThickness"
+                                Value="1" />
+                            <Setter
+                                Property="Background"
+                                Value="{Binding MessageBackgroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                            <Setter
+                                Property="BorderBrush"
+                                Value="{Binding MessageBorderResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                            <Setter
+                                Property="TextElement.Foreground"
+                                Value="{Binding MessageForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                            <Style.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ShowMessageBorder, Source={x:Static Properties:Settings.Default}}"
+                                    Value="False">
+                                    <Setter
+                                        Property="BorderThickness"
+                                        Value="0" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding ShowMessageDropShadow, Source={x:Static Properties:Settings.Default}}"
+                                    Value="True">
+                                    <Setter
+                                        Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect
+                                                BlurRadius="{Binding DropShadowBlurRadius, Source={x:Static Properties:Settings.Default}}"
+                                                ShadowDepth="{Binding DropShadowShadowDepth, Source={x:Static Properties:Settings.Default}}"
+                                                Color="{Binding DropShadowColor, Source={x:Static Properties:Settings.Default}}"
+                                                Direction="{Binding DropShadowDirection, Source={x:Static Properties:Settings.Default}}" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding UserMessage.ToUsers.Count, ElementName=root}"
+                                    Value="1">
+                                    <Setter
+                                        Property="Background"
+                                        Value="{Binding WhisperMessageBackgroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                                    <Setter
+                                        Property="TextElement.Foreground"
+                                        Value="{Binding WhisperMessageForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding UserMessage.ToUsers.Count, ElementName=root, Converter={Converters:IsGreaterThanConverter}, ConverterParameter=1}"
+                                    Value="True">
+                                    <Setter
+                                        Property="Background"
+                                        Value="{Binding GroupMessageBackgroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                                    <Setter
+                                        Property="TextElement.Foreground"
+                                        Value="{Binding GroupMessageForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+
+                    <TextBlock
+                        TextWrapping="NoWrap"
+                        x:Name="txtMessage"
+                        Text="{Binding Message, ElementName=root}"
+                        VerticalAlignment="Center" />
+                </Border>
+            </Grid>
+        </DockPanel>
+    </Grid>
+
+</Window>

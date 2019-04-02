@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Users>
+    <!-- Example users below-->
+    <!--<User Username="jferrin" DisplayName="Jonathan Ferrin" Nickname="Ferrin" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\jferrin.png" />
+    <User Username="tkielbasa" DisplayName="Thomas Kielbasa" Nickname="TJ" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\tkielbasa.png" />
+    <User Username="mlechner" DisplayName="Mike Lechner" Nickname="Mike 2.0" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\mlechner.png" />
+    <User Username="tstocker" DisplayName="Thomas Stocker" Nickname="Stocker" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\tstocker.png" />
+    <User Username="jchagnon" DisplayName="Jonathan Chagnon" Nickname="Chags" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\jchagnon.png" />
+    <User Username="diverson" DisplayName="Don Iverson" Nickname="Don" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\diverson.png" />
+    <User Username="ggiannone" DisplayName="Greg Giannone" Nickname="Gweg" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\ggiannone.png" />
+    <User Username="zchupka" DisplayName="Zachary Chupka" Nickname="Zac" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\zchupka2.png" />
+    <User Username="dbogart" DisplayName="Dane Bogart" Nickname="Dane" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\dbogart.png" />
+    <User Username="bdavid" DisplayName="Bobby David" Nickname="Bobby" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\bdavid.png" />
+    <User Username="rhopkins" DisplayName="Ronnie Hopkins" Nickname="Ronnie" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\rhopkins.png" />
+    <User Username="acondon" DisplayName="AJ Condon" Nickname="AJ" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\acondon.png" />
+    <User Username="mbacigalupo" DisplayName="Mike Bacigalupo" Nickname="Baci Ball" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\mbacigalupo.jpg" />
+    <User Username="rjaime" DisplayName="Roberto Jaime" Nickname="Bobby J" ImageUrl="\\one-021619\Share\HylandMedConfig\UserImages\rjaime.png" />-->
+  </Users>
+</UserConfiguration>

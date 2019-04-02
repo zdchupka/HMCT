@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HylandMedConfig", "HylandMedConfig\HylandMedConfig.csproj", "{1BDF12B0-ABEA-4154-ADA3-C0966FB5CE85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HylandMedConfig.Bot", "HylandMedConfig.Bot\HylandMedConfig.Bot.csproj", "{307A8B69-D7E6-4632-B796-8C7A0127054A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HylandAnimatedGif", "HylandAnimatedGif\HylandAnimatedGif.csproj", "{BD824173-7728-4ACF-B57D-B56E3DE9F8AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HylandIMServer", "HylandIMServer\HylandIMServer.csproj", "{7C0A8F67-AD7B-4F09-B54F-6AB1772CEC88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HylandMedConfig.Emoticons", "HylandMedConfig.Emoticons\HylandMedConfig.Emoticons.csproj", "{789C91C9-4D4A-408D-A1D7-9AA169B1F7A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BDF12B0-ABEA-4154-ADA3-C0966FB5CE85}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{1BDF12B0-ABEA-4154-ADA3-C0966FB5CE85}.Debug|Any CPU.Build.0 = Debug|x86
+		{1BDF12B0-ABEA-4154-ADA3-C0966FB5CE85}.Debug|x86.ActiveCfg = Debug|x86
+		{1BDF12B0-ABEA-4154-ADA3-C0966FB5CE85}.Debug|x86.Build.0 = Debug|x86
+		{1BDF12B0-ABEA-4154-ADA3-C0966FB5CE85}.Release|Any CPU.ActiveCfg = Release|x86
+		{1BDF12B0-ABEA-4154-ADA3-C0966FB5CE85}.Release|Any CPU.Build.0 = Release|x86
+		{1BDF12B0-ABEA-4154-ADA3-C0966FB5CE85}.Release|x86.ActiveCfg = Release|x86
+		{1BDF12B0-ABEA-4154-ADA3-C0966FB5CE85}.Release|x86.Build.0 = Release|x86
+		{307A8B69-D7E6-4632-B796-8C7A0127054A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307A8B69-D7E6-4632-B796-8C7A0127054A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307A8B69-D7E6-4632-B796-8C7A0127054A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{307A8B69-D7E6-4632-B796-8C7A0127054A}.Debug|x86.Build.0 = Debug|Any CPU
+		{307A8B69-D7E6-4632-B796-8C7A0127054A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307A8B69-D7E6-4632-B796-8C7A0127054A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{307A8B69-D7E6-4632-B796-8C7A0127054A}.Release|x86.ActiveCfg = Release|Any CPU
+		{307A8B69-D7E6-4632-B796-8C7A0127054A}.Release|x86.Build.0 = Release|Any CPU
+		{BD824173-7728-4ACF-B57D-B56E3DE9F8AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD824173-7728-4ACF-B57D-B56E3DE9F8AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD824173-7728-4ACF-B57D-B56E3DE9F8AB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BD824173-7728-4ACF-B57D-B56E3DE9F8AB}.Debug|x86.Build.0 = Debug|Any CPU
+		{BD824173-7728-4ACF-B57D-B56E3DE9F8AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD824173-7728-4ACF-B57D-B56E3DE9F8AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD824173-7728-4ACF-B57D-B56E3DE9F8AB}.Release|x86.ActiveCfg = Release|Any CPU
+		{BD824173-7728-4ACF-B57D-B56E3DE9F8AB}.Release|x86.Build.0 = Release|Any CPU
+		{7C0A8F67-AD7B-4F09-B54F-6AB1772CEC88}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{7C0A8F67-AD7B-4F09-B54F-6AB1772CEC88}.Debug|Any CPU.Build.0 = Debug|x86
+		{7C0A8F67-AD7B-4F09-B54F-6AB1772CEC88}.Debug|x86.ActiveCfg = Debug|x86
+		{7C0A8F67-AD7B-4F09-B54F-6AB1772CEC88}.Debug|x86.Build.0 = Debug|x86
+		{7C0A8F67-AD7B-4F09-B54F-6AB1772CEC88}.Release|Any CPU.ActiveCfg = Release|x86
+		{7C0A8F67-AD7B-4F09-B54F-6AB1772CEC88}.Release|Any CPU.Build.0 = Release|x86
+		{7C0A8F67-AD7B-4F09-B54F-6AB1772CEC88}.Release|x86.ActiveCfg = Release|x86
+		{7C0A8F67-AD7B-4F09-B54F-6AB1772CEC88}.Release|x86.Build.0 = Release|x86
+		{789C91C9-4D4A-408D-A1D7-9AA169B1F7A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{789C91C9-4D4A-408D-A1D7-9AA169B1F7A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{789C91C9-4D4A-408D-A1D7-9AA169B1F7A7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{789C91C9-4D4A-408D-A1D7-9AA169B1F7A7}.Debug|x86.Build.0 = Debug|Any CPU
+		{789C91C9-4D4A-408D-A1D7-9AA169B1F7A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{789C91C9-4D4A-408D-A1D7-9AA169B1F7A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{789C91C9-4D4A-408D-A1D7-9AA169B1F7A7}.Release|x86.ActiveCfg = Release|Any CPU
+		{789C91C9-4D4A-408D-A1D7-9AA169B1F7A7}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://dev-tfs:8080/tfs/hylandcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = HylandAnimatedGif\\HylandAnimatedGif.csproj
+		SccProjectName1 = HylandAnimatedGif
+		SccLocalPath1 = HylandAnimatedGif
+		SccProjectUniqueName2 = HylandIMServer\\HylandIMServer.csproj
+		SccProjectName2 = HylandIMServer
+		SccLocalPath2 = HylandIMServer
+		SccProjectUniqueName3 = HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj
+		SccProjectName3 = HylandMedConfig.Bot
+		SccLocalPath3 = HylandMedConfig.Bot
+		SccProjectUniqueName4 = HylandMedConfig\\HylandMedConfig.csproj
+		SccProjectName4 = HylandMedConfig
+		SccLocalPath4 = HylandMedConfig
+		SccProjectUniqueName5 = HylandMedConfig.Emoticons\\HylandMedConfig.Emoticons.csproj
+		SccProjectName5 = HylandMedConfig.Emoticons
+		SccLocalPath5 = HylandMedConfig.Emoticons
+		SccProjectUniqueName6 = JonsBots\\JonsBots.csproj
+		SccProjectName6 = JonsBots
+		SccLocalPath6 = JonsBots
+	EndGlobalSection
+EndGlobal

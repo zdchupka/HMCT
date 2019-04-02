@@ -1,0 +1,253 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+                    xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+                    xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+                    xmlns:ChatMessages="clr-namespace:HylandMedConfig.ChatMessages"
+                    xmlns:Common="clr-namespace:HylandMedConfig.Common;assembly=HylandMedConfig.Bot">
+
+    <DataTemplate DataType="{x:Type ChatMessages:ChatUserStatsMessage}">
+        <Controls:ChatMessageCallout HorizontalAlignment="Center"
+                                     ContextMenu="{DynamicResource MessageContextMenu}"
+                                     Margin="5"
+                                     Padding="0">
+            <Grid>
+
+                <DockPanel Margin="5">
+                    <StackPanel DockPanel.Dock="Top"
+                               Margin="9">
+                        <TextBlock FontWeight="Bold"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Text="{Binding DisplayName}" />
+
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontStyle="Italic"
+                                   Text="{Binding Employee.OutOfOfficeStatus}" />
+                    </StackPanel>
+                    <Grid>
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding User}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Margin"
+                                        Value="3 1" />
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0"
+                                   Text="Last Login:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="0"
+                                   Text="{Binding Stats.LastLogin, Converter={Converters:LastLoginDateToStringConverter}}" />
+
+                        <TextBlock Grid.Row="1"
+                                   Text="Nickname:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="1"
+                                   Text="{Binding User.Nickname}" />
+
+                        <TextBlock Grid.Row="2"
+                                   Text="Client Version:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="2"
+                                   Text="{Binding User.ClientVersion}" />
+
+                        <TextBlock Grid.Row="3"
+                                   Text="Bot Creator Username"
+                                   FontWeight="Bold"
+                                   Visibility="{Binding User.IsBot, Converter={Converters:BooleanToVisibilityConverter}}"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="3"
+                                   Visibility="{Binding User.IsBot, Converter={Converters:BooleanToVisibilityConverter}}"
+                                   Text="{Binding User.BotCreatorUserName}" />
+
+                        <TextBlock Grid.Row="4"
+                                   Text="Public Messages Sent:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="4"
+                                   Text="{Binding Stats.PublicMessagesSent}" />
+
+                        <TextBlock Grid.Row="5"
+                                   Text="Private Messages Sent:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="5"
+                                   Text="{Binding Stats.PrivateMessagesSent}" />
+
+                        <TextBlock Grid.Row="6"
+                                   Text="Public Messages Received:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="6"
+                                   Text="{Binding Stats.PublicMessagesReceived}" />
+
+                        <TextBlock Grid.Row="7"
+                                   Text="Private Messages Received:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="7"
+                                   Text="{Binding Stats.PrivateMessagesReceived}" />
+
+                        <TextBlock Grid.Row="8"
+                                   Text="Thumbs Up Received:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="8"
+                                   Text="{Binding Stats.ThumbsUpReceived}" />
+
+                        <TextBlock Grid.Row="9"
+                                   Text="Thumbs Down Received:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="9"
+                                   Text="{Binding Stats.ThumbsDownReceived}" />
+
+                        <TextBlock Grid.Row="10"
+                                   Text="Thumbs Up Given:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="10"
+                                   Text="{Binding Stats.ThumbsUpGiven}" />
+
+                        <TextBlock Grid.Row="11"
+                                   Text="Thumbs Down Given:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="11"
+                                   Text="{Binding Stats.ThumbsDownGiven}" />
+
+                        <TextBlock Grid.Row="12"
+                                   Text="Fooz Game Attempts:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="12"
+                                   Text="{Binding Stats.FoozGameAttempts}" />
+
+                        <TextBlock Grid.Row="13"
+                                   Text="Fooz Games Registered:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="13"
+                                   Text="{Binding Stats.FoozGamesRegistered}" />
+
+                        <TextBlock Grid.Row="14"
+                                   Text="Mood Changes:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="14"
+                                   Text="{Binding Stats.ChangedMood}" />
+
+                        <!--<TextBlock Grid.Row="7"
+                                   Text="Messages Received:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="7"
+                                   Text="{Binding Stats.MessagesReceived}" />
+
+                        <TextBlock Grid.Row="8"
+                                   Text="Whispers Received:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="8"
+                                   Text="{Binding Stats.WhispersReceived}" />
+
+                        <TextBlock Grid.Row="9"
+                                   Text="Message Errors:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="9"
+                                   Text="{Binding Stats.MessageErrors}" />
+
+                        <TextBlock Grid.Row="10"
+                                   Text="Foosball Games Registered:"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="10"
+                                   Text="{Binding Stats.FoozGamesRegistered}" />-->
+                    </Grid>
+                </DockPanel>
+
+                <!-- Close button -->
+                <Button x:Name="closeButton"
+                        Grid.Column="1"
+                        Style="{DynamicResource RemoveMessageButtonStyle}"
+                        Visibility="Collapsed"
+                        Margin="1"
+                        Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Controls:ChatMessageCallout}}"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Command="{Binding ViewModel.RemoveMessageCommand, ElementName=root}"
+                        CommandParameter="{Binding}"
+                        Background="{DynamicResource WindowBackgroundBrush}" />
+
+            </Grid>
+        </Controls:ChatMessageCallout>
+        <DataTemplate.Triggers>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter TargetName="closeButton"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+</ResourceDictionary>

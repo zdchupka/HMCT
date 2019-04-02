@@ -1,0 +1,97 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="HylandMedConfig.ResourceDictionaries.MessageDataTemplates.PollClosedMessageDataTemplate"
+                    xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+                    xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+                    xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+                    xmlns:Windows="clr-namespace:System.Windows;assembly=PresentationFramework"
+                    xmlns:attached="clr-namespace:HylandMedConfig.Attached"
+                    xmlns:gif="http://wpfanimatedgif.codeplex.com"
+                    xmlns:Commands="clr-namespace:HylandMedConfig.Commands"
+                    xmlns:vsm="clr-namespace:System.Windows;assembly=WPFToolkit"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:local="clr-namespace:HylandMedConfig"
+                    xmlns:Common="clr-namespace:HylandMedConfig.Common;assembly=HylandMedConfig.Bot">
+
+    <DataTemplate DataType="{x:Type local:PollClosedMessage}">
+        <Grid HorizontalAlignment="Center">
+            <Controls:ChatMessageCallout HorizontalAlignment="Center"
+                                         x:Name="chatMessageCallout"
+                                         ContextMenu="{DynamicResource MessageContextMenu}"
+                                         ToolTip="{Binding Poll}"
+                                         Margin="5"
+                                         Padding="0">
+                <Grid>
+                    <StackPanel Margin="14">
+                        <TextBlock Text="Poll Closed:" />
+
+
+                        <Controls:EmoticonRichTextBox RawText="{Binding Poll.Text}" />
+
+                        <TextBlock Text="Winner(s):"
+                                   Margin="0 15 0 0" />
+
+                        <TextBlock Text="No Winners"
+                                   FontStyle="Italic">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility"
+                                            Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Winners.Count}"
+                                                     Value="0">
+                                            <Setter Property="Visibility"
+                                                    Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <ItemsControl ItemsSource="{Binding Winners}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Controls:EmoticonRichTextBox>
+                                        <Controls:EmoticonRichTextBox.RawText>
+                                            <MultiBinding StringFormat="{}{0} - {1} vote(s)">
+                                                <Binding Path="Text"
+                                                         Mode="OneWay" />
+                                                <Binding Path="Votes.Count"
+                                                         Mode="OneWay" />
+                                            </MultiBinding>
+                                        </Controls:EmoticonRichTextBox.RawText>
+                                    </Controls:EmoticonRichTextBox>
+
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
+                    <!-- Close button -->
+                    <Button x:Name="closeButton"
+                            Style="{DynamicResource RemoveMessageButtonStyle}"
+                            Visibility="Collapsed"
+                            Margin="1"
+                            Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Controls:ChatMessageCallout}}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Command="{Binding ViewModel.RemoveMessageCommand, ElementName=root}"
+                            CommandParameter="{Binding}"
+                            Background="{DynamicResource WindowBackgroundBrush}" />
+                </Grid>
+            </Controls:ChatMessageCallout>
+
+           
+        </Grid>
+        <DataTemplate.Triggers>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter TargetName="closeButton"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+</ResourceDictionary>

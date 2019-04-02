@@ -1,0 +1,14 @@
+﻿{
+  "dependencies": {
+    "Extended.Wpf.Toolkit": "3.2.0",
+    "HtmlAgilityPack": "1.6.0",
+    "System.Windows.Interactivity.WPF": "2.0.20525"
+  },
+  "runtimes": {
+    "win-x64": {},
+    "win-x86": {}
+  },
+  "frameworks": {
+    "net460": {}
+  }
+}

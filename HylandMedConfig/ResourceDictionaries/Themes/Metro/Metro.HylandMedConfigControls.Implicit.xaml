@@ -1,0 +1,182 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+                    xmlns:local="clr-namespace:HylandMedConfig"
+                    xmlns:Controls="clr-namespace:HylandMedConfig.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.WPF.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <!-- *********************************  ChatMessageCallout Style  ********************************* -->
+
+    <Style x:Key="ChatMessageCalloutStyle"
+           BasedOn="{StaticResource {x:Type Controls:ChatMessageCallout}}"
+           TargetType="{x:Type Controls:ChatMessageCallout}">
+    </Style>
+
+    <!-- *********************************  ContentHighlighter Style  ********************************* -->
+
+    <Style x:Key="ContentHighlighterStyle"
+           BasedOn="{StaticResource {x:Type Controls:ContentHighlighter}}"
+           TargetType="{x:Type Controls:ContentHighlighter}">
+        <Setter Property="HighlightBrush"
+                Value="{StaticResource ContentHighlighterHighlightBrush}" />
+    </Style>
+
+    <!-- *********************************  Chat Expander Header Style  ********************************* -->
+    <Style x:Key="ChatExpanderHeaderStyle"
+           TargetType="{x:Type ToggleButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border Padding="{TemplateBinding Padding}">
+                        <Grid Background="{StaticResource TransparentBrush}"
+                              SnapsToDevicePixels="False">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.LayoutTransform>
+                                    <TransformGroup>
+                                        <TransformGroup.Children>
+                                            <TransformCollection>
+                                                <RotateTransform Angle="-90" />
+                                            </TransformCollection>
+                                        </TransformGroup.Children>
+                                    </TransformGroup>
+                                </Grid.LayoutTransform>
+                                <Rectangle x:Name="rectangle"
+                                           Width="30"
+                                           Height="30"
+                                           Fill="{DynamicResource ExpanderButtonBackgroundBrush}"
+                                           HorizontalAlignment="Center"
+                                           Stroke="{DynamicResource ExpanderButtonBorderBrush}"
+                                           VerticalAlignment="Center" />
+                                <Path x:Name="arrow"
+                                      Width="10"
+                                      Height="6"
+                                      Fill="{DynamicResource GlyphBackgroundBrush}"
+                                      Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "
+                                      Stretch="Fill"
+                                      RenderTransformOrigin="0.5, 0.5" />
+                            </Grid>
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              Margin="0,4,0,0"
+                                              Grid.Row="1"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="True"
+                                              VerticalAlignment="Stretch" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="true">
+                            <Setter Property="Data"
+                                    TargetName="arrow"
+                                    Value="M3.4,-4.4 L6.8,3.9 3.9566912E-07,3.9 z" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="Fill"
+                                    TargetName="rectangle"
+                                    Value="{DynamicResource ExpanderButtonHoverBackgroundBrush}" />
+                            <Setter Property="Stroke"
+                                    TargetName="rectangle"
+                                    Value="{DynamicResource ExpanderButtonHoverBorderBrush}" />
+                            <Setter Property="Fill"
+                                    TargetName="arrow"
+                                    Value="{DynamicResource ExpanderArrowHoverBorderBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="true">
+                            <Setter Property="Fill"
+                                    TargetName="rectangle"
+                                    Value="{DynamicResource ExpanderButtonPressedBackgroundBrush}" />
+                            <Setter Property="Stroke"
+                                    TargetName="rectangle"
+                                    Value="{DynamicResource ExpanderButtonPressedBorderBrush}" />
+                            <Setter Property="Fill"
+                                    TargetName="arrow"
+                                    Value="{DynamicResource ExpanderArrowPressedBorderBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- *********************************  ChatExpander Style  ********************************* -->
+    <Style x:Key="ChatExpanderStyle"
+           TargetType="{x:Type Controls:ChatExpander}">
+        <Setter Property="FontFamily"
+                Value="Segoe UI" />
+        <Setter Property="FontSize"
+                Value="14.667" />
+        <Setter Property="Foreground"
+                Value="{StaticResource ForegroundBrush}" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:ChatExpander}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="true">
+                        <DockPanel>
+                            <ToggleButton x:Name="HeaderSite"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                          Content="{TemplateBinding Header}"
+                                          DockPanel.Dock="Left"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          FontWeight="{TemplateBinding FontWeight}"
+                                          FontStyle="{TemplateBinding FontStyle}"
+                                          FontStretch="{TemplateBinding FontStretch}"
+                                          FontSize="{TemplateBinding FontSize}"
+                                          FontFamily="{TemplateBinding FontFamily}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                          Margin="1"
+                                          MinWidth="0"
+                                          MinHeight="0"
+                                          Padding="{TemplateBinding Padding}"
+                                          Style="{StaticResource ChatExpanderHeaderStyle}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <ContentPresenter x:Name="ExpandSite"
+                                              DockPanel.Dock="Right"
+                                              Width="10"
+                                              Focusable="false"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Foreground"
+                                    Value="{StaticResource ExpanderDisabledForegroundBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--********************** Implicit Styles *********************** -->
+    <Style BasedOn="{StaticResource ChatMessageCalloutStyle}"
+           TargetType="{x:Type Controls:ChatMessageCallout}" />
+    <Style BasedOn="{StaticResource ContentHighlighterStyle}"
+           TargetType="{x:Type Controls:ContentHighlighter}" />
+    <Style BasedOn="{StaticResource ChatExpanderStyle}"
+           TargetType="{x:Type Controls:ChatExpander}" />
+
+</ResourceDictionary>

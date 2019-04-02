@@ -1,0 +1,62 @@
+﻿<ItemsControl x:Class="HylandMedConfig.Controls.ChatMessageList"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+              xmlns:Commands="clr-namespace:HylandMedConfig.Commands"
+              xmlns:Common="clr-namespace:HylandMedConfig.Common;assembly=HylandMedConfig.Bot"
+              xmlns:attached="clr-namespace:HylandMedConfig.Attached"
+              ItemsSource="{Binding MessagesView}"
+              ScrollViewer.CanContentScroll="False"
+              ScrollViewer.VerticalScrollBarVisibility="Auto"
+              mc:Ignorable="d"
+              x:Name="root"
+              d:DesignHeight="900"
+              d:DesignWidth="441">
+
+    <ItemsControl.Template>
+        <ControlTemplate>
+            <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                    BorderBrush="{TemplateBinding Border.BorderBrush}"
+                    Background="{TemplateBinding Panel.Background}"
+                    SnapsToDevicePixels="True"
+                    Padding="{TemplateBinding Control.Padding}">
+                <Grid>
+                    <ScrollViewer Padding="{TemplateBinding Control.Padding}"
+                                  ScrollChanged="sv_ScrollChanged"
+                                  Focusable="False"
+                                  x:Name="sv">
+                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                    </ScrollViewer>
+                    <Border Background="{DynamicResource WindowBackgroundBrush}"
+                            BorderBrush="{DynamicResource NormalBorderBrush}"
+                            BorderThickness="1 0 1 1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Padding="10 5">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding FilterCount}"
+                                                 Value="0">
+                                        <Setter Property="Visibility"
+                                                Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <TextBlock Text="{Binding FilterCount, StringFormat='{}{0:#,##0} Filtered Messages'}"
+                                   Foreground="{DynamicResource ForegroundBrush}" />
+                    </Border>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </ItemsControl.Template>
+    <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+            <VirtualizingStackPanel />
+        </ItemsPanelTemplate>
+    </ItemsControl.ItemsPanel>
+
+</ItemsControl>

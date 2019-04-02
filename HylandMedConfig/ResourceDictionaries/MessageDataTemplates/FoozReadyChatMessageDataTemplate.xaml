@@ -1,0 +1,116 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:attached="clr-namespace:HylandMedConfig.Attached"
+                    xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+                    xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:local="clr-namespace:HylandMedConfig"
+                    xmlns:Common="clr-namespace:HylandMedConfig.Common;assembly=HylandMedConfig.Bot">
+
+    <DataTemplate DataType="{x:Type local:FoozReadyChatMessage}">
+        <Grid HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Controls:ContentHighlighter HorizontalAlignment="Center"
+                                         Grid.ColumnSpan="2"
+                                         Margin="0 9 0 3"
+                                         DockPanel.Dock="Bottom">
+                <TextBlock FontSize="11"
+                           Text="Foosball Game Ready" />
+            </Controls:ContentHighlighter>
+
+            <Controls:ChatMessageCallout Grid.Row="1"
+                                         HorizontalAlignment="Center"
+                                         Padding="0"
+                                         Grid.ColumnSpan="2">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Background="#222222"
+                            CornerRadius="3,0,0,3">
+                        <StackPanel Margin="15">
+
+                            <Controls:ChatUserImage User="{Binding BlackFront}"
+                                                    Margin="5" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Foreground="#FFBABABA"
+                                       Text="{Binding BlackFront.DisplayNameResolved}">
+                                <i:Interaction.Behaviors>
+                                    <attached:FrameworkElementWhisperBehavior User="{Binding BlackFront}" />
+                                </i:Interaction.Behaviors>
+                                <TextBlock.ToolTip>
+                                    <Controls:ChatUserToolTip User="{Binding BlackFront}" />
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+
+                            <Controls:ChatUserImage User="{Binding BlackRear}"
+                                                    Margin="5" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Foreground="#FFBABABA"
+                                       Text="{Binding BlackRear.DisplayNameResolved}">
+                                <i:Interaction.Behaviors>
+                                    <attached:FrameworkElementWhisperBehavior User="{Binding BlackRear}" />
+                                </i:Interaction.Behaviors>
+                                <TextBlock.ToolTip>
+                                    <Controls:ChatUserToolTip User="{Binding BlackRear}" />
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                    <Border Background="#FFD500"
+                            Grid.Column="1"
+                            TextElement.Foreground="Black"
+                            CornerRadius="0,3,3,0">
+                        <StackPanel Margin="15">
+                            <Controls:ChatUserImage User="{Binding YellowFront}"
+                                                    Margin="5" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="{Binding YellowFront.DisplayNameResolved}">
+                                <i:Interaction.Behaviors>
+                                    <attached:FrameworkElementWhisperBehavior User="{Binding YellowFront}" />
+                                </i:Interaction.Behaviors>
+                                <TextBlock.ToolTip>
+                                    <Controls:ChatUserToolTip User="{Binding YellowFront}" />
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                            <Controls:ChatUserImage User="{Binding YellowRear}"
+                                                    Margin="5" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="{Binding YellowRear.DisplayNameResolved}">
+                                <i:Interaction.Behaviors>
+                                    <attached:FrameworkElementWhisperBehavior User="{Binding YellowRear}" />
+                                </i:Interaction.Behaviors>
+                                <TextBlock.ToolTip>
+                                    <Controls:ChatUserToolTip User="{Binding YellowRear}" />
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Controls:ChatMessageCallout>
+
+
+            <Controls:ContentHighlighter x:Name="statusBorder"
+                                         HorizontalAlignment="Center"
+                                         Grid.Row="2"
+                                         Grid.ColumnSpan="3"
+                                         Margin="13 4"
+                                         DockPanel.Dock="Bottom">
+                <TextBlock FontSize="11"
+                           Text="{Binding Date, StringFormat=t, Mode=OneWay}" />
+            </Controls:ContentHighlighter>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

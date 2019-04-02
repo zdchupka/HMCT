@@ -1,0 +1,167 @@
+﻿<UserControl x:Class="HylandMedConfig.Controls.Whiteboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+             xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+             xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+             xmlns:local="clr-namespace:HylandMedConfig"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             xmlns:Commands="clr-namespace:HylandMedConfig.Commands"
+             mc:Ignorable="d"
+             x:Name="root"
+             Loaded="root_Loaded"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <UserControl.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Save to File..."
+                      Click="MenuItem_Click" />
+            <MenuItem Header="Copy to Clipboard"
+                      Click="MenuItem_Click_1" />
+            <MenuItem Header="Open in new window..."
+                      Click="MenuItem_Click_2" />
+        </ContextMenu>
+    </UserControl.ContextMenu>
+    <Grid>
+        <DockPanel>
+            <StackPanel VerticalAlignment="Top"
+                        Visibility="{Binding Message.FromUser, ElementName=root, Converter={Converters:IsCurrentUserVisibilityConverter}}">
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="DockPanel.Dock"
+                                Value="Left" />
+                        <Setter Property="Margin"
+                                Value="0 0 8 0" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Message.FromUser, ElementName=root, Converter={Converters:IsCurrentUserConverter}}"
+                                         Value="False">
+                                <Setter Property="DockPanel.Dock"
+                                        Value="Right" />
+                                <Setter Property="Margin"
+                                        Value="8 0 0 0" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <Controls:LockButton IsLocked="{Binding Message.IsLocked, ElementName=root, Mode=OneWay}"
+                                     Margin="4"
+                                     Foreground="{Binding ElementName=root, Path=Foreground}"
+                                     Command="{Binding ToggleLockWhiteboardCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                                     CommandParameter="{Binding Message, ElementName=root}">
+                </Controls:LockButton>
+
+                <Button Style="{StaticResource ClearWhiteboardButtonStyle}"
+                        Margin="4"
+                        Foreground="{Binding ElementName=root, Path=Foreground}"
+                        Command="{Binding ClearWhiteboardCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                        CommandParameter="{Binding Message, ElementName=root}" />
+
+                <Button Style="{StaticResource SaveWhiteboardButtonStyle}"
+                        Margin="4"
+                        Foreground="{Binding ElementName=root, Path=Foreground}"
+                        Click="Button_Click"
+                        CommandParameter="{Binding Message, ElementName=root}" />
+
+                <Button Style="{StaticResource RevertToLstSavedButtonStyle}"
+                        Margin="4"
+                        Foreground="{Binding ElementName=root, Path=Foreground}"
+                        Click="Button_Click_1"
+                        CommandParameter="{Binding Message, ElementName=root}" />
+            </StackPanel>
+
+            <Grid>
+
+                <Controls:ZoomControl  Width="{Binding ElementName=root, Path=CanvasWidth}"
+                                       Mode="Fill"
+                                       ClipContent="{Binding ClipContent, ElementName=root}"
+                                       ClipToBounds="False"
+                                       ZoomControlVisibility="{Binding ShowWhiteboardZoom, Source={x:Static Properties:Settings.Default}, Converter={Converters:BooleanToVisibilityConverter}}"
+                                       ZoomBoxBackground="{Binding Background, ElementName=root}"
+                                       ZoomBoxBorderBrush="{Binding Foreground, ElementName=root}"
+                                       ZoomBoxBorderThickness="1"
+                                       Background="{Binding RelativeSource={RelativeSource AncestorType=Controls:ChatMessageCallout}, Path=Background}"
+                                       Height="{Binding ElementName=root, Path=CanvasHeight}">
+
+                    <Border BorderBrush="{Binding Foreground, ElementName=root}"
+                            BorderThickness="1">
+
+                        <Grid>
+
+                            <ItemsControl x:Name="itemsControl"
+                                          Background="White"
+                                          ItemsSource="{Binding Message.Entries, ElementName=root}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <Canvas Width="{Binding ElementName=root, Path=CanvasWidth}"
+                                                x:Name="theCanvas"
+                                                ClipToBounds="True"
+                                                Height="{Binding ElementName=root, Path=CanvasHeight}"
+                                                MouseLeftButtonDown="Canvas_MouseLeftButtonDown"
+                                                MouseLeftButtonUp="myCanvas_MouseLeftButtonUp"
+                                                PreviewMouseRightButtonDown="theCanvas_MouseRightButtonDown"
+                                                MouseLeave="theCanvas_MouseLeave"
+                                                MouseMove="Canvas_MouseMove">
+                                            <Canvas.Style>
+                                                <Style TargetType="Canvas">
+                                                    <Setter Property="Cursor"
+                                                            Value="{Binding Cursor, Source={StaticResource PencilCursor}}" />
+                                                    <Style.Triggers>
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding Message.IsLocked, ElementName=root}"
+                                                                           Value="True" />
+                                                                <Condition Binding="{Binding Message.FromUser, ElementName=root, Converter={Converters:IsCurrentUserConverter}}"
+                                                                           Value="False" />
+                                                            </MultiDataTrigger.Conditions>
+                                                            <Setter Property="Cursor"
+                                                                    Value="Arrow" />
+                                                        </MultiDataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Canvas.Style>
+                                            <Canvas.Background>
+                                                <VisualBrush Stretch="Uniform">
+                                                    <VisualBrush.Visual>
+                                                        <Image gif:ImageBehavior.AnimatedSource="{Binding Message.ImageUrl, ElementName=root, NotifyOnSourceUpdated=True}" />
+                                                    </VisualBrush.Visual>
+                                                </VisualBrush>
+                                            </Canvas.Background>
+                                        </Canvas>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <ContentControl Content="{Binding Converter={Converters:WhiteboardEntryToLineConverter}}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <Controls:ContentHighlighter IsHitTestVisible="False"
+                                                         Margin="2"
+                                                         ShowHighlighting="True"
+                                                         HorizontalAlignment="Right"
+                                                         Visibility="{Binding Message.IsLocked, ElementName=root, Converter={Converters:BooleanToVisibilityConverter}}"
+                                                         VerticalAlignment="Bottom">
+                                <TextBlock Text="Locked"
+                                           FontFamily="{Binding SystemFontFamily, Source={x:Static Properties:Settings.Default}}"
+                                           FontSize="{Binding SystemFontSize, Source={x:Static Properties:Settings.Default}}"
+                                           FontWeight="{Binding SystemFontWeight, Source={x:Static Properties:Settings.Default}}"
+                                           FontStyle="{Binding SystemFontStyle, Source={x:Static Properties:Settings.Default}}"
+                                           Foreground="{Binding SystemForegroundResolvedBrush, Source={x:Static Properties:Settings.Default}}" />
+                            </Controls:ContentHighlighter>
+
+                        </Grid>
+
+                    </Border>
+
+                </Controls:ZoomControl>
+
+            </Grid>
+
+        </DockPanel>
+
+    </Grid>
+</UserControl>

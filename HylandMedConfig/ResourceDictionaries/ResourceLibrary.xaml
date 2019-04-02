@@ -1,0 +1,257 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:gif="http://wpfanimatedgif.codeplex.com"
+                    xmlns:local="clr-namespace:HylandMedConfig"
+                    xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+                    xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+                    xmlns:Properties="clr-namespace:HylandMedConfig.Properties">
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary Source="NamedStyles/RemoveMessageButtonStyle.xaml" />
+        <ResourceDictionary Source="NamedStyles/HyperlinkButtonStyle.xaml" />
+
+        <ResourceDictionary Source="CustomControlStyles/ChatMessageCalloutStyle.xaml" />
+        <ResourceDictionary Source="CustomControlStyles/ContentHighlighterStyle.xaml" />
+        <ResourceDictionary Source="CustomControlStyles/MessageBubbleStyle.xaml" />
+
+        <!-- Message templates -->
+        <ResourceDictionary Source="MessageDataTemplates/ASCIIChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/ChatUserStatsMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/CombinedNormalChatUserMessagesDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/FoozReadyChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/HelpChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/HTMLChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/ImageUrlChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/NormalChatUserMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/SystemChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/UserStatusMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/WebUrlChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/XamlMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/LinkChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/MemeChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/PollMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/TagCreatedChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/VideoUrlChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/WhiteboardChatMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/ChatUserListStatsMessageDataTemplate.xaml" />
+        <ResourceDictionary Source="MessageDataTemplates/PollClosedMessageDataTemplate.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Workaround for ResourceDictionary loading bug / optimization -->
+    <Style TargetType="{x:Type Rectangle}" />
+
+    <Style TargetType="Image"
+           x:Key="AnimatedImageStyle">
+        <Setter Property="gif:ImageBehavior.RepeatBehavior"
+                Value="0" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding EnableAnimations, Source={x:Static Properties:Settings.Default}}"
+                         Value="True">
+                <Setter Property="gif:ImageBehavior.RepeatBehavior"
+                        Value="Forever" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <DataTemplate x:Key="TaskbarItemInfoTemplate">
+        <Grid Width="20"
+              Height="20">
+
+            <Rectangle Fill="Orange"
+                       StrokeThickness="0"
+                       Stroke="White">
+            </Rectangle>
+
+            <TextBlock Text="{Binding}"
+                       TextAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       Height="16"
+                       VerticalAlignment="Center"
+                       FontSize="12" />
+        </Grid>
+    </DataTemplate>
+
+    <ContextMenu x:Key="GroupMessageContextMenu">
+        <MenuItem Header="Open Conversation..."
+                  Command="{Binding OpenWhisperInNewWindowCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding}" />
+    </ContextMenu>
+
+    <ContextMenu x:Key="UserContextMenu">
+        <MenuItem Header="Send Whisper"
+                  Command="{Binding StartWhisperToUsersCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding}" />
+        <MenuItem Command="{Binding ToggleIgnoreUserCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding}">
+            <MenuItem.Header>
+                <MultiBinding Converter="{Converters:IgnoreUserMenuItemHeaderConverter}">
+                    <Binding />
+                    <Binding Source="{x:Static local:ApplicationViewModel.Current}"
+                             Path="IgnoredUsersView.Count" />
+                </MultiBinding>
+            </MenuItem.Header>
+        </MenuItem>
+        <MenuItem Header="Rename..."
+                  Command="{Binding ShowChangeNicknameWindowCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding}" />
+
+        <MenuItem Header="Open Conversation..."
+                  Command="{Binding OpenWhisperInNewWindowCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding}" />
+    </ContextMenu>
+
+    <ContextMenu x:Key="TagContextMenu">
+        <MenuItem Header="Ignore Tag"
+                  Command="{Binding IgnoreTagCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding Tag}" />
+        <MenuItem Header="{Binding IsMuted, Converter={Converters:MuteTagItemHeaderConverter}}"
+                  ToolTip="When a tag is muted you will no longer receive notifications when messages are sent to this tag"
+                  Command="{Binding MuteTagCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding Tag}" />
+        <MenuItem Header="Open Tag in New Window..."
+                  Command="{Binding OpenTagInWindowCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding Tag}" />
+    </ContextMenu>
+
+    <ContextMenu x:Key="MessageContextMenu">
+        <MenuItem Header="Play Message"
+                  Command="{Binding PlayMessage, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding}" />
+
+        <MenuItem Header="Copy Message"
+                  Command="{Binding CopyMessageTextCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding}" />
+
+        <Separator />
+
+        <MenuItem Header="Remove Message"
+                  Command="{Binding RemoveMessageCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding}" />
+
+        <Separator />
+
+        <MenuItem Header="Remove Messages Before This"
+                  Command="{Binding RemoveMessagesBeforeCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                  CommandParameter="{Binding}" />
+
+    </ContextMenu>
+
+    <PathGeometry x:Key="ClearWhiteBoardGeometry"
+                  Figures="M 25.3333,23.75L 50.6667,23.75C 51.5411,23.75 51.8541,27.3125 51.8541,27.3125L 24.1458,27.3125C 24.1458,27.3125 24.4589,23.75 25.3333,23.75 Z M 35.625,19.7917L 40.375,19.7917C 40.8122,19.7917 41.9583,20.9378 41.9583,21.375C 41.9583,21.8122 40.8122,22.9584 40.375,22.9584L 35.625,22.9584C 35.1878,22.9584 34.0416,21.8122 34.0416,21.375C 34.0416,20.9378 35.1878,19.7917 35.625,19.7917 Z M 27.7083,28.5L 48.2916,28.5C 49.1661,28.5 49.875,29.2089 49.875,30.0834L 48.2916,53.8334C 48.2916,54.7078 47.5828,55.4167 46.7083,55.4167L 29.2917,55.4167C 28.4172,55.4167 27.7083,54.7078 27.7083,53.8334L 26.125,30.0834C 26.125,29.2089 26.8339,28.5 27.7083,28.5 Z M 30.0833,31.6667L 30.4792,52.25L 33.25,52.25L 32.8542,31.6667L 30.0833,31.6667 Z M 36.4167,31.6667L 36.4167,52.25L 39.5833,52.25L 39.5833,31.6667L 36.4167,31.6667 Z M 43.1458,31.6667L 42.75,52.25L 45.5208,52.25L 45.9167,31.6667L 43.1458,31.6667 Z" />
+
+    <PathGeometry x:Key="TagMutedGeometry"
+                  Figures="M12,4L9.91,6.09L12,8.18M4.27,3L3,4.27L7.73,9H3V15H7L12,20V13.27L16.25,17.53C15.58,18.04 14.83,18.46 14,18.7V20.77C15.38,20.45 16.63,19.82 17.68,18.96L19.73,21L21,19.73L12,10.73M19,12C19,12.94 18.8,13.82 18.46,14.64L19.97,16.15C20.62,14.91 21,13.5 21,12C21,7.72 18,4.14 14,3.23V5.29C16.89,6.15 19,8.83 19,12M16.5,12C16.5,10.23 15.5,8.71 14,7.97V10.18L16.45,12.63C16.5,12.43 16.5,12.21 16.5,12Z" />
+
+    <Style x:Key="ClearWhiteboardButtonStyle"
+           TargetType="Button">
+        <Setter Property="Width"
+                Value="16" />
+        <Setter Property="ToolTip"
+                Value="Clear this Whiteboard" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Cursor="Hand">
+                        <Path Fill="{TemplateBinding Foreground}"
+                              StrokeThickness="0"
+                              Margin="{TemplateBinding Padding}"
+                              Stretch="Uniform"
+                              x:Name="path"
+                              Data="{StaticResource ClearWhiteBoardGeometry}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Opacity"
+                                    Value="0.75" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Opacity"
+                                    Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <PathGeometry x:Key="SaveWhiteboardGeometry"
+                  Figures="M 20.5833,20.5833L 55.4167,20.5833L 55.4167,55.4167L 45.9167,55.4167L 45.9167,44.3333L 30.0833,44.3333L 30.0833,55.4167L 20.5833,55.4167L 20.5833,20.5833 Z M 33.25,55.4167L 33.25,50.6667L 39.5833,50.6667L 39.5833,55.4167L 33.25,55.4167 Z M 26.9167,23.75L 26.9167,33.25L 49.0833,33.25L 49.0833,23.75L 26.9167,23.75 Z" />
+
+    <Style x:Key="SaveWhiteboardButtonStyle"
+           TargetType="Button">
+        <Setter Property="Width"
+                Value="16" />
+        <Setter Property="ToolTip"
+                Value="Save this whiteboard" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Cursor="Hand">
+                        <Path Fill="{TemplateBinding Foreground}"
+                              StrokeThickness="0"
+                              Margin="{TemplateBinding Padding}"
+                              Stretch="Uniform"
+                              x:Name="path"
+                              Data="{StaticResource SaveWhiteboardGeometry}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Opacity"
+                                    Value="0.75" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Opacity"
+                                    Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <PathGeometry x:Key="RevertToLstSavedGeometry"
+                  Figures="M 58,33.5001L 58,27L 49,19L 40,27.5001L 40,33.5001L 46,28.2097L 46,40.5C 46,46.299 41.299,51 35.5,51C 29.701,51 25,46.299 25,40.5C 25,34.8686 29.4332,30.2727 35,30.0117L 35,24.0074C 26.1186,24.2718 19,31.5546 19,40.5C 19,49.6127 26.3873,57 35.5,57C 44.6127,57 52,49.6127 52,40.5L 52,28.125L 58,33.5001 Z" />
+
+    <Style x:Key="RevertToLstSavedButtonStyle"
+           TargetType="Button">
+        <Setter Property="Width"
+                Value="16" />
+        <Setter Property="ToolTip"
+                Value="Revert to the last saved whiteboard" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Cursor="Hand">
+                        <Path Fill="{TemplateBinding Foreground}"
+                              StrokeThickness="0"
+                              Margin="{TemplateBinding Padding}"
+                              Stretch="Uniform"
+                              x:Name="path"
+                              Data="{StaticResource RevertToLstSavedGeometry}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Opacity"
+                                    Value="0.75" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Opacity"
+                                    Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <TextBlock x:Key="PencilCursor"
+               Cursor="/cursor_pencil.cur" />
+</ResourceDictionary>

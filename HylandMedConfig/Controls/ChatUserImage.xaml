@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="HylandMedConfig.Controls.ChatUserImage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Converters="clr-namespace:HylandMedConfig.Converters"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Properties="clr-namespace:HylandMedConfig.Properties"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:attached="clr-namespace:HylandMedConfig.Attached"
+             xmlns:Controls="clr-namespace:HylandMedConfig.Controls"
+             xmlns:local="clr-namespace:HylandMedConfig"
+             mc:Ignorable="d"
+             x:Name="root"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Setter Property="Height"
+                    Value="{Binding UserImageHeight, Source={x:Static Properties:Settings.Default}}" />
+            <Setter Property="Width"
+                    Value="{Binding UserImageHeight, Source={x:Static Properties:Settings.Default}}" />
+
+           
+        </Style>
+    </UserControl.Style>
+
+      <UserControl.ContextMenu>
+        <ContextMenu DataContext="{Binding PlacementTarget.User, RelativeSource={RelativeSource Self}}">
+            <MenuItem Header="Send Whisper"
+                      Command="{Binding StartWhisperToUsersCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                      CommandParameter="{Binding}" />
+            <MenuItem Command="{Binding ToggleIgnoreUserCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                      CommandParameter="{Binding}">
+                <MenuItem.Header>
+                    <MultiBinding Converter="{Converters:IgnoreUserMenuItemHeaderConverter}">
+                        <Binding />
+                        <Binding Source="{x:Static local:ApplicationViewModel.Current}"
+                                 Path="IgnoredUsersView.Count" />
+                    </MultiBinding>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Header="Rename..."
+                      Command="{Binding ShowChangeNicknameWindowCommand, Source={x:Static local:ApplicationViewModel.Current}}"
+                      CommandParameter="{Binding}" />
+        </ContextMenu>
+    </UserControl.ContextMenu>
+
+    <UserControl.Resources>
+
+        <Controls:ChatUserImageImageCenterConverter x:Key="ChatUserImageImageCenterConverter" />
+
+        <Style x:Key="ImageStyle"
+               TargetType="Image">
+            <Setter Property="Width"
+                    Value="{Binding Width, RelativeSource={RelativeSource AncestorType=Controls:ChatUserImage}}" />
+            <Setter Property="Height"
+                    Value="{Binding Height, RelativeSource={RelativeSource AncestorType=Controls:ChatUserImage}}" />
+            <Setter Property="Stretch"
+                    Value="None" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Clip">
+                <Setter.Value>
+                    <EllipseGeometry Center="{Binding Height, RelativeSource={RelativeSource AncestorType=Controls:ChatUserImage}, Converter={StaticResource ChatUserImageImageCenterConverter}}"
+                                     RadiusX="{Binding Width, RelativeSource={RelativeSource AncestorType=Controls:ChatUserImage}, Converter={Converters:MultiplyConverter}, ConverterParameter=0.5}"
+                                     RadiusY="{Binding Height, RelativeSource={RelativeSource AncestorType=Controls:ChatUserImage}, Converter={Converters:MultiplyConverter}, ConverterParameter=0.5}" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+    <i:Interaction.Behaviors>
+        <attached:FrameworkElementWhisperBehavior User="{Binding User, ElementName=root}" />
+    </i:Interaction.Behaviors>
+    <Grid>
+        <Ellipse Width="{Binding Width, RelativeSource={RelativeSource AncestorType=Controls:ChatUserImage}}"
+                 x:Name="userEllipse"
+                 Height="{Binding Height, RelativeSource={RelativeSource AncestorType=Controls:ChatUserImage}}">
+            <Ellipse.Fill>
+                <VisualBrush Stretch="UniformToFill">
+                    <VisualBrush.Visual>
+                        <Image Source="{Binding User.ImageUrl, ElementName=root}" />
+                    </VisualBrush.Visual>
+                </VisualBrush>
+
+            </Ellipse.Fill>
+        </Ellipse>
+        <ContentControl x:Name="userTooltipPopup">
+            
+        </ContentControl>
+      
+    </Grid>
+
+</UserControl>
