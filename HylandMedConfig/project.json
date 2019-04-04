@@ -1,8 +1,8 @@
 ﻿{
   "dependencies": {
-    "Extended.Wpf.Toolkit": "3.2.0",
+    "Extended.Wpf.Toolkit": "3.5.0",
     "FontAwesome.WPF": "4.7.0.9",
-    "HtmlAgilityPack": "1.6.0",
+    "HtmlAgilityPack": "1.11.1",
     "System.Windows.Interactivity.WPF": "2.0.20525"
   },
   "runtimes": {

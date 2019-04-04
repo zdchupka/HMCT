@@ -1,13 +1,13 @@
 ﻿{
   "dependencies": {
-    "HtmlAgilityPack": "1.6.0"
+    "HtmlAgilityPack": "1.11.1"
   },
   "runtimes": {
-    "win-x64": { },
-    "win-x86": { },
-    "win": { }
+    "win-x64": {},
+    "win-x86": {},
+    "win": {}
   },
   "frameworks": {
-    "net460": { }
+    "net460": {}
   }
 }

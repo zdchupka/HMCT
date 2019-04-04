@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.6": {
-      "HtmlAgilityPack/1.6.0": {
+      "HtmlAgilityPack/1.11.1": {
         "type": "package",
         "compile": {
           "lib/Net45/HtmlAgilityPack.dll": {}
@@ -13,7 +13,7 @@
       }
     },
     ".NETFramework,Version=v4.6/win": {
-      "HtmlAgilityPack/1.6.0": {
+      "HtmlAgilityPack/1.11.1": {
         "type": "package",
         "compile": {
           "lib/Net45/HtmlAgilityPack.dll": {}
@@ -24,7 +24,7 @@
       }
     },
     ".NETFramework,Version=v4.6/win-x64": {
-      "HtmlAgilityPack/1.6.0": {
+      "HtmlAgilityPack/1.11.1": {
         "type": "package",
         "compile": {
           "lib/Net45/HtmlAgilityPack.dll": {}
@@ -35,7 +35,7 @@
       }
     },
     ".NETFramework,Version=v4.6/win-x86": {
-      "HtmlAgilityPack/1.6.0": {
+      "HtmlAgilityPack/1.11.1": {
         "type": "package",
         "compile": {
           "lib/Net45/HtmlAgilityPack.dll": {}
@@ -47,18 +47,21 @@
     }
   },
   "libraries": {
-    "HtmlAgilityPack/1.6.0": {
-      "sha512": "+jNhj2wQI59RiHNcbwI5F7zNv/kpPdI6PAunOru36HUxJWcNSgeUTznmxbt/fyg04jQC9ZlkzrACIGXwag3aFg==",
+    "HtmlAgilityPack/1.11.1": {
+      "sha512": "1nmunZ0aokTUtsvbiiNrb5ZaaVuXXinlt3GOR1nn3tgUufm1Kw+YlH05NlhILl9xsFK/+q3woSLcf0BPvtcihg==",
       "type": "package",
-      "path": "htmlagilitypack/1.6.0",
+      "path": "htmlagilitypack/1.11.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "htmlagilitypack.1.6.0.nupkg.sha512",
+        "htmlagilitypack.1.11.1.nupkg.sha512",
         "htmlagilitypack.nuspec",
         "lib/Net20/HtmlAgilityPack.dll",
         "lib/Net20/HtmlAgilityPack.pdb",
         "lib/Net20/HtmlAgilityPack.xml",
+        "lib/Net35/HtmlAgilityPack.dll",
+        "lib/Net35/HtmlAgilityPack.pdb",
+        "lib/Net35/HtmlAgilityPack.xml",
         "lib/Net40-client/HtmlAgilityPack.dll",
         "lib/Net40-client/HtmlAgilityPack.pdb",
         "lib/Net40-client/HtmlAgilityPack.xml",
@@ -71,12 +74,15 @@
         "lib/NetCore45/HtmlAgilityPack.XML",
         "lib/NetCore45/HtmlAgilityPack.dll",
         "lib/NetCore45/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.deps.json",
         "lib/netstandard1.3/HtmlAgilityPack.dll",
         "lib/netstandard1.3/HtmlAgilityPack.pdb",
         "lib/netstandard1.3/HtmlAgilityPack.xml",
+        "lib/netstandard1.6/HtmlAgilityPack.deps.json",
         "lib/netstandard1.6/HtmlAgilityPack.dll",
         "lib/netstandard1.6/HtmlAgilityPack.pdb",
         "lib/netstandard1.6/HtmlAgilityPack.xml",
+        "lib/netstandard2.0/HtmlAgilityPack.deps.json",
         "lib/netstandard2.0/HtmlAgilityPack.dll",
         "lib/netstandard2.0/HtmlAgilityPack.pdb",
         "lib/netstandard2.0/HtmlAgilityPack.xml",
@@ -95,7 +101,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "HtmlAgilityPack >= 1.6.0"
+      "HtmlAgilityPack >= 1.11.1"
     ],
     ".NETFramework,Version=v4.6": []
   },
@@ -103,13 +109,14 @@
     "C:\\Users\\bdavid\\.nuget\\packages\\": {}
   },
   "project": {
+    "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj",
+      "projectUniqueName": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj",
       "projectName": "HylandMedConfig.Bot",
-      "projectPath": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj",
-      "projectJsonPath": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig.Bot\\project.json",
+      "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj",
+      "projectJsonPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\project.json",
       "packagesPath": "C:\\Users\\bdavid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig.Bot\\obj\\",
+      "outputPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
         "C:\\Users\\bdavid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -121,7 +128,7 @@
       }
     },
     "dependencies": {
-      "HtmlAgilityPack": "[1.6.0, )"
+      "HtmlAgilityPack": "[1.11.1, )"
     },
     "frameworks": {
       "net46": {}

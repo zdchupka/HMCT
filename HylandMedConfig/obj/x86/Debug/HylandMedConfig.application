@@ -14,14 +14,14 @@
     <framework targetVersion="4.6" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="HylandMedConfig.exe.manifest" size="20860">
+    <dependentAssembly dependencyType="install" codebase="HylandMedConfig.exe.manifest" size="20171">
       <assemblyIdentity name="HylandMedConfig.exe" version="5.0.0.57" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>a4Jx8yR/0Qa4JBeLI4YtZzQ3J+jXD7xYLJppcUjaeVo=</dsig:DigestValue>
+        <dsig:DigestValue>68tJxPlDT9dyPRySZ9Gr5s2GUr4wY++nNkZODxZk3nQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

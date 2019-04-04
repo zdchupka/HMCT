@@ -2,21 +2,13 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.6": {
-      "Extended.Wpf.Toolkit/3.2.0": {
+      "Extended.Wpf.Toolkit/3.5.0": {
         "type": "package",
-        "frameworkAssemblies": [
-          "PresentationCore",
-          "PresentationFramework",
-          "System",
-          "System.Xaml",
-          "WindowsBase"
-        ],
         "compile": {
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.Aero.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.dll": {},
-          "lib/net40/Xceed.Wpf.DataGrid.dll": {},
           "lib/net40/Xceed.Wpf.Toolkit.dll": {}
         },
         "runtime": {
@@ -24,7 +16,6 @@
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.dll": {},
-          "lib/net40/Xceed.Wpf.DataGrid.dll": {},
           "lib/net40/Xceed.Wpf.Toolkit.dll": {}
         },
         "resource": {
@@ -69,7 +60,7 @@
           "lib/net40/FontAwesome.WPF.dll": {}
         }
       },
-      "HtmlAgilityPack/1.6.0": {
+      "HtmlAgilityPack/1.11.1": {
         "type": "package",
         "compile": {
           "lib/Net45/HtmlAgilityPack.dll": {}
@@ -96,7 +87,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
-          "HtmlAgilityPack": "1.6.0"
+          "HtmlAgilityPack": "1.11.1"
         }
       },
       "HylandMedConfig.Emoticons/1.0.0": {
@@ -107,21 +98,13 @@
       }
     },
     ".NETFramework,Version=v4.6/win-x64": {
-      "Extended.Wpf.Toolkit/3.2.0": {
+      "Extended.Wpf.Toolkit/3.5.0": {
         "type": "package",
-        "frameworkAssemblies": [
-          "PresentationCore",
-          "PresentationFramework",
-          "System",
-          "System.Xaml",
-          "WindowsBase"
-        ],
         "compile": {
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.Aero.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.dll": {},
-          "lib/net40/Xceed.Wpf.DataGrid.dll": {},
           "lib/net40/Xceed.Wpf.Toolkit.dll": {}
         },
         "runtime": {
@@ -129,7 +112,6 @@
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.dll": {},
-          "lib/net40/Xceed.Wpf.DataGrid.dll": {},
           "lib/net40/Xceed.Wpf.Toolkit.dll": {}
         },
         "resource": {
@@ -174,7 +156,7 @@
           "lib/net40/FontAwesome.WPF.dll": {}
         }
       },
-      "HtmlAgilityPack/1.6.0": {
+      "HtmlAgilityPack/1.11.1": {
         "type": "package",
         "compile": {
           "lib/Net45/HtmlAgilityPack.dll": {}
@@ -201,7 +183,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
-          "HtmlAgilityPack": "1.6.0"
+          "HtmlAgilityPack": "1.11.1"
         }
       },
       "HylandMedConfig.Emoticons/1.0.0": {
@@ -212,21 +194,13 @@
       }
     },
     ".NETFramework,Version=v4.6/win-x86": {
-      "Extended.Wpf.Toolkit/3.2.0": {
+      "Extended.Wpf.Toolkit/3.5.0": {
         "type": "package",
-        "frameworkAssemblies": [
-          "PresentationCore",
-          "PresentationFramework",
-          "System",
-          "System.Xaml",
-          "WindowsBase"
-        ],
         "compile": {
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.Aero.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.dll": {},
-          "lib/net40/Xceed.Wpf.DataGrid.dll": {},
           "lib/net40/Xceed.Wpf.Toolkit.dll": {}
         },
         "runtime": {
@@ -234,7 +208,6 @@
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.dll": {},
-          "lib/net40/Xceed.Wpf.DataGrid.dll": {},
           "lib/net40/Xceed.Wpf.Toolkit.dll": {}
         },
         "resource": {
@@ -279,7 +252,7 @@
           "lib/net40/FontAwesome.WPF.dll": {}
         }
       },
-      "HtmlAgilityPack/1.6.0": {
+      "HtmlAgilityPack/1.11.1": {
         "type": "package",
         "compile": {
           "lib/Net45/HtmlAgilityPack.dll": {}
@@ -306,7 +279,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
-          "HtmlAgilityPack": "1.6.0"
+          "HtmlAgilityPack": "1.11.1"
         }
       },
       "HylandMedConfig.Emoticons/1.0.0": {
@@ -318,23 +291,20 @@
     }
   },
   "libraries": {
-    "Extended.Wpf.Toolkit/3.2.0": {
-      "sha512": "JTbKkx/Z0bj0QX/QPLT3w59bVPBYZB1d2WIiHzbmTiaE1RLCh6bocFS6Urax1MSe3bAjZeZpMY+68vTR6pBHjA==",
+    "Extended.Wpf.Toolkit/3.5.0": {
+      "sha512": "syHi2FK/THdupMYBRu/XIYiPRZ3QuIaPlsTTJBFhH/BrFbmSOJ6qhgiKwoAdzFdGVCDSKX+QNbKrw6e1uvwaqg==",
       "type": "package",
-      "path": "extended.wpf.toolkit/3.2.0",
+      "path": "extended.wpf.toolkit/3.5.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "extended.wpf.toolkit.3.2.0.nupkg.sha512",
+        "extended.wpf.toolkit.3.5.0.nupkg.sha512",
         "extended.wpf.toolkit.nuspec",
-        "lib/net35/WPFToolkit.dll",
-        "lib/net35/Xceed.Wpf.Toolkit.dll",
         "lib/net40/Xceed.Wpf.AvalonDock.Themes.Aero.dll",
         "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll",
         "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll",
         "lib/net40/Xceed.Wpf.AvalonDock.dll",
-        "lib/net40/Xceed.Wpf.DataGrid.dll",
         "lib/net40/Xceed.Wpf.Toolkit.dll",
         "lib/net40/de/Xceed.Wpf.AvalonDock.resources.dll",
         "lib/net40/es/Xceed.Wpf.AvalonDock.resources.dll",
@@ -372,18 +342,21 @@
         "tools/install.ps1"
       ]
     },
-    "HtmlAgilityPack/1.6.0": {
-      "sha512": "+jNhj2wQI59RiHNcbwI5F7zNv/kpPdI6PAunOru36HUxJWcNSgeUTznmxbt/fyg04jQC9ZlkzrACIGXwag3aFg==",
+    "HtmlAgilityPack/1.11.1": {
+      "sha512": "1nmunZ0aokTUtsvbiiNrb5ZaaVuXXinlt3GOR1nn3tgUufm1Kw+YlH05NlhILl9xsFK/+q3woSLcf0BPvtcihg==",
       "type": "package",
-      "path": "htmlagilitypack/1.6.0",
+      "path": "htmlagilitypack/1.11.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "htmlagilitypack.1.6.0.nupkg.sha512",
+        "htmlagilitypack.1.11.1.nupkg.sha512",
         "htmlagilitypack.nuspec",
         "lib/Net20/HtmlAgilityPack.dll",
         "lib/Net20/HtmlAgilityPack.pdb",
         "lib/Net20/HtmlAgilityPack.xml",
+        "lib/Net35/HtmlAgilityPack.dll",
+        "lib/Net35/HtmlAgilityPack.pdb",
+        "lib/Net35/HtmlAgilityPack.xml",
         "lib/Net40-client/HtmlAgilityPack.dll",
         "lib/Net40-client/HtmlAgilityPack.pdb",
         "lib/Net40-client/HtmlAgilityPack.xml",
@@ -396,12 +369,15 @@
         "lib/NetCore45/HtmlAgilityPack.XML",
         "lib/NetCore45/HtmlAgilityPack.dll",
         "lib/NetCore45/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.deps.json",
         "lib/netstandard1.3/HtmlAgilityPack.dll",
         "lib/netstandard1.3/HtmlAgilityPack.pdb",
         "lib/netstandard1.3/HtmlAgilityPack.xml",
+        "lib/netstandard1.6/HtmlAgilityPack.deps.json",
         "lib/netstandard1.6/HtmlAgilityPack.dll",
         "lib/netstandard1.6/HtmlAgilityPack.pdb",
         "lib/netstandard1.6/HtmlAgilityPack.xml",
+        "lib/netstandard2.0/HtmlAgilityPack.deps.json",
         "lib/netstandard2.0/HtmlAgilityPack.dll",
         "lib/netstandard2.0/HtmlAgilityPack.pdb",
         "lib/netstandard2.0/HtmlAgilityPack.xml",
@@ -450,9 +426,9 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Extended.Wpf.Toolkit >= 3.2.0",
+      "Extended.Wpf.Toolkit >= 3.5.0",
       "FontAwesome.WPF >= 4.7.0.9",
-      "HtmlAgilityPack >= 1.6.0",
+      "HtmlAgilityPack >= 1.11.1",
       "System.Windows.Interactivity.WPF >= 2.0.20525"
     ],
     ".NETFramework,Version=v4.6": []
@@ -462,12 +438,12 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig\\HylandMedConfig.csproj",
+      "projectUniqueName": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig\\HylandMedConfig.csproj",
       "projectName": "HylandMedConfig",
-      "projectPath": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig\\HylandMedConfig.csproj",
-      "projectJsonPath": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig\\project.json",
+      "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig\\HylandMedConfig.csproj",
+      "projectJsonPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig\\project.json",
       "packagesPath": "C:\\Users\\bdavid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig\\obj\\",
+      "outputPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
         "C:\\Users\\bdavid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -480,23 +456,23 @@
       "frameworks": {
         "net46": {
           "projectReferences": {
-            "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandAnimatedGif\\HylandAnimatedGif.csproj": {
-              "projectPath": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandAnimatedGif\\HylandAnimatedGif.csproj"
+            "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandAnimatedGif\\HylandAnimatedGif.csproj": {
+              "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandAnimatedGif\\HylandAnimatedGif.csproj"
             },
-            "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj": {
-              "projectPath": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj"
+            "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj": {
+              "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj"
             },
-            "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig.Emoticons\\HylandMedConfig.Emoticons.csproj": {
-              "projectPath": "C:\\Users\\bdavid\\Desktop\\New folder (3)\\HMCT\\HylandMedConfig.Emoticons\\HylandMedConfig.Emoticons.csproj"
+            "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Emoticons\\HylandMedConfig.Emoticons.csproj": {
+              "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Emoticons\\HylandMedConfig.Emoticons.csproj"
             }
           }
         }
       }
     },
     "dependencies": {
-      "Extended.Wpf.Toolkit": "[3.2.0, )",
+      "Extended.Wpf.Toolkit": "[3.5.0, )",
       "FontAwesome.WPF": "[4.7.0.9, )",
-      "HtmlAgilityPack": "[1.6.0, )",
+      "HtmlAgilityPack": "[1.11.1, )",
       "System.Windows.Interactivity.WPF": "[2.0.20525, )"
     },
     "frameworks": {

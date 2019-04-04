@@ -1,0 +1,6 @@
+C:\Users\bdavid\Desktop\HMCT\HylandAnimatedGif\bin\x86\Debug\HylandAnimatedGif.dll
+C:\Users\bdavid\Desktop\HMCT\HylandAnimatedGif\bin\x86\Debug\HylandAnimatedGif.pdb
+C:\Users\bdavid\Desktop\HMCT\HylandAnimatedGif\obj\x86\Debug\HylandAnimatedGif.csprojAssemblyReference.cache
+C:\Users\bdavid\Desktop\HMCT\HylandAnimatedGif\obj\x86\Debug\HylandAnimatedGif.csproj.CoreCompileInputs.cache
+C:\Users\bdavid\Desktop\HMCT\HylandAnimatedGif\obj\x86\Debug\HylandAnimatedGif.dll
+C:\Users\bdavid\Desktop\HMCT\HylandAnimatedGif\obj\x86\Debug\HylandAnimatedGif.pdb
