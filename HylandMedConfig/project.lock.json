@@ -438,12 +438,12 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig\\HylandMedConfig.csproj",
+      "projectUniqueName": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig\\HylandMedConfig.csproj",
       "projectName": "HylandMedConfig",
-      "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig\\HylandMedConfig.csproj",
-      "projectJsonPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig\\project.json",
+      "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig\\HylandMedConfig.csproj",
+      "projectJsonPath": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig\\project.json",
       "packagesPath": "C:\\Users\\bdavid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig\\obj\\",
+      "outputPath": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
         "C:\\Users\\bdavid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -456,14 +456,14 @@
       "frameworks": {
         "net46": {
           "projectReferences": {
-            "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandAnimatedGif\\HylandAnimatedGif.csproj": {
-              "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandAnimatedGif\\HylandAnimatedGif.csproj"
+            "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandAnimatedGif\\HylandAnimatedGif.csproj": {
+              "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandAnimatedGif\\HylandAnimatedGif.csproj"
             },
-            "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj": {
-              "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj"
+            "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj": {
+              "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj"
             },
-            "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Emoticons\\HylandMedConfig.Emoticons.csproj": {
-              "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Emoticons\\HylandMedConfig.Emoticons.csproj"
+            "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig.Emoticons\\HylandMedConfig.Emoticons.csproj": {
+              "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig.Emoticons\\HylandMedConfig.Emoticons.csproj"
             }
           }
         }

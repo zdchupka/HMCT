@@ -109,14 +109,13 @@
     "C:\\Users\\bdavid\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj",
+      "projectUniqueName": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj",
       "projectName": "HylandMedConfig.Bot",
-      "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj",
-      "projectJsonPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\project.json",
+      "projectPath": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig.Bot\\HylandMedConfig.Bot.csproj",
+      "projectJsonPath": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig.Bot\\project.json",
       "packagesPath": "C:\\Users\\bdavid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bdavid\\Desktop\\HMCT2\\HylandMedConfig.Bot\\obj\\",
+      "outputPath": "C:\\Users\\bdavid\\Desktop\\HMCT\\HylandMedConfig.Bot\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
         "C:\\Users\\bdavid\\AppData\\Roaming\\NuGet\\NuGet.Config",
