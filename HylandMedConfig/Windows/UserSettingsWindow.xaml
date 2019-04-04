@@ -553,6 +553,15 @@
                         </Button>
                     </StackPanel>
                 </GroupBox>
+                <GroupBox Margin="0 3 0 0"
+                          Header="/info"
+                          FontWeight="Bold"
+                          Padding="5">
+                    <StackPanel TextElement.FontWeight="Normal">
+                        <Button Click="ConfigureInfoClick">Configure Employees...
+                        </Button>
+                    </StackPanel>
+                </GroupBox>
 
             </StackPanel>
         </ScrollViewer>

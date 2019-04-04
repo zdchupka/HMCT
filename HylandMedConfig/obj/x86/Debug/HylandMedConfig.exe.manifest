@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="HylandMedConfig.exe" version="4.2.1.81" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="HylandMedConfig.exe" version="5.0.0.57" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -43,6 +43,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FontAwesome.WPF.dll" size="209408">
+      <assemblyIdentity name="FontAwesome.WPF" version="4.7.0.37774" publicKeyToken="0758B07A11A4F466" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Y9UNvglLvOXXv4rwjA2RnPpeBXygWueydwSoR3yLNI8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlAgilityPack.dll" size="140288">
       <assemblyIdentity name="HtmlAgilityPack" version="1.6.0.0" publicKeyToken="BD319B19EAF3B43A" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -56,49 +68,49 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HylandAnimatedGif.dll" size="43520">
-      <assemblyIdentity name="HylandAnimatedGif" version="1.4.14.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="HylandAnimatedGif" version="1.4.14.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SrlHSA60Kg62jdL3qdFPeVc8WvfR+DvbBTWnShLUqCQ=</dsig:DigestValue>
+        <dsig:DigestValue>pYFWboCJXa3UZA2CwTga45iNzd0fWs7uBjKRbD/e/K0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HylandMedConfig.exe" size="885760">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HylandMedConfig.exe" size="964608">
       <assemblyIdentity name="HylandMedConfig" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8mlwNor8wrmDSw6m9WfHxuaY9DUl2OmUDHpRpFjTOVA=</dsig:DigestValue>
+        <dsig:DigestValue>ybNUp0ToWnNtIr/YsiW6eg/rhz3x/0QyLxW2J1sFUI0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HylandMedConfig.Bot.dll" size="81408">
-      <assemblyIdentity name="HylandMedConfig.Bot" version="1.0.0.70" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HylandMedConfig.Bot.dll" size="85504">
+      <assemblyIdentity name="HylandMedConfig.Bot" version="1.0.0.79" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8BEGLS7ympwBeI/3VIjFc8bPXWm1QAM0mUuFFh0/ttQ=</dsig:DigestValue>
+        <dsig:DigestValue>ZZTfUmQJx1tC922p1M+t02ih9kxX3F3kkTeJURyHkG0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HylandMedConfig.Emoticons.dll" size="5039616">
-      <assemblyIdentity name="HylandMedConfig.Emoticons" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HylandMedConfig.Emoticons.dll" size="7031296">
+      <assemblyIdentity name="HylandMedConfig.Emoticons" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FLmrHuZRutOjqQJEHZLs+vqS4MgH7LpttH//J2omcKs=</dsig:DigestValue>
+        <dsig:DigestValue>YWjnMd3csZxr33hoQeb49Y80bpsyN3VJ0CsawJuekuM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -318,13 +330,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="HylandMedConfig.exe.config" size="9016">
+  <file name="HylandMedConfig.exe.config" size="9401">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>KTy6dGH281U8mxVtsUVS35nSFlMIs2Z/c5aDVFdsq5w=</dsig:DigestValue>
+      <dsig:DigestValue>5rPV+JrQ3Z1MomMKeIBirv5rnjfq1kG0lZeO6AVECHo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="icon.ico" size="9662">
@@ -336,22 +348,22 @@
       <dsig:DigestValue>wpawJJFiIe3dwvR9RbomRgH8HscKrc+38+vuGEdJKSM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="project.json" size="262">
+  <file name="project.json" size="297">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>sU7aL//cb49LsYhVKEjYwyP8cNFyVMysT2rLfIgpucY=</dsig:DigestValue>
+      <dsig:DigestValue>nm7aUhDURt2Dxq31v5Y9nxRA4mqbtv31UKkrj0E2aEs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ReleaseNotes.txt" size="51953">
+  <file name="ReleaseNotes.txt" size="57876">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>emiQ6qLx9+YVL+jOkHVns8H+XRTRsZCkF8fr7za07kw=</dsig:DigestValue>
+      <dsig:DigestValue>xq7n+1ruSyB8OEjbV2aqFhK3broQx+dPYtOELflIRCI=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

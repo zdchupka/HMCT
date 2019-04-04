@@ -1,3 +1,5 @@
+C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\obj\x86\Debug\HylandIMServer.csprojAssemblyReference.cache
+C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\obj\x86\Debug\HylandIMServer.csproj.CoreCompileInputs.cache
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\hmct.pfx
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\HylandIMServer.exe.config
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\HylandIMServer.exe.manifest
@@ -9,10 +11,12 @@ C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\HtmlAgilit
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\HylandMedConfig.Bot.pdb
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\HylandMedConfig.Bot.dll.config
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\HtmlAgilityPack.pdb
-C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\obj\x86\Debug\HylandIMServer.csprojAssemblyReference.cache
-C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\obj\x86\Debug\HylandIMServer.csproj.CoreCompileInputs.cache
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\obj\x86\Debug\HylandIMServer.exe.manifest
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\obj\x86\Debug\HylandIMServer.application
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\obj\x86\Debug\HylandIMServer.csproj.CopyComplete
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\obj\x86\Debug\HylandIMServer.exe
 C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\obj\x86\Debug\HylandIMServer.pdb
+C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\Microsoft.Expression.Interactions.dll
+C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\Microsoft.Expression.Interactions.xml
+C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandIMServer\bin\Debug\System.Windows.Interactivity.xml

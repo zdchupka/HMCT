@@ -1,6 +1,7 @@
 ﻿{
   "dependencies": {
     "Extended.Wpf.Toolkit": "3.2.0",
+    "FontAwesome.WPF": "4.7.0.9",
     "HtmlAgilityPack": "1.6.0",
     "System.Windows.Interactivity.WPF": "2.0.20525"
   },

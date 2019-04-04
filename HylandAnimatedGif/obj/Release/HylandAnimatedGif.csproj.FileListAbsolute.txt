@@ -1,6 +1,0 @@
-C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandAnimatedGif\bin\Release\HylandAnimatedGif.dll
-C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandAnimatedGif\bin\Release\HylandAnimatedGif.pdb
-C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandAnimatedGif\obj\Release\HylandAnimatedGif.csprojAssemblyReference.cache
-C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandAnimatedGif\obj\Release\HylandAnimatedGif.csproj.CoreCompileInputs.cache
-C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandAnimatedGif\obj\Release\HylandAnimatedGif.dll
-C:\Users\bdavid\Desktop\HMCT\HylandMedConfig\HylandAnimatedGif\obj\Release\HylandAnimatedGif.pdb

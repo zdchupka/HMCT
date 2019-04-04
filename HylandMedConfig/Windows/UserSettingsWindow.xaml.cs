@@ -215,6 +215,15 @@ namespace HylandMedConfig.Dialogs
 			new IgnoreTagSettingsWindow() { Owner = GetWindow( this ) }.ShowDialog();
 		}
 
+        private void ConfigureInfoClick(object sender, RoutedEventArgs e)
+        {
+            if(sender is ChatUserComparer  chatuser)
+            {
+
+            }
+            new OutOfOfficeListWindow() { Owner = GetWindow(this) }.ShowDialog();
+        }
+
 		private void ExportUserSettings_Executed( object sender, ExecutedRoutedEventArgs e )
 		{
 			SaveFileDialog dlg = new SaveFileDialog()

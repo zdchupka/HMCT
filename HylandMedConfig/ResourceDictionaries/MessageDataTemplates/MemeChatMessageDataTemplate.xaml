@@ -16,8 +16,8 @@
                 <Border Margin="9"
                         Padding="1">
                     <Grid HorizontalAlignment="Center"
-                          MaxHeight="400"
-                          MaxWidth="400">
+                          MaxHeight="500"
+                          MaxWidth="500">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />

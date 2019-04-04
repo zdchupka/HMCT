@@ -32,7 +32,13 @@ namespace HylandMedConfig
 				Settings.Default.Save();
 			}
 
-			ToolTipService.ShowDurationProperty.OverrideMetadata(
+            if (Settings.Default.CustomUserList == null)
+            {
+                Settings.Default.CustomUserList = new System.Collections.Specialized.StringCollection();
+                Settings.Default.Save();
+            }
+
+            ToolTipService.ShowDurationProperty.OverrideMetadata(
 				typeof( DependencyObject ), new FrameworkPropertyMetadata( int.MaxValue ) );
 
 			_hotKey = new HotKey( Key.F12, KeyModifier.Shift | KeyModifier.Ctrl, OnHotKeyHandler );
